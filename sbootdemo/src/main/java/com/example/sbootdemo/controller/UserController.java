@@ -2,9 +2,7 @@ package com.example.sbootdemo.controller;
 
 import com.example.sbootdemo.dao.UserMapper;
 import com.example.sbootdemo.domain.User;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
