@@ -1,5 +1,8 @@
 package dotest.thread;
 
+import org.junit.Test;
+
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -8,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @title 两个线程依次交替执行
  * @description 假定两个线程分别为红灯、绿灯，执行的期待结果为：红-绿-红-绿-红-绿...
  */
-public class TwoThreadLock2 {
+public class TwoThreadLockByCondition {
 
     private int tnum = 1;// 线程编号,Thread Number
 
@@ -23,7 +26,7 @@ public class TwoThreadLock2 {
     }
 
     public static void main(String[] args) {
-        new TwoThreadLock2().run();
+        new TwoThreadLockByCondition().run();
     }
 
     class LightThread implements Runnable {
@@ -56,6 +59,31 @@ public class TwoThreadLock2 {
                 }
             }
         }
+    }
+
+    @Test
+    public void dorun() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        ReentrantLock lock = new ReentrantLock();
+        Condition condition = lock.newCondition();
+        Runnable runnable = () -> {
+            while (true) {
+                lock.lock();
+                System.out.println(Thread.currentThread().getName());
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                    condition.signal();
+                    condition.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        };
+        new Thread(runnable, "thread1").start();
+        new Thread(runnable, "thread2").start();
+        countDownLatch.await();
     }
 
 }
