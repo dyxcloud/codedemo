@@ -44,8 +44,20 @@ public class BufferDemo {
 		System.out.printf("position=%d, limit=%d, capacity=%d,content=%s\n", buffer.position(), buffer.limit(),
 				buffer.capacity(), sb.toString());
 	}
-	
-	
+
+
+
+	private static void testMark() {
+		CharBuffer buffer = CharBuffer.allocate(10);
+		showBuffer(buffer);
+		//设置mark位置为3
+		buffer.position(3).mark().position(5);
+		showBuffer(buffer);
+		//reset后，position=mark
+		buffer.reset();
+		showBuffer(buffer);
+	}
+
 	public static void main(String[] args) {
 		
 	}

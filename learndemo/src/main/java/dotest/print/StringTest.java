@@ -1,6 +1,15 @@
 package dotest.print;
 
+import org.junit.Test;
+
 public class StringTest {
+
+	@Test
+	public void testStringBuilder(){
+	    String ori= "helloOri";
+		ori+="hello";
+		System.out.println(ori);
+	}
 
 	public static void main(String[] args) {
 		/*String hello = "hello";
