@@ -1,11 +1,22 @@
 package com.example.sbootdemo.domain;
 
+import java.util.Arrays;
+
 public class User {
 
     private Integer id;
     private String username;
     private Integer age;
     private Integer customerid;
+    private String[] arr;
+
+    public String[] getArr() {
+        return arr;
+    }
+
+    public void setArr(String[] arr) {
+        this.arr = arr;
+    }
 
     public Integer getId() {
         return id;
@@ -46,6 +57,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", age=" + age +
                 ", customerid=" + customerid +
+                ", arr=" + Arrays.toString(arr) +
                 '}';
     }
 }
