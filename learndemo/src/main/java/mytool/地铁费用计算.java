@@ -1,6 +1,6 @@
-package show;
+package mytool;
 
-public class SumGetter {
+public class 地铁费用计算 {
     
     final int count = 24*2;
     final int price = 5;
@@ -29,7 +29,7 @@ public class SumGetter {
     
     
     public static void main(String[] args) {
-        SumGetter g = new SumGetter();
+        地铁费用计算 g = new 地铁费用计算();
         System.out.println(g.getSum1());
         System.out.println(g.getSum2());
         System.out.println(g.getSum0());
