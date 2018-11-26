@@ -31,6 +31,17 @@ public class 三阶魔方阵 {
     }
 
     /**
+     * 穷举生成所有方阵,生成时跳过数字重复的情况
+     * @author DongYunxiang
+     * @date 18.11.26
+     */
+    private static void runAll1(){
+        // TODO run1 遍历[A99]的方式获取所有排列
+        // 数量验证, 是否是所有的三阶方阵的情况
+
+    }
+
+    /**
      * //穷举生成所有的方阵
      * runtime(ms): 62201(8250u)
      * runtime(min): 1
