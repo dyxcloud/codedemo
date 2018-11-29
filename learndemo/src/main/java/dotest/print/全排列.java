@@ -9,13 +9,23 @@ import java.util.List;
  **/
 public class 全排列 {
 
+    /**
+     * 使用递归(深度优先)穷举的方式获取全排列
+     * 深度优先方式
+     */
     private  class A1{
-        private List<List<Integer>> permute(int[] nums) {
+        public List<List<Integer>> permute(int[] nums) {
             List<List<Integer>> res = new ArrayList<>();
             helper(nums, new ArrayList<>(), res);
             return res;
         }
 
+        /**
+         * 向排列数组[list]中添加一个数字
+         * @param nums 原数组
+         * @param list 存放一个排列的数组
+         * @param res 输出全排列结果
+         */
         private void helper(int[] nums, List<Integer> list, List<List<Integer>> res) {
             if (list.size() == nums.length) {  // 达到长度，可以输出了
                 res.add(new ArrayList<>(list));
@@ -31,18 +41,28 @@ public class 全排列 {
         }
     }
 
+    /**
+     * 使用交换方法获取全排列
+     * A33 = 3*2*1
+     * 递归的算法思想类似, 都是依次生成第一位/第二位/第三位...不过此方法相对A1因为直接在数组源上进行交换,免去了重复数字校验的问题
+     */
     private class A2{
         // 最终返回的结果集
-        private List<List<Integer>> res = new ArrayList<List<Integer>>();
+        private List<List<Integer>> res = new ArrayList<>();
 
-        private List<List<Integer>> permute(int[] nums) {
+        public List<List<Integer>> permute(int[] nums) {
             if (nums == null || nums.length == 0) return res;
-
             // 采用前后元素交换的办法，dfs解题
             exchange(nums, 0, nums.length);
             return res;
         }
 
+        /**
+         *
+         * @param nums
+         * @param i 交换起点index
+         * @param len 目标输出长度
+         */
         private void exchange(int[] nums, int i, int len) {
             // 将当前数组加到结果集中
             if (i == len - 1) {
@@ -73,7 +93,7 @@ public class 全排列 {
         A1 a1 = new 全排列().new A1();
         A2 a2 = new 全排列().new A2();
 
-        List<List<Integer>> res = a1.permute(new int[]{1, 2, 3});
+        List<List<Integer>> res = a2.permute(new int[]{1, 2, 3});
         res.forEach(System.out::println);
     }
 }
