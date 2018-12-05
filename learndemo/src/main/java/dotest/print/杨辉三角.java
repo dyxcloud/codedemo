@@ -1,6 +1,6 @@
 package dotest.print;
 
-public class YangHuiSanJiaoDemo {
+public class 杨辉三角 {
 
 	/**
 	 * 生成杨辉三角
