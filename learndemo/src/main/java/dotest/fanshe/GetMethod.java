@@ -2,8 +2,6 @@ package dotest.fanshe;
 
 import java.lang.reflect.Method;
 
-import com.mysql.fabric.xmlrpc.base.Array;
-
 public class GetMethod {
 
 	public static void doArray(int[] arr) {

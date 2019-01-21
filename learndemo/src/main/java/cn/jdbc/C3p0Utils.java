@@ -10,8 +10,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class C3p0Utils {
 
 	private static DataSource dataSource=new ComboPooledDataSource();
-//	private static DataSource tempDS = new ComboPooledDataSource("temp");
-	
+
 	public static DataSource getDataSource(){
 		return dataSource;
 	}
@@ -27,25 +26,14 @@ public class C3p0Utils {
 		return con;
 	}
 
-	public static Connection getConnectionForTemp(){
-        return null;
-		/*try {
-			return tempDS.getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException();
-		}*/
-	}
-	
-	
 	public static void main(String[] args) throws SQLException, InterruptedException {
-//		for(int i =0;i<40;i++){
-//			Connection con=C3p0Utils.getConnection();
-//			System.out.println("获取到的"+con);
-//			con.close();
-//		}
+		for(int i =0;i<40;i++){
+			Connection con=C3p0Utils.getConnection();
+			System.out.println("获取到的"+con);
+			con.close();
+		}
 
-		ComboPooledDataSource ds = (ComboPooledDataSource)dataSource;
+		/*ComboPooledDataSource ds = (ComboPooledDataSource)dataSource;
 		int i=0;
 		while(i++<10){
 			System.out.println("--------------------------");
@@ -55,6 +43,6 @@ public class C3p0Utils {
 			System.out.println(ds.getNumIdleConnections());// 空闲连接数
 			System.out.println(ds.getNumConnections());// 总连接数
 			Thread.sleep(3000);
-		}
+		}*/
 	}
 }

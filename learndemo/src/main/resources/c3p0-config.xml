@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <c3p0-config>
     <default-config>
-        <property name="driverClass">com.mysql.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/test</property>
+        <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://192.168.200.128:3306/test</property>
         <property name="user">root</property>
-        <property name="password">root</property>
+        <property name="password">123456</property>
 
         <property name="acquireIncrement">1</property>
         <property name="initialPoolSize">1</property>
         <property name="minPoolSize">1</property>
         <property name="maxPoolSize">5</property>
     </default-config>
-
-    <!--<named-config name="temp">
-        <property name="driverClass">com.ibm.db2.jcc.DB2Driver</property>
-        <property name="jdbcUrl">jdbc:db2://10.50.1.28:50001/EDOCSYST</property>
-        <property name="user">edocefs</property>
-        <property name="password">123456</property>
-
-        <property name="acquireIncrement">5</property>
-        <property name="initialPoolSize">10</property>
-        <property name="minPoolSize">5</property>
-        <property name="maxPoolSize">40</property>
-    </named-config>-->
 
 </c3p0-config>
 
