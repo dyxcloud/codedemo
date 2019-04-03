@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class 和式组合数列 {
 
 	/**
