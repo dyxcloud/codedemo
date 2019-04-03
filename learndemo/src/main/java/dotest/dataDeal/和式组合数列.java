@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CodeDemo {
+public class 和式组合数列 {
 
 	/**
 	 * 给定一个正整数,列出可能的数列其相加和为此整数
