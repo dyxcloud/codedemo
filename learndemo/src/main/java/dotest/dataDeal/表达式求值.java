@@ -62,7 +62,7 @@ public class 表达式求值 {
         return !(a < 3 && b > 2);
     }
 
-    private static double operator(double a, double b, String operator) {
+    public static double operator(double a, double b, String operator) {
         switch (operator) {
             case "+":
                 return a + b;
