@@ -7,7 +7,7 @@ package dotest.dataDeal.sort;
 public class 选择排序 {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        int[] ars={2,3,5,6,8,5,3,2,5,7,9,5,3,7,6,3,2,1};
+        int[] ars= ArrayData.ARR;
         for (int i = 0; i < ars.length-1; i++) {
             int index=i;
             int num=ars[i];
