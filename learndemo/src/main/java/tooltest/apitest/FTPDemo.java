@@ -1,4 +1,4 @@
-package cn.apitest;
+package tooltest.apitest;
 
 public class FTPDemo {
 

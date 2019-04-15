@@ -1,8 +1,8 @@
-package dotest.other;
+package dotest.string;
 
 import java.io.IOException;
 
-public class FormatAndSrtingBuilder {
+public class SrtingBuilderTest {
     static int time = 100000;
 
     public static long getTime1() {

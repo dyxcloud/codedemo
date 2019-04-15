@@ -1,4 +1,4 @@
-package dotest.other;
+package dotest.dataDeal;
 
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;

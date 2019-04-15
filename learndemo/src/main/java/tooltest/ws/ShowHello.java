@@ -1,4 +1,4 @@
-package cn.ws;
+package tooltest.ws;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;

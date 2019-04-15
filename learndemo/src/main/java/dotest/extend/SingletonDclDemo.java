@@ -1,4 +1,4 @@
-package dotest.superTest;
+package dotest.extend;
 
 /**
  * 单例模式demo,使用双重校验锁实现

@@ -1,6 +1,4 @@
-package dotest.superTest;
-
-import java.lang.reflect.Method;
+package dotest.extend;
 
 public class DoTest {
 

@@ -1,4 +1,4 @@
-package cn.jdbc;
+package tooltest.jdbc;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

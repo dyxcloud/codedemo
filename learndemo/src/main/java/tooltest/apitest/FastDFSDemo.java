@@ -1,4 +1,4 @@
-package cn.apitest;
+package tooltest.apitest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.csource.fastdfs.ClientGlobal;

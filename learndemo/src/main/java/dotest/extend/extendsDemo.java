@@ -1,4 +1,4 @@
-package dotest.superTest;
+package dotest.extend;
 
 public class extendsDemo {
 
