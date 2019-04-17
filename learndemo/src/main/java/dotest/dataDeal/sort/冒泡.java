@@ -4,17 +4,14 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import static dotest.dataDeal.sort.ArrayData.swap;
+
+
 /**
  * @author DongYunxiang
  * @create 2019-04-15
  **/
 public class 冒泡 {
-
-    static void swap(int[] arr, int i1, int i2) {
-        int tmp = arr[i1];
-        arr[i1] = arr[i2];
-        arr[i2] = tmp;
-    }
 
     public static void main(String[] args) {
         int a[] = ArrayData.ARR;

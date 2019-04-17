@@ -1,30 +1,32 @@
 package dotest.dataDeal.sort;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * @author DongYunxiang
  * @create 2019-04-15
  **/
 public class 选择排序 {
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        int[] ars= ArrayData.ARR;
-        for (int i = 0; i < ars.length-1; i++) {
-            int index=i;
-            int num=ars[i];
-            for (int j = i+1; j < ars.length; j++) {
-                if(num>ars[j]){
-                    index=j;
-                    num=ars[j];
+
+    void doit(int[] arr){
+        for(int i=0;i<arr.length-1;i++){//确定第i位
+            int minP = i;
+            for(int p = i+1;p<arr.length;p++){
+                if(arr[p]<arr[minP]){
+                    minP = p;
                 }
             }
-            if(index!=i){
-                int temp=ars[i];
-                ars[i]=ars[index];
-                ars[index]=temp;
+            if(minP!=i){
+                ArrayData.swap(arr,i,minP);
             }
         }
-        for (int i : ars) {
-            System.out.print(i+"\t");
-        }
+    }
+
+    @Test
+    public void testdoit(){
+        doit(ArrayData.ARR);
+        System.out.println(Arrays.toString(ArrayData.ARR));
     }
 }
