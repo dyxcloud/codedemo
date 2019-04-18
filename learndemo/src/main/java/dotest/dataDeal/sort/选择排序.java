@@ -10,7 +10,7 @@ import java.util.Arrays;
  **/
 public class 选择排序 {
 
-    void doit(int[] arr){
+    void doit(long[] arr){
         for(int i=0;i<arr.length-1;i++){//确定第i位
             int minP = i;
             for(int p = i+1;p<arr.length;p++){

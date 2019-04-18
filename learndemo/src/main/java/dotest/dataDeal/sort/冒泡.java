@@ -13,21 +13,7 @@ import static dotest.dataDeal.sort.ArrayData.swap;
  **/
 public class 冒泡 {
 
-    public static void main(String[] args) {
-        int a[] = ArrayData.ARR;
-        for (int i = a.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (a[j] > a[j + 1]) {
-                    swap(a, j, j + 1);
-                }
-            }
-        }
-        for (int i : a) {
-            System.out.print(i + " ");
-        }
-    }
-
-    void doit(int[] arr) {
+    void doit(long[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {//从0位开始获取最小的
             for (int n = arr.length - 1; n > i; n--) {
                 if (arr[n] < arr[n - 1]) {

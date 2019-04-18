@@ -11,17 +11,26 @@ import java.util.Random;
  **/
 public class ArrayData {
 
-    public static final int[] ARR;
+    public static final long[] ARR;
 
     static {
         Random random = new Random();
-        ARR = random.ints(0,100).limit(25).toArray();
+        ARR = random.longs(0,100).limit(10).toArray();
     }
 
-    public static void swap(int[] arr, int i1, int i2) {
-        int tmp = arr[i1];
+    public static void swap(long[] arr, int i1, int i2) {
+        long tmp = arr[i1];
         arr[i1] = arr[i2];
         arr[i2] = tmp;
+    }
+
+    public static boolean isSort(long[] arr){
+        for(int i=1;i<arr.length;i++){
+            if(arr[i-1]>arr[i]){
+                return false;
+            }
+        }
+        return true;
     }
 
     @Test
