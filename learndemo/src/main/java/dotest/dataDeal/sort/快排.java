@@ -43,14 +43,5 @@ public class 快排 {
         TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
     }
 
-    void doit(long arr[], int start, int end) {
-    }
-
-    @Test
-    public void testdoit() {
-        doit(ArrayData.ARR,0,ArrayData.ARR.length-1);
-        System.out.println(Arrays.toString(ArrayData.ARR));
-        TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
-    }
 
 }
