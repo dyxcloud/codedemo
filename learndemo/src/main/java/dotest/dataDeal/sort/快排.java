@@ -17,37 +17,15 @@ public class 快排 {
     递归的将p左边和右边的数都按照第一步进行，直到不能递归。
      */
 
-    public static void quickSort(long[] arr, int start, int end) {
-        if (start < end) {
-            long base = arr[start]; // 选定的基准值（第一个数值作为基准值）
-            int i = start, j = end;
-            do {
-                while ((arr[i] < base) && (i < end))
-                    i++;
-                while ((arr[j] > base) && (j > start))
-                    j--;
-                if (i <= j) {
-                    ArrayData.swap(arr,i,j);
-                    i++;
-                    j--;
-                }
-            } while (i <= j);
-            if (start < j)
-                quickSort(arr, start, j);
-            if (end > i)
-                quickSort(arr, i, end);
-        }
-    }
-
     void demo(long[] arr,int start,int end){
         if(end<=start) return;
         long value = arr[start];
         int i = start;
         int j = end;
         while(i<=j){
-            while(arr[i]<value && i<end) i++;
-            while(arr[j]>value && j>start) j--;
-            if(i<=j){
+            while(arr[i]<value && i<end) i++;//低位找到比中间值大的数
+            while(arr[j]>value && j>start) j--;//高位找到比中间值小的数
+            if(i<=j){//如果低位和高位还没有交叉, 就进行交换, 这样就保证低位和高位走过的值都是左小右大
                 ArrayData.swap(arr,i,j);
                 i++;
                 j--;
@@ -60,10 +38,6 @@ public class 快排 {
 
     @Test
     public void testquickSort() {
-        // quickSort(ArrayData.ARR,0,ArrayData.ARR.length-1);
-        // System.out.println(Arrays.toString(ArrayData.ARR));
-        // TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
-
         demo(ArrayData.ARR,0,ArrayData.ARR.length-1);
         System.out.println(Arrays.toString(ArrayData.ARR));
         TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
