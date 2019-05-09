@@ -1,4 +1,4 @@
-package dotest.dataDeal;
+package dotest.dataDeal.数据结构;
 
 import java.util.LinkedList;
 import java.util.Queue;
