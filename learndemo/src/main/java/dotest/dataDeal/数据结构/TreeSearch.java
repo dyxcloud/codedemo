@@ -1,7 +1,9 @@
 package dotest.dataDeal.数据结构;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * 树的遍历,深度优先/广度优先
@@ -17,48 +19,72 @@ public class TreeSearch {
      */
 
     public static void main(String[] args) {
-        TreeSearch ts = new TreeSearch();
-        BinaryTreeNode root = ts.initTree();
+        Node root = initTree();
 
         System.out.println("\n深度优先, 先序");
-        ts.printDFS1(root);
+        dfsPreOrder1(root);
+        System.out.println();
+        Stack<Node> nodes = new Stack<>();
+        nodes.push(root);
+        dfsPreOrder2(nodes);
+
         System.out.println("\n深度优先, 中序");
-        ts.printDFS2(root);
+        dfsInOrder1(root);
+
         System.out.println("\n深度优先, 后序");
-        ts.printDFS3(root);
+        dfsPostOrder1(root);
 
         System.out.println("\n广度优先");
-        ts.printBFS(new LinkedList<>(),root);
+        ArrayDeque<Node> objects = new ArrayDeque<>();
+        objects.push(root);
+        bfs1(objects);
     }
 
 
 
-    private BinaryTreeNode initTree(){
-        BinaryTreeNode d = new BinaryTreeNode('D');
-        BinaryTreeNode e = new BinaryTreeNode('E');
-        BinaryTreeNode f = new BinaryTreeNode('F');
-        BinaryTreeNode g = new BinaryTreeNode('G');
-        BinaryTreeNode b = new BinaryTreeNode('B', d, e);
-        BinaryTreeNode c = new BinaryTreeNode('C', f, g);
-        return  new BinaryTreeNode('A', b, c);
+    public static Node initTree(){
+        Node<Character> d = new Node<>('D');
+        Node<Character> e = new Node<>('E');
+        Node<Character> f = new Node<>('F');
+        Node<Character> g = new Node<>('G');
+        Node<Character> b = new Node<>('B', d, e);
+        Node<Character> c = new Node<>('C', f, g);
+        return  new Node<>('A', b, c);
     }
 
-    private void printDFS1(BinaryTreeNode node){
+    public static void dfsPreOrder1(Node node){
         System.out.print(node.data);
-        if(node.leftNode!=null) printDFS1(node.leftNode);
-        if(node.rightNode!=null) printDFS1(node.rightNode);
+        if(node.left!=null) dfsPreOrder1(node.left);
+        if(node.right!=null) dfsPreOrder1(node.right);
     }
 
-    private void printDFS2(BinaryTreeNode node){
-        if(node.leftNode!=null) printDFS2(node.leftNode);
-        System.out.print(node.data);
-        if(node.rightNode!=null) printDFS2(node.rightNode);
+    public static void dfsPreOrder2(Stack<Node> stack){
+        if(stack==null || stack.empty()) return;
+        Node pop = stack.pop();
+        System.out.print(pop.data);
+        if(pop.right!=null) stack.push(pop.right);
+        if(pop.left!=null) stack.push(pop.left);
+        dfsPreOrder2(stack);
     }
 
-    private void printDFS3(BinaryTreeNode node) {
-        if(node.leftNode!=null) printDFS3(node.leftNode);
-        if(node.rightNode!=null) printDFS3(node.rightNode);
+    public static void dfsInOrder1(Node node){
+        if(node.left!=null) dfsInOrder1(node.left);
         System.out.print(node.data);
+        if(node.right!=null) dfsInOrder1(node.right);
+    }
+
+    public static void dfsInOrder2(Stack<Node> stack){
+        //TODO loop
+    }
+
+    public static void dfsPostOrder1(Node node) {
+        if(node.left!=null) dfsPostOrder1(node.left);
+        if(node.right!=null) dfsPostOrder1(node.right);
+        System.out.print(node.data);
+    }
+
+    public static void dfsPostOrder2(Stack<Node> stack){
+        //TODO loop
     }
 
     /**
@@ -68,28 +94,20 @@ public class TreeSearch {
      * cde 弹出b,添加de
      * defg 弹出c,添加fg
      * 依次弹出
-     * @param node
      */
-    private void printBFS(Queue<BinaryTreeNode> queue, BinaryTreeNode node){
+    public static void bfs1(Queue<Node> queue){
+        //TODO
+        if(queue==null||queue.isEmpty()) return;
+        Node node = queue.poll();
         System.out.print(node.data);
-        if(node.leftNode!=null) queue.offer(node.leftNode);
-        if(node.rightNode!=null) queue.offer(node.rightNode);
-        BinaryTreeNode next = queue.poll();
-        if(next!=null) printBFS(queue,next);
+        if(node.left!=null) queue.offer(node.left);
+        if(node.right!=null) queue.offer(node.right);
+        Node next = queue.poll();
+        if(next!=null) bfs1(queue);
     }
 
-    class BinaryTreeNode {
-        char data;
-        BinaryTreeNode leftNode = null, rightNode = null;
-
-        BinaryTreeNode(char data) {
-            this.data = data;
-        }
-
-        BinaryTreeNode(char data, BinaryTreeNode leftNode, BinaryTreeNode rightNode) {
-            this.data = data;
-            this.leftNode = leftNode;
-            this.rightNode = rightNode;
-        }
+    public static void bfs2(Stack<Node> stack){
+        //TODO loop
     }
+    
 }
