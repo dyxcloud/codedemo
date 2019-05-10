@@ -1,5 +1,6 @@
 package dotest.dataDeal.数据结构;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
@@ -50,13 +51,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if(t==null) return false;
         Node<T> node = root;
         while(node!=null){
-            if(node.data.compareTo(t)==0)
+            int result = node.data.compareTo(t);
+            if(result==0)
                 return true;
-
+            if(result>0){
+                node = node.left;
+            }else{
+                node = node.right;
+            }
         }
-        //TODO
-
-        return true;
+        return false;
     }
 
 
@@ -73,6 +77,53 @@ public class BinarySearchTree<T extends Comparable<T>> {
         Deque<Node> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
         TreeSearch.bfs1(objects);
+    }
+
+    @Test
+    public void testContains(){
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(5);
+        tree.insert(4);
+        tree.insert(6);
+
+        TestCase.assertTrue(tree.contains(6));
+        TestCase.assertTrue(tree.contains(4));
+        TestCase.assertTrue(tree.contains(2));
+        TestCase.assertFalse(tree.contains(0));
+        TestCase.assertFalse(tree.contains(10));
+        TestCase.assertFalse(tree.contains(null));
+    }
+
+    @Test
+    public void testdebug(){
+        BinarySearchTree<Integer> tree0 = new BinarySearchTree<Integer>(){{
+            insert(3);
+            insert(2);
+            insert(1);
+            insert(5);
+            insert(4);
+            insert(6);
+        }};
+        BinarySearchTree<Integer> tree1 = new BinarySearchTree<Integer>(){{
+            insert(1);
+            insert(2);
+            insert(3);
+            insert(4);
+            insert(5);
+            insert(6);
+        }};
+        BinarySearchTree<Integer> tree2 = new BinarySearchTree<Integer>(){{
+            insert(6);
+            insert(5);
+            insert(4);
+            insert(3);
+            insert(2);
+            insert(1);
+        }};
+        System.out.println();
     }
 
 
