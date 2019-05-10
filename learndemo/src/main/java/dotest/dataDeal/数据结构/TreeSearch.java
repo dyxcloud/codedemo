@@ -1,5 +1,11 @@
 package dotest.dataDeal.数据结构;
 
+import junit.framework.TestCase;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
+
 import java.util.*;
 
 /**
@@ -14,32 +20,7 @@ public class TreeSearch {
      *  B   C
      * D E F G
      */
-
-    public static void main(String[] args) {
-        Node root = initTree();
-
-        System.out.println("\n深度优先, 先序");
-        dfsPreOrder1(root);
-        System.out.println();
-        Deque<Node> nodes = new ArrayDeque<>();
-        nodes.push(root);
-        dfsPreOrder2(nodes);
-
-        System.out.println("\n深度优先, 中序");
-        dfsInOrder1(root);
-
-        System.out.println("\n深度优先, 后序");
-        dfsPostOrder1(root);
-
-        System.out.println("\n广度优先");
-        Deque<Node> objects = new ArrayDeque<>();
-        objects.push(root);
-        bfs1(objects);
-    }
-
-
-
-    public static Node initTree(){
+    private static Node<Character> initTree(){
         Node<Character> d = new Node<>('D');
         Node<Character> e = new Node<>('E');
         Node<Character> f = new Node<>('F');
@@ -72,6 +53,15 @@ public class TreeSearch {
 
     public static void dfsInOrder2(Deque<Node> stack){
         //TODO loop
+        if(stack==null||stack.isEmpty()) return;
+        Node first = stack.removeFirst();
+        if(first.left==null) {
+            System.out.println(first.data);
+            if(first.right!=null) stack.addFirst(first.right);
+        }else {
+            stack.addFirst(first);
+        if(first.left!=null) stack.addFirst(first.left);
+        }
     }
 
     public static void dfsPostOrder1(Node node) {
@@ -93,18 +83,74 @@ public class TreeSearch {
      * 依次弹出
      */
     public static void bfs1(Queue<Node> queue){
-        //TODO
         if(queue==null||queue.isEmpty()) return;
-        Node node = queue.poll();
+        Node node = queue.remove();
         System.out.print(node.data);
-        if(node.left!=null) queue.offer(node.left);
-        if(node.right!=null) queue.offer(node.right);
-        Node next = queue.poll();
-        if(next!=null) bfs1(queue);
+        if(node.left!=null) queue.add(node.left);
+        if(node.right!=null) queue.add(node.right);
+        bfs1(queue);
     }
 
     public static void bfs2(Deque<Node> stack){
         //TODO loop
     }
-    
+
+    public static void printTree(Deque<Node> stack){
+        //TODO printTree
+    }
+
+    private static Node<Character> root;
+
+    @Rule
+    public final SystemOutRule log = new SystemOutRule().enableLog();
+
+    @BeforeClass
+    public static void init(){
+        root = initTree();
+    }
+
+    @Test
+    public void testPreOrder(){
+        dfsPreOrder1(root);
+        TestCase.assertEquals("ABDECFG",log.getLog());
+
+        Deque<Node> nodes = new ArrayDeque<>();
+        nodes.push(root);
+        log.clearLog();
+        dfsPreOrder2(nodes);
+        TestCase.assertEquals("ABDECFG",log.getLog());
+    }
+
+    @Test
+    public void testInOrder(){
+        System.out.println("\n深度优先, 中序");
+        log.clearLog();
+        dfsInOrder1(root);
+        TestCase.assertEquals("DBEAFCG",log.getLog());
+
+        Deque<Node> stack = new ArrayDeque<>();
+        stack.addFirst(root);
+        log.clearLog();
+        dfsInOrder2(stack);
+        TestCase.assertEquals("DBEAFCG",log.getLog());
+    }
+
+    @Test
+    public void testPostOrder(){
+        System.out.println("\n深度优先, 后序");
+        log.clearLog();
+        dfsPostOrder1(root);
+        TestCase.assertEquals("DEBFGCA",log.getLog());
+
+    }
+
+    @Test
+    public void testBfs(){
+        System.out.println("\n广度优先");
+        Deque<Node> objects = new ArrayDeque<>();
+        objects.push(root);
+        log.clearLog();
+        bfs1(objects);
+        TestCase.assertEquals("ABCDEFG",log.getLog());
+    }
 }
