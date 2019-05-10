@@ -1,9 +1,6 @@
 package dotest.dataDeal.数据结构;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 树的遍历,深度优先/广度优先
@@ -24,7 +21,7 @@ public class TreeSearch {
         System.out.println("\n深度优先, 先序");
         dfsPreOrder1(root);
         System.out.println();
-        Stack<Node> nodes = new Stack<>();
+        Deque<Node> nodes = new ArrayDeque<>();
         nodes.push(root);
         dfsPreOrder2(nodes);
 
@@ -35,7 +32,7 @@ public class TreeSearch {
         dfsPostOrder1(root);
 
         System.out.println("\n广度优先");
-        ArrayDeque<Node> objects = new ArrayDeque<>();
+        Deque<Node> objects = new ArrayDeque<>();
         objects.push(root);
         bfs1(objects);
     }
@@ -58,8 +55,8 @@ public class TreeSearch {
         if(node.right!=null) dfsPreOrder1(node.right);
     }
 
-    public static void dfsPreOrder2(Stack<Node> stack){
-        if(stack==null || stack.empty()) return;
+    public static void dfsPreOrder2(Deque<Node> stack){
+        if(stack==null || stack.isEmpty()) return;
         Node pop = stack.pop();
         System.out.print(pop.data);
         if(pop.right!=null) stack.push(pop.right);
@@ -73,7 +70,7 @@ public class TreeSearch {
         if(node.right!=null) dfsInOrder1(node.right);
     }
 
-    public static void dfsInOrder2(Stack<Node> stack){
+    public static void dfsInOrder2(Deque<Node> stack){
         //TODO loop
     }
 
@@ -83,7 +80,7 @@ public class TreeSearch {
         System.out.print(node.data);
     }
 
-    public static void dfsPostOrder2(Stack<Node> stack){
+    public static void dfsPostOrder2(Deque<Node> stack){
         //TODO loop
     }
 
@@ -106,7 +103,7 @@ public class TreeSearch {
         if(next!=null) bfs1(queue);
     }
 
-    public static void bfs2(Stack<Node> stack){
+    public static void bfs2(Deque<Node> stack){
         //TODO loop
     }
     

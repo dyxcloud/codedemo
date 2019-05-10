@@ -3,9 +3,10 @@ package dotest.dataDeal;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 import java.util.stream.IntStream;
 
 /**
@@ -31,14 +32,14 @@ public class 表达式求值 {
      */
     private static boolean isLegal(String str) {
         str = str.replaceAll(" +", "");
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         char[] chars = str.toCharArray();
         for (char c : chars) {
             if (symbolPer.contains(c)) {
                 stack.push(c);
             } else if (symbolSuf.contains(c)) {
-                if (stack.empty()) return false;
-                char pop = stack.pop();
+                if (stack.isEmpty()) return false;
+                char pop = stack.removeFirst();
                 if (symbolPer.indexOf(pop) != symbolSuf.indexOf(c)) return false;
             }
             //跳过
@@ -87,8 +88,8 @@ public class 表达式求值 {
     public static double get(String str) {
         str = str.replaceAll(" +", "");
         String[] split = str.split("(?<=[-+*/()])|(?=[-+*/()])");
-        Stack<String> operators = new Stack<>();
-        Stack<Double> numbers = new Stack<>();
+        Deque<String> operators = new ArrayDeque<>();
+        Deque<Double> numbers = new ArrayDeque<>();
         IntStream.range(0, split.length).forEach(i -> {
             String s = split[i];//获取split的索引, 用于判断负号
             if (symbol.contains(s)) {
@@ -98,14 +99,14 @@ public class 表达式求值 {
                     return;
                 }
                 //如果前一个操作符优先级大于等于后一个, 就计算前一个, 否则就放入
-                while (!operators.empty() && canRunAFirst(operators.peek(), s)) {
+                while (!operators.isEmpty() && canRunAFirst(operators.peek(), s)) {
                     String pop = operators.pop();//计算前一个
                     double n2 = numbers.pop();
                     double n1 = numbers.pop();
                     numbers.push(operator(n1, n2, pop));
                 }
                 //当前是右括号,与左括号向消
-                if (")".equals(s) && !operators.empty() && "(".equals(operators.peek())) {
+                if (")".equals(s) && !operators.isEmpty() && "(".equals(operators.peek())) {
                     operators.pop();
                 } else {
                     operators.push(s);
@@ -116,14 +117,14 @@ public class 表达式求值 {
         });
         System.out.println(numbers);
         System.out.println(operators);
-        while (!operators.empty()) {
+        while (!operators.isEmpty()) {
             String pop = operators.pop();
             double n2 = numbers.pop();
             double n1 = numbers.pop();
             numbers.push(operator(n1, n2, pop));
         }
         Double result = numbers.pop();
-        if (numbers.empty()) {
+        if (numbers.isEmpty()) {
             return result;
         } else {
             throw new RuntimeException("多个操作数:" + numbers);

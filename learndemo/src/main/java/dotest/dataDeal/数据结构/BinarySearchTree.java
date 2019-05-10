@@ -3,6 +3,7 @@ package dotest.dataDeal.数据结构;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author DongYunxiang
@@ -69,7 +70,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         tree.insert(5);
         tree.insert(4);
         tree.insert(6);
-        ArrayDeque<Node> objects = new ArrayDeque<>();
+        Deque<Node> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
         TreeSearch.bfs1(objects);
     }

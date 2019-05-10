@@ -3,9 +3,10 @@ package dotest.dataDeal;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * @author DongYunxiang
@@ -22,11 +23,11 @@ public class 后缀表达式 {
      */
     public static String run(String str) {
         final List<String> symbol = Arrays.asList("+", "-", "*", "/");
-        Stack<String> stack = new Stack<>();
+        Deque<String> stack = new ArrayDeque<>();
         for (String c : str.split(" +")) {
             if (symbol.contains(c)) {
-                double a = Double.parseDouble(stack.pop());
-                double b = Double.parseDouble(stack.pop());
+                double a = Double.parseDouble(stack.removeFirst());
+                double b = Double.parseDouble(stack.removeFirst());
                 double result;
                 switch (c) {
                     case "+":
@@ -44,12 +45,12 @@ public class 后缀表达式 {
                     default:
                         result = 0;
                 }
-                stack.push(String.valueOf(result));
+                stack.addFirst(String.valueOf(result));
             } else {
-                stack.push(c);
+                stack.addFirst(c);
             }
         }
-        return stack.pop();
+        return stack.removeFirst();
     }
 
     @Test
