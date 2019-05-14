@@ -5,6 +5,7 @@ import com.example.sbootdemo.domain.Book;
 import com.example.sbootdemo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -24,5 +25,10 @@ public class UserController {
         System.out.println(u+"=="+book.bookName);
         User user = userMapper.selectUserByName("admin");
         return user;
+    }
+
+    @RequestMapping(value = "hello")
+    public @ResponseBody String hello(){
+        return "hello world";
     }
 }
