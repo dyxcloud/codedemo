@@ -76,7 +76,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         tree.insert(6);
         Deque<Node> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
-        TreeSearch.bfs1(objects);
+        TreeSearch.dfsInOrder1(tree.getRoot());
     }
 
     @Test
@@ -130,6 +130,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 }
 class Node<T extends Comparable<T>> {
     T data;
+    /**
+     * 用于非递归遍历时,记录当前节点的遍历步数
+     * 一个节点有四种状态: 0未遍历, 1遍历第一个数值 3完成遍历(3个数值)
+     */
+    int state;
     Node<T> left;
     Node<T> right;
 
