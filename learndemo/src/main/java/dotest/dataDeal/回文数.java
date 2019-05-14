@@ -3,7 +3,6 @@ package dotest.dataDeal;
 public class 回文数 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		// 打印5位回文数
 		// number5();
 		// 打印n位回文数

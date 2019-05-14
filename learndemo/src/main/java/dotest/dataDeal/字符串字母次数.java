@@ -8,7 +8,6 @@ import java.util.Random;
  **/
 public class 字符串字母次数 {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         test();
     }
 

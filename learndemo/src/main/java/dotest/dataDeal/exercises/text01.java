@@ -18,7 +18,6 @@ public class text01 {
 	 * 去除首字母,每个单词后追加ay
 	 */
 	private static void tran() {
-		// TODO Auto-generated method stub
 		String str = ("The quick brown fox");
 		String[] sts = str.split(" ");
 		for (int i = 0; i < sts.length; i++) {
@@ -37,7 +36,6 @@ public class text01 {
 	 * 打印数组在矩形框
 	 */
 	private static void printInFrame() {
-		// TODO Auto-generated method stub
 		String[] str = { "Hello", "World", "in", "a", "frame" };
 		int l = str[0].length();
 		for (String string : str) {
@@ -71,7 +69,6 @@ public class text01 {
 	 * 写个函数，返回指定数的各位数字的列表
 	 */
 	public static void getNum(int n) {
-		// TODO Auto-generated method stub
 		int[] ir = new int[String.valueOf(n).length()];
 		for (int i = 0; i < ir.length; i++) {
 			int nCopy = (int) (n / (Math.pow(10, i)));
@@ -86,7 +83,6 @@ public class text01 {
 	 * 交替合并两个列表
 	 */
 	private static void lianjieList() {
-		// TODO Auto-generated method stub
 		ArrayList<Integer> list1 = new ArrayList<Integer>();
 		ArrayList<Integer> list2 = new ArrayList<Integer>();
 		for (int i = 0; i < 5; i++) {
@@ -116,7 +112,6 @@ public class text01 {
 	 * 完全平方数
 	 */
 	private static void pingfangshu() {
-		// TODO Auto-generated method stub
 		ArrayList<Integer> lists = new ArrayList<Integer>();
 		Integer[] ars = new Integer[20];
 		for (int i = 1; i <= ars.length; i++) {
@@ -137,7 +132,6 @@ public class text01 {
 	 * 数组逆转
 	 */
 	private static void nizhuan() {
-		// TODO Auto-generated method stub
 		int[] arrs = new int[20];
 		for (int i = 0; i < arrs.length; i++) {
 			arrs[i] = i;

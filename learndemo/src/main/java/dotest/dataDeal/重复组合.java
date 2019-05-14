@@ -21,7 +21,6 @@ public class 重复组合 {
     }
 
     public static long getter2(long n){
-        //TODO
         // f(4)=c(1,4)*c(0,3)+c(2,4)*c(1,3)+c(3,4)*c(2,3)+c(4,4)*c(3,3)=35
         // 4*1+6*3+4*3+1*1
         // n种颜色的取法*这 n 种颜色的组合

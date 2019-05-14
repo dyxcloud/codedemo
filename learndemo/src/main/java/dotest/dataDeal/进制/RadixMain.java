@@ -19,7 +19,6 @@ public class RadixMain {
 //		bin = "-" +sb.toString();
 //		System.out.println(Integer.parseInt(bin, 2)-1);
 		
-		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		System.out.println("请输入要转换的十进制数:");
 		int n=sc.nextInt();

@@ -3,7 +3,6 @@ package dotest.dataDeal.find;
 public class BinarySearch {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int[] arr = newArrays0ToN(9999999);// 生成一个0到n的顺序数组
 
 		// int index=search(arr, 5645789);//遍历查找

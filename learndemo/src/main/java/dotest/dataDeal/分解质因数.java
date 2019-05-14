@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class 分解质因数 {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         Scanner in=new Scanner(System.in);
         System.out.println("请输入N的值：");
         int N=in.nextInt();
