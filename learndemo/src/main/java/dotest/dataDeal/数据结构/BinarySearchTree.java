@@ -15,34 +15,34 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
 
     private Node<T> root;
 
-    public Node<T> getRoot(){
+    public Node<T> getRoot() {
         return root;
     }
 
-    public boolean insert(T t){
-        if(t==null) throw new NullPointerException("insert data is null");
-        if(root==null){
-            root=new Node<>(t);
+    public boolean insert(T t) {
+        if (t == null) throw new NullPointerException("insert data is null");
+        if (root == null) {
+            root = new Node<>(t);
             return true;
         }
         Node<T> node = root;
-        while(true){
-            if(node.data.compareTo(t)>0){
+        while (true) {
+            if (node.data.compareTo(t) > 0) {
                 //小数, 放左边
-                if(node.left==null){
-                    node.left= new Node<>(t);
+                if (node.left == null) {
+                    node.left = new Node<>(t);
                     node.left.parent = node;
                     break;
-                }else {
+                } else {
                     node = node.left;
                 }
-            }else{
+            } else {
                 //大数,放右边
-                if(node.right==null){
-                    node.right=new Node<>(t);
+                if (node.right == null) {
+                    node.right = new Node<>(t);
                     node.right.parent = node;
                     break;
-                }else {
+                } else {
                     node = node.right;
                 }
             }
@@ -50,20 +50,86 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         return true;
     }
 
-    public boolean contains(T t){
-        if(t==null) return false;
+    public boolean contains(T t) {
+        if (t == null) return false;
         Node<T> node = root;
-        while(node!=null){
+        while (node != null) {
             int result = node.data.compareTo(t);
-            if(result==0)
+            if (result == 0)
                 return true;
-            if(result>0){
+            if (result > 0) {
                 node = node.left;
-            }else{
+            } else {
                 node = node.right;
             }
         }
         return false;
+    }
+
+    public void remove(Node<T> n) {
+        Node<T> p = n.parent;
+        Node<T> next, child;
+        // 叶子结点，直接删除即可。要考虑待删除结点是root的情况。
+        if (n.left == null && n.right == null) {
+            if (n == root) {
+                root = null;
+                return;
+            }
+            if (n == p.left)
+                p.left = null;
+            else if (n == p.right)
+                p.right = null;
+        }
+        // 内部结点，把它的后继的值拷进来，然后递归删除它的后继。
+        else if (n.left != null && n.right != null) {
+            next = successorIn(n);
+            n.data = next.data;
+            remove(next);
+        }
+        // 只有一个孩子的结点，把它的孩子交给它的父结点即可。
+        else {
+            if (n.left != null)
+                child = n.left;
+            else
+                child = n.right;
+            if (n == root) {
+                child.parent = null;
+                root = child;
+                return;
+            }
+            if (n == p.left) {
+                child.parent = p;
+                p.left = child;
+            } else {
+                child.parent = p;
+                p.right = child;
+            }
+        }
+    }
+
+    /**
+     * 搜索中序后继
+     *
+     * @param n
+     * @return
+     */
+    private Node<T> successorIn(Node<T> n) {
+        if (n == null) return null;
+        Node<T> p;
+        if (n.right != null) {
+            p = n.right;
+            while (p.left != null) {
+                p = p.left;
+            }
+            return p;
+        } else {
+            p = n.parent;
+            while (p != null && p.left != n) {
+                n = p;
+                p = n.parent;
+            }
+            return p;
+        }
     }
 
     @Override
@@ -77,7 +143,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
 
         @Override
         public boolean hasNext() {
-            return currentNode!=null;
+            return currentNode != null;
         }
 
         @Override
@@ -87,42 +153,18 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
             return n;
         }
 
-        private Node<T> getFirstIn(){
-            if(root==null) return null;
+        private Node<T> getFirstIn() {
+            if (root == null) return null;
             Node<T> n = root;
-            while(n.left!=null){
+            while (n.left != null) {
                 n = n.left;
             }
             return n;
         }
-
-        /**
-         * 搜索中序后继
-         * @param n
-         * @return
-         */
-        private Node<T> successorIn(Node<T> n) {
-            if (n == null) return null;
-            Node<T> p;
-            if (n.right != null) {
-                p = n.right;
-                while (p.left != null) {
-                    p = p.left;
-                }
-                return p;
-            } else {
-                p = n.parent;
-                while (p != null && p.left != n) {
-                    n = p;
-                    p = n.parent;
-                }
-                return p;
-            }
-        }
     }
 
-    private BinarySearchTree<Integer> get321546(){
-        return new BinarySearchTree<Integer>(){{
+    private BinarySearchTree<Integer> get321546() {
+        return new BinarySearchTree<Integer>() {{
             insert(3);
             insert(2);
             insert(1);
@@ -132,8 +174,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         }};
     }
 
-    private BinarySearchTree<Integer> get123456(){
-        return new BinarySearchTree<Integer>(){{
+    private BinarySearchTree<Integer> get123456() {
+        return new BinarySearchTree<Integer>() {{
             insert(1);
             insert(2);
             insert(3);
@@ -143,8 +185,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         }};
     }
 
-    private BinarySearchTree<Integer> get654321(){
-        return new BinarySearchTree<Integer>(){{
+    private BinarySearchTree<Integer> get654321() {
+        return new BinarySearchTree<Integer>() {{
             insert(6);
             insert(5);
             insert(4);
@@ -155,7 +197,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     }
 
     @Test
-    public void testinsert(){
+    public void testinsert() {
         BinarySearchTree<Integer> tree = get321546();
         Deque<Node<Integer>> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
@@ -163,7 +205,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     }
 
     @Test
-    public void testContains(){
+    public void testContains() {
         BinarySearchTree<Integer> tree = get321546();
         TestCase.assertTrue(tree.contains(6));
         TestCase.assertTrue(tree.contains(4));
@@ -174,7 +216,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     }
 
     @Test
-    public void testdebug(){
+    public void testdebug() {
         BinarySearchTree<Integer> tree0 = get321546();
         BinarySearchTree<Integer> tree1 = get123456();
         BinarySearchTree<Integer> tree2 = get654321();
@@ -182,7 +224,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     }
 
     @Test
-    public void testIterator(){
+    public void testIterator() {
         BinarySearchTree<Integer> tree0 = get321546();
         // for(Node<Integer> n: tree0){
         //     System.out.print(n.data);
@@ -191,11 +233,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         // while ((iterator.hasNext())){
         //     System.out.print(iterator.next().data);
         // }
-        tree0.forEach(n-> System.out.print(n.data));
+        tree0.forEach(n -> System.out.print(n.data));
     }
 
 
 }
+
 class Node<T extends Comparable<T>> {
     T data;
     /**
