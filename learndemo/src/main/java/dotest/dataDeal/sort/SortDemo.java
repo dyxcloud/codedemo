@@ -1,4 +1,4 @@
-package dotest.dataDeal;
+package dotest.dataDeal.sort;
 
 import java.util.Comparator;
 
