@@ -1,5 +1,6 @@
 package dotest.dataDeal.数据结构;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
@@ -9,13 +10,15 @@ import java.util.Deque;
  * @author DongYunxiang
  * @create 2019-05-21
  **/
-public class AvlTree<T extends Comparable<T>> {
+public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     private AvlNode<T> root;
 
+    @Override
     public AvlNode<T> getRoot(){
         return root;
     }
 
+    @Override
     public void insert(T data) {
         if (data == null) throw new NullPointerException("insert data is null");
         if (root == null) {
@@ -27,18 +30,18 @@ public class AvlTree<T extends Comparable<T>> {
 
     private void insert(AvlNode<T> root, T data) {
         if (root.data.compareTo(data) > 0) {
-            if (root.left != null)
-                insert(root.left, data);
+            if (root.getLeft() != null)
+                insert(root.getLeft(), data);
             else {
-                root.left = new AvlNode<>(data);
-                root.left.parent = root;
+                root.setLeft(new AvlNode<>(data));
+                root.getLeft().setParent(root);
             }
         } else {
-            if (root.right != null)
-                insert(root.right, data);
+            if (root.getRight() != null)
+                insert(root.getRight(), data);
             else {
-                root.right = new AvlNode<>(data);
-                root.right.parent = root;
+                root.setRight(new AvlNode<>(data));
+                root.getRight().setParent(root);
             }
         }
         //平衡处理
@@ -47,13 +50,13 @@ public class AvlTree<T extends Comparable<T>> {
         /* 左子树高，应该右旋 */
         if (root.balance >= 2) {
             /* 右孙高，先左旋 */
-            if (root.left.balance == -1)
-                left_rotate(root.left);
+            if (root.getLeft().balance == -1)
+                left_rotate(root.getLeft());
             right_rotate(root);
         }
         if (root.balance <= -2) {
-            if (root.right.balance == 1)
-                right_rotate(root.right);
+            if (root.getRight().balance == 1)
+                right_rotate(root.getRight());
             left_rotate(root);
         }
         root.balance = getBalance(root);
@@ -65,27 +68,27 @@ public class AvlTree<T extends Comparable<T>> {
      * @param p 旋转前的根节点(父)
      */
     private void right_rotate(AvlNode<T> p) {
-        AvlNode<T> pParent = p.parent;//祖父
-        AvlNode<T> pRightSon = p.left;//左子
-        AvlNode<T> pLeftGrandSon = pRightSon.right;//右孙
+        AvlNode<T> pParent = p.getParent();//祖父
+        AvlNode<T> pRightSon = p.getLeft();//左子
+        AvlNode<T> pLeftGrandSon = pRightSon.getRight();//右孙
         if(this.root==p){
             this.root= pRightSon;
         }
         //祖父关系变换
-        pRightSon.parent = pParent;
+        pRightSon.setParent(pParent);
         if (pParent != null) {
-            if (p == pParent.left)
-                pParent.left = pRightSon;
-            else if (p == pParent.right)
-                pParent.right = pRightSon;
+            if (p == pParent.getLeft())
+                pParent.setLeft(pRightSon);
+            else if (p == pParent.getRight())
+                pParent.setRight(pRightSon);
         }
         //左子为父, 父变右子
-        pRightSon.right = p;
-        p.parent = pRightSon;
+        pRightSon.setRight(p);
+        p.setParent(pRightSon);
         /* 右孙变左孙 */
-        p.left = pLeftGrandSon;
+        p.setLeft(pLeftGrandSon);
         if (pLeftGrandSon != null)
-            pLeftGrandSon.parent = p;
+            pLeftGrandSon.setParent(p);
         /* 重新计算平衡因子 */
         p.depth = getDepth(p);
         p.balance = getBalance(p);
@@ -96,27 +99,27 @@ public class AvlTree<T extends Comparable<T>> {
     /**左旋*/
     private void left_rotate(AvlNode<T> p) {
         //右子为父, 父变左子, 左孙变右孙
-        AvlNode<T> pParent = p.parent;
-        AvlNode<T> pRightSon = p.right;
-        AvlNode<T> pLeftGrandSon = pRightSon.left;
+        AvlNode<T> pParent = p.getParent();
+        AvlNode<T> pRightSon = p.getRight();
+        AvlNode<T> pLeftGrandSon = pRightSon.getLeft();
         if(this.root==p){
             this.root= pRightSon;
         }
         //祖父
-        pRightSon.parent = pParent;
+        pRightSon.setParent(pParent);
         if(pParent!=null){
-            if(pParent.left==p)
-                pRightSon = pParent.left;
-            else if(pParent.right==p)
-                pRightSon = pParent.right;
+            if(pParent.getLeft()==p)
+                pRightSon = pParent.getLeft();
+            else if(pParent.getRight()==p)
+                pRightSon = pParent.getRight();
         }
         //根节点
-        pRightSon.left = p;
-        p.parent = pRightSon;
+        pRightSon.setLeft( p);
+        p.setParent(pRightSon);
         //孙节点
         if(pLeftGrandSon!=null)
-            pLeftGrandSon.parent = p;
-        p.right = pLeftGrandSon;
+            pLeftGrandSon.setParent( p);
+        p.setRight(pLeftGrandSon);
         //重计算
         p.depth = getDepth(p);
         p.balance = getBalance(p);
@@ -126,18 +129,18 @@ public class AvlTree<T extends Comparable<T>> {
 
     /**计算平衡因子*/
     private int getBalance(AvlNode<T> p) {
-        int left_depth = p.left == null ? 0 : p.left.depth;
-        int right_depth = p.right == null ? 0 : p.right.depth;
+        int left_depth = p.getLeft() == null ? 0 : p.getRight().depth;
+        int right_depth = p.getRight() == null ? 0 : p.getRight().depth;
         return left_depth - right_depth;
     }
 
     /**计算深度*/
     private int getDepth(AvlNode<T> p) {
         int depth = 0;
-        if (p.left != null)
-            depth = p.left.depth;
-        if (p.right != null && depth < p.right.depth)
-            depth = p.right.depth;
+        if (p.getLeft() != null)
+            depth = p.getLeft().depth;
+        if (p.getRight() != null && depth < p.getRight().depth)
+            depth = p.getRight().depth;
         depth++;
         return depth;
     }
@@ -155,24 +158,78 @@ public class AvlTree<T extends Comparable<T>> {
         System.out.println(tree);
     }
 
+    @Test
+    public void testContains() {
+        AvlTree<Integer> tree = new AvlTree<>();
+        insert321546(tree);
+        TestCase.assertTrue(tree.contains(6));
+        TestCase.assertTrue(tree.contains(4));
+        TestCase.assertTrue(tree.contains(2));
+        TestCase.assertFalse(tree.contains(0));
+        TestCase.assertFalse(tree.contains(10));
+        TestCase.assertFalse(tree.contains(null));
+    }
+
+    @Test
+    public void testIterator() {
+        AvlTree<Integer> tree0 = new AvlTree<>();
+        insert321546(tree0);
+        // for(Node<Integer> n: tree0){
+        //     System.out.print(n.data);
+        // }
+        // Iterator<Node<Integer>> iterator = tree0.iterator();
+        // while ((iterator.hasNext())){
+        //     System.out.print(iterator.next().data);
+        // }
+        tree0.forEach(n -> System.out.print(n.data));
+    }
+
 }
 
-class AvlNode<T extends Comparable<T>> {
-    T data;
+class AvlNode<T extends Comparable<T>> extends Node<T> {
+    // T data;
     /** 当前节点深度*/
     int depth;
     /**平衡因子*/
     int balance;
-    AvlNode<T> parent;
-    AvlNode<T> left;
-    AvlNode<T> right;
+    private AvlNode<T> parent;
+    private AvlNode<T> left;
+    private AvlNode<T> right;
+
 
     AvlNode(T data) {
-        this.data = data;
+        super(data);
         depth = 1;
         balance = 0;
         left = null;
         right = null;
+    }
+
+    @Override
+    public AvlNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(AvlNode<T> parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public AvlNode<T> getLeft() {
+        return left;
+    }
+
+    public void setLeft(AvlNode<T> left) {
+        this.left = left;
+    }
+
+    @Override
+    public AvlNode<T> getRight() {
+        return right;
+    }
+
+    public void setRight(AvlNode<T> right) {
+        this.right = right;
     }
 
     @Override
