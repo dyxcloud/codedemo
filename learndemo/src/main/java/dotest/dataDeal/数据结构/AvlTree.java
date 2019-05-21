@@ -20,8 +20,9 @@ public class AvlTree<T extends Comparable<T>> {
         if (data == null) throw new NullPointerException("insert data is null");
         if (root == null) {
             root = new AvlNode<>(data);
+        }else{
+            insert(root, data);
         }
-        insert(this.root, data);
     }
 
     private void insert(AvlNode<T> root, T data) {
@@ -63,10 +64,13 @@ public class AvlTree<T extends Comparable<T>> {
      * 右旋
      * @param p 旋转前的根节点(父)
      */
-    private void right_rotate(AvlNode p) {
-        AvlNode pParent = p.parent;//祖父
-        AvlNode pRightSon = p.left;//左子
-        AvlNode pLeftGrandSon = pRightSon.right;//右孙
+    private void right_rotate(AvlNode<T> p) {
+        AvlNode<T> pParent = p.parent;//祖父
+        AvlNode<T> pRightSon = p.left;//左子
+        AvlNode<T> pLeftGrandSon = pRightSon.right;//右孙
+        if(this.root==p){
+            this.root= pRightSon;
+        }
         //祖父关系变换
         pRightSon.parent = pParent;
         if (pParent != null) {
@@ -90,11 +94,14 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**左旋*/
-    private void left_rotate(AvlNode p) {
+    private void left_rotate(AvlNode<T> p) {
         //右子为父, 父变左子, 左孙变右孙
-        AvlNode pParent = p.parent;
-        AvlNode pRightSon = p.right;
-        AvlNode pLeftGrandSon = pRightSon.left;
+        AvlNode<T> pParent = p.parent;
+        AvlNode<T> pRightSon = p.right;
+        AvlNode<T> pLeftGrandSon = pRightSon.left;
+        if(this.root==p){
+            this.root= pRightSon;
+        }
         //祖父
         pRightSon.parent = pParent;
         if(pParent!=null){
@@ -118,14 +125,14 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**计算平衡因子*/
-    private int getBalance(AvlNode p) {
+    private int getBalance(AvlNode<T> p) {
         int left_depth = p.left == null ? 0 : p.left.depth;
         int right_depth = p.right == null ? 0 : p.right.depth;
         return left_depth - right_depth;
     }
 
     /**计算深度*/
-    private int getDepth(AvlNode p) {
+    private int getDepth(AvlNode<T> p) {
         int depth = 0;
         if (p.left != null)
             depth = p.left.depth;
@@ -137,14 +144,14 @@ public class AvlTree<T extends Comparable<T>> {
 
     @Test
     public void testInsert(){
-        AvlTree<Integer> tree = new AvlTree<Integer>() {{
-            insert(6);
-            insert(5);
-            insert(4);
-            insert(3);
-            insert(2);
-            insert(1);
-        }};
+        AvlTree<Integer> tree = new AvlTree<>();
+        tree.insert(6);
+        tree.insert(5);
+        tree.insert(4);
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(1);
+
         System.out.println(tree);
     }
 
