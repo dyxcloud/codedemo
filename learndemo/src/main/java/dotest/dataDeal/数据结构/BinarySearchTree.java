@@ -20,12 +20,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         return root;
     }
 
+    public void setRoot(Node<T> root) {
+        this.root = root;
+    }
+
     public void insert(T t) {
         if (t == null) throw new NullPointerException("insert data is null");
-        if (root == null) {
-            root = new Node<>(t);
+        if (getRoot() == null) {
+            setRoot(new Node<>(t));
         }
-        Node<T> node = root;
+        Node<T> node = getRoot();
         while (true) {
             if (node.data.compareTo(t) > 0) {
                 //小数, 放左边
@@ -56,11 +60,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
             int result = node.data.compareTo(t);
             if (result == 0)
                 return true;
-            if (result > 0) {
+            else if (result > 0)
                 node = node.getLeft();
-            } else {
+            else
                 node = node.getRight();
-            }
         }
         return false;
     }
@@ -70,8 +73,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         Node<T> next, child;
         // 叶子结点，直接删除即可。要考虑待删除结点是root的情况。
         if (n.getLeft() == null && n.getRight() == null) {
-            if (n == root) {
-                root = null;
+            if (n == getRoot()) {
+                setRoot(null);
                 return;
             }
             if (n == p.getLeft())
@@ -91,9 +94,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
                 child = n.getLeft();
             else
                 child = n.getRight();
-            if (n == root) {
+            if (n == getRoot()) {
                 child.setParent(null);
-                root = child;
+                setRoot(child);
                 return;
             }
             if (n == p.getLeft()) {
@@ -153,8 +156,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         }
 
         private Node<T> getFirstIn() {
-            if (root == null) return null;
-            Node<T> n = root;
+            if (getRoot() == null) return null;
+            Node<T> n = getRoot();
             while (n.getLeft() != null) {
                 n = n.getLeft();
             }

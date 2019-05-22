@@ -1,10 +1,13 @@
 package dotest.dataDeal.数据结构;
 
 import junit.framework.TestCase;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Iterator;
 
 /**
  * @author DongYunxiang
@@ -18,13 +21,17 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         return root;
     }
 
+    public void setRoot(AvlNode<T> root) {
+        this.root = root;
+    }
+
     @Override
     public void insert(T data) {
         if (data == null) throw new NullPointerException("insert data is null");
-        if (root == null) {
-            root = new AvlNode<>(data);
+        if (getRoot() == null) {
+            setRoot(new AvlNode<>(data));
         }else{
-            insert(root, data);
+            insert(getRoot(), data);
         }
     }
 
@@ -71,8 +78,8 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         AvlNode<T> pParent = p.getParent();//祖父
         AvlNode<T> pRightSon = p.getLeft();//左子
         AvlNode<T> pLeftGrandSon = pRightSon.getRight();//右孙
-        if(this.root==p){
-            this.root= pRightSon;
+        if(getRoot()==p){
+            setRoot(pRightSon);
         }
         //祖父关系变换
         pRightSon.setParent(pParent);
@@ -102,8 +109,8 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         AvlNode<T> pParent = p.getParent();
         AvlNode<T> pRightSon = p.getRight();
         AvlNode<T> pLeftGrandSon = pRightSon.getLeft();
-        if(this.root==p){
-            this.root= pRightSon;
+        if(getRoot()==p){
+            setRoot(pRightSon);
         }
         //祖父
         pRightSon.setParent(pParent);
@@ -129,7 +136,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
 
     /**计算平衡因子*/
     private int getBalance(AvlNode<T> p) {
-        int left_depth = p.getLeft() == null ? 0 : p.getRight().depth;
+        int left_depth = p.getLeft() == null ? 0 : p.getLeft().depth;
         int right_depth = p.getRight() == null ? 0 : p.getRight().depth;
         return left_depth - right_depth;
     }
@@ -145,16 +152,13 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         return depth;
     }
 
+    @Rule
+    public final SystemOutRule log = new SystemOutRule().enableLog();
+
     @Test
     public void testInsert(){
         AvlTree<Integer> tree = new AvlTree<>();
-        tree.insert(6);
-        tree.insert(5);
-        tree.insert(4);
-        tree.insert(3);
-        tree.insert(2);
-        tree.insert(1);
-
+        insert654321(tree);
         System.out.println(tree);
     }
 
@@ -174,14 +178,16 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     public void testIterator() {
         AvlTree<Integer> tree0 = new AvlTree<>();
         insert321546(tree0);
+        log.clearLog();
+        Iterator<Node<Integer>> iterator = tree0.iterator();
+        while ((iterator.hasNext())){
+            System.out.print(iterator.next().data);
+        }
         // for(Node<Integer> n: tree0){
         //     System.out.print(n.data);
         // }
-        // Iterator<Node<Integer>> iterator = tree0.iterator();
-        // while ((iterator.hasNext())){
-        //     System.out.print(iterator.next().data);
-        // }
-        tree0.forEach(n -> System.out.print(n.data));
+        // tree0.forEach(n -> System.out.print(n.data));
+        // TestCase.assertEquals("123456", log.getLog());
     }
 
 }

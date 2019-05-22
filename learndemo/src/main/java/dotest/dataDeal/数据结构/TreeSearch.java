@@ -33,8 +33,8 @@ public class TreeSearch {
 
     public static void dfsPreOrder1(Node node) {
         System.out.print(node.data);
-        if (node.left != null) dfsPreOrder1(node.left);
-        if (node.right != null) dfsPreOrder1(node.right);
+        if (node.getLeft() != null) dfsPreOrder1(node.getLeft());
+        if (node.getRight() != null) dfsPreOrder1(node.getRight());
     }
 
     //迭代遍历二叉树
@@ -46,9 +46,9 @@ public class TreeSearch {
             if (current.state == 0) {
                 System.out.print(current.data);
             } else if (current.state == 1) {
-                if (current.left != null) stack.addFirst(current.left);
+                if (current.getLeft() != null) stack.addFirst(current.getLeft());
             } else if (current.state == 2) {
-                if (current.right != null) stack.addFirst(current.right);
+                if (current.getRight() != null) stack.addFirst(current.getRight());
             } else if (current.state == 3) {
                 stack.removeFirst();
             }
@@ -62,9 +62,9 @@ public class TreeSearch {
 
     //中序遍历的特性显示他遍历一个有序二叉树时总是升序
     public static void dfsInOrder1(Node node) {
-        if (node.left != null) dfsInOrder1(node.left);
+        if (node.getLeft() != null) dfsInOrder1(node.getLeft());
         System.out.print(node.data);
-        if (node.right != null) dfsInOrder1(node.right);
+        if (node.getRight() != null) dfsInOrder1(node.getRight());
     }
 
     public static void dfsInOrder2(Deque<Node> stack) {
@@ -72,11 +72,11 @@ public class TreeSearch {
         while (!stack.isEmpty()) {
             current = stack.getFirst();
             if (current.state == 0) {
-                if (current.left != null) stack.addFirst(current.left);
+                if (current.getLeft() != null) stack.addFirst(current.getLeft());
             } else if (current.state == 1) {
                 System.out.print(current.data);
             } else if (current.state == 2) {
-                if (current.right != null) stack.addFirst(current.right);
+                if (current.getRight() != null) stack.addFirst(current.getRight());
             } else if (current.state == 3) {
                 stack.removeFirst();
             }
@@ -85,8 +85,8 @@ public class TreeSearch {
     }
 
     public static void dfsPostOrder1(Node node) {
-        if (node.left != null) dfsPostOrder1(node.left);
-        if (node.right != null) dfsPostOrder1(node.right);
+        if (node.getLeft() != null) dfsPostOrder1(node.getLeft());
+        if (node.getRight() != null) dfsPostOrder1(node.getRight());
         System.out.print(node.data);
     }
 
@@ -95,9 +95,9 @@ public class TreeSearch {
         while (!stack.isEmpty()) {
             current = stack.getFirst();
             if (current.state == 0) {
-                if (current.left != null) stack.addFirst(current.left);
+                if (current.getLeft() != null) stack.addFirst(current.getLeft());
             } else if (current.state == 1) {
-                if (current.right != null) stack.addFirst(current.right);
+                if (current.getRight() != null) stack.addFirst(current.getRight());
             } else if (current.state == 2) {
                 System.out.print(current.data);
             } else if (current.state == 3) {
@@ -119,8 +119,8 @@ public class TreeSearch {
         if (queue == null || queue.isEmpty()) return;
         Node node = queue.remove();
         System.out.print(node.data);
-        if (node.left != null) queue.add(node.left);
-        if (node.right != null) queue.add(node.right);
+        if (node.getLeft() != null) queue.add(node.getLeft());
+        if (node.getRight() != null) queue.add(node.getRight());
         bfs1(queue);
     }
 
