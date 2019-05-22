@@ -76,31 +76,31 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
      */
     private void right_rotate(AvlNode<T> p) {
         AvlNode<T> pParent = p.getParent();//祖父
-        AvlNode<T> pRightSon = p.getLeft();//左子
-        AvlNode<T> pLeftGrandSon = pRightSon.getRight();//右孙
+        AvlNode<T> pLeftSon = p.getLeft();//左子
+        AvlNode<T> pRightGrandSon = pLeftSon.getRight();//右孙
         if(getRoot()==p){
-            setRoot(pRightSon);
+            setRoot(pLeftSon);
         }
         //祖父关系变换
-        pRightSon.setParent(pParent);
+        pLeftSon.setParent(pParent);
         if (pParent != null) {
             if (p == pParent.getLeft())
-                pParent.setLeft(pRightSon);
+                pParent.setLeft(pLeftSon);
             else if (p == pParent.getRight())
-                pParent.setRight(pRightSon);
+                pParent.setRight(pLeftSon);
         }
         //左子为父, 父变右子
-        pRightSon.setRight(p);
-        p.setParent(pRightSon);
+        pLeftSon.setRight(p);
+        p.setParent(pLeftSon);
         /* 右孙变左孙 */
-        p.setLeft(pLeftGrandSon);
-        if (pLeftGrandSon != null)
-            pLeftGrandSon.setParent(p);
+        p.setLeft(pRightGrandSon);
+        if (pRightGrandSon != null)
+            pRightGrandSon.setParent(p);
         /* 重新计算平衡因子 */
         p.depth = getDepth(p);
         p.balance = getBalance(p);
-        pRightSon.depth = getDepth(pRightSon);
-        pRightSon.balance = getBalance(pRightSon);
+        pLeftSon.depth = getDepth(pLeftSon);
+        pLeftSon.balance = getBalance(pLeftSon);
     }
 
     /**左旋*/
