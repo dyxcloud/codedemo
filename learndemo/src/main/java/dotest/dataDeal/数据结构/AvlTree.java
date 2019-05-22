@@ -116,9 +116,9 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         pRightSon.setParent(pParent);
         if(pParent!=null){
             if(pParent.getLeft()==p)
-                pRightSon = pParent.getLeft();
+                pParent.setLeft(pRightSon);
             else if(pParent.getRight()==p)
-                pRightSon = pParent.getRight();
+                pParent.setRight(pRightSon);
         }
         //根节点
         pRightSon.setLeft( p);
