@@ -75,12 +75,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         if (n.getLeft() == null && n.getRight() == null) {
             if (n == getRoot()) {
                 setRoot(null);
-                return;
-            }
-            if (n == p.getLeft())
+            } else if (n == p.getLeft()) {
                 p.setLeft(null);
-            else if (n == p.getRight())
+            } else if (n == p.getRight()) {
                 p.setRight(null);
+            }
         }
         // 内部结点，把它的后继的值拷进来，然后递归删除它的后继。
         else if (n.getLeft() != null && n.getRight() != null) {
@@ -90,16 +89,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         }
         // 只有一个孩子的结点，把它的孩子交给它的父结点即可。
         else {
-            if (n.getLeft() != null)
-                child = n.getLeft();
-            else
-                child = n.getRight();
+            child = n.getLeft()!=null? n.getLeft():n.getRight();
             if (n == getRoot()) {
                 child.setParent(null);
                 setRoot(child);
-                return;
-            }
-            if (n == p.getLeft()) {
+            }else if (n == p.getLeft()) {
                 child.setParent(p);
                 p.setLeft(child);
             } else {
@@ -115,7 +109,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
      * @param n
      * @return
      */
-    private Node<T> successorIn(Node<T> n) {
+    Node<T> successorIn(Node<T> n) {
         if (n == null) return null;
         Node<T> p;
         if (n.getRight() != null) {

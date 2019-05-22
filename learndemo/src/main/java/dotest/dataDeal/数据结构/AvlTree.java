@@ -35,39 +35,79 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         }
     }
 
-    private void insert(AvlNode<T> root, T data) {
-        if (root.data.compareTo(data) > 0) {
-            if (root.getLeft() != null)
-                insert(root.getLeft(), data);
+    private void insert(AvlNode<T> node, T data) {
+        if (node.data.compareTo(data) > 0) {
+            if (node.getLeft() != null)
+                insert(node.getLeft(), data);
             else {
-                root.setLeft(new AvlNode<>(data));
-                root.getLeft().setParent(root);
+                node.setLeft(new AvlNode<>(data));
+                node.getLeft().setParent(node);
             }
         } else {
-            if (root.getRight() != null)
-                insert(root.getRight(), data);
+            if (node.getRight() != null)
+                insert(node.getRight(), data);
             else {
-                root.setRight(new AvlNode<>(data));
-                root.getRight().setParent(root);
+                node.setRight(new AvlNode<>(data));
+                node.getRight().setParent(node);
             }
         }
+        takeBalance(node);
+    }
+
+    public void remove(AvlNode<T> n) {
+        AvlNode<T> p = n.getParent();
+        AvlNode<T> next, child;
+        // 叶子结点，直接删除即可。要考虑待删除结点是root的情况。
+        if (n.getLeft() == null && n.getRight() == null) {
+            if (n == getRoot()) {
+                setRoot(null);
+            } else if (n == p.getLeft()) {
+                p.setLeft(null);
+            } else if (n == p.getRight()) {
+                p.setRight(null);
+            }
+        }
+        // 内部结点，把它的后继的值拷进来，然后递归删除它的后继。
+        else if (n.getLeft() != null && n.getRight() != null) {
+            next = (AvlNode<T>) successorIn(n);
+            n.data = next.data;
+            remove(next);
+        }
+        // 只有一个孩子的结点，把它的孩子交给它的父结点即可。
+        else {
+            child = n.getLeft()!=null? n.getLeft():n.getRight();
+            if (n == getRoot()) {
+                child.setParent(null);
+                setRoot(child);
+            }else if (n == p.getLeft()) {
+                child.setParent(p);
+                p.setLeft(child);
+            } else {
+                child.setParent(p);
+                p.setRight(child);
+            }
+        }
+        takeBalance(n);
+    }
+
+    private void takeBalance(AvlNode<T> node){
         //平衡处理
         /* 从插入的过程回溯回来的时候，计算平衡因子 */
-        root.balance = getBalance(root);
+        node.balance = getBalance(node);
         /* 左子树高，应该右旋 */
-        if (root.balance >= 2) {
+        if (node.balance >= 2) {
             /* 右孙高，先左旋 */
-            if (root.getLeft().balance == -1)
-                left_rotate(root.getLeft());
-            right_rotate(root);
+            if (node.getLeft().balance == -1)
+                left_rotate(node.getLeft());
+            right_rotate(node);
         }
-        if (root.balance <= -2) {
-            if (root.getRight().balance == 1)
-                right_rotate(root.getRight());
-            left_rotate(root);
+        if (node.balance <= -2) {
+            if (node.getRight().balance == 1)
+                right_rotate(node.getRight());
+            left_rotate(node);
         }
-        root.balance = getBalance(root);
-        root.depth = getDepth(root);
+        node.balance = getBalance(node);
+        node.depth = getDepth(node);
     }
 
     /**
