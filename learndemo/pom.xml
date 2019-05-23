@@ -80,17 +80,6 @@
             <artifactId>commons-net</artifactId>
             <version>3.1</version>
         </dependency>
-        <!-- wmi -->
-        <dependency>
-            <groupId>cn.chenlichao</groupId>
-            <artifactId>wmi4j</artifactId>
-            <version>0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>com.profesorfalken</groupId>
-            <artifactId>WMI4Java</artifactId>
-            <version>1.6.2</version>
-        </dependency>
 
         <!-- xml -->
         <dependency>
