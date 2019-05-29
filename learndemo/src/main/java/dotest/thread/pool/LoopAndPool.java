@@ -27,15 +27,22 @@ public class LoopAndPool {
     }
 
     private void m1() throws InterruptedException {
-        ExecutorService pool = Executors.newCachedThreadPool();
-        Runnable run = () -> {
-            try {
-                Thread.sleep(1000);  //模拟耗时操作
-                System.out.println("[1]" + Thread.currentThread().getName());
-            } catch (Exception ignored) {
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+        class Run implements Runnable {
+            private int n;
+            private Run(int n) {
+                this.n = n;
             }
-        };
-        IntStream.range(0, loopNum).forEach(n -> pool.execute(run));
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);  //模拟耗时操作
+                    System.out.println("[1]" + Thread.currentThread().getName() + "runNumber[" + n + "]");
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        IntStream.range(0, loopNum).forEach(n -> pool.execute(new Run(n)));
         pool.shutdown();
         pool.awaitTermination(Long.MAX_VALUE, TimeUnit.MINUTES);
         System.out.println("[1] done!");
