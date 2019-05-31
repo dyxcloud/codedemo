@@ -12,14 +12,14 @@ import java.util.Arrays;
  **/
 public class 基数排序 {
 
-    public int n = 10;
+    public int n = 10;//取基数时使用的进制
 
     /**先对个位进行排序, 再对十位进行排序(保证稳定性)*/
     public void sort(int[] a) {
         int[] c = new int[n];
         int[] remainder = new int[a.length];
         int[] b = new int[a.length];
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {//排序的位数
             for (int j = 0; j < a.length; j++) {
                 int temp = getRadix(a[j], i, n);
                 remainder[j] = temp;
@@ -38,6 +38,7 @@ public class 基数排序 {
         }
     }
 
+    /**取第i位的值*/
     private int getRadix(int a, int i, int radix) {
         return ((int)(a / Math.pow(radix, i))) % radix;
     }
