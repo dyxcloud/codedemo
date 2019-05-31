@@ -19,16 +19,16 @@ public class 归并 {
         if(end-start<1){
             return;
         }
-        if(end-start==1){
-            if(arr[start]>arr[end]){
-                ArrayData.swap(arr,start,end);
-            }
-            return;
-        }
+        // if(end-start==1){
+        //     if(arr[start]>arr[end]){
+        //         ArrayData.swap(arr,start,end);
+        //     }
+        //     return;
+        // }
         int mid = (start+end)/ 2;
-        mergeSort(arr, start, mid - 1);
-        mergeSort(arr, mid, end);
-        merge(arr, start, mid, end);
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid+1, end);
+        merge(arr, start, mid+1, end);
     }
 
     private void merge(long[] arr, int low, int mid, int high){
@@ -57,6 +57,11 @@ public class 归并 {
     public void testMerge(){
         long[] a = {1,3,7,9,2,4,6,8};
         merge(a,0,4,7);
+        System.out.println(Arrays.toString(a));
+        TestCase.assertTrue(ArrayData.isSort(a));
+
+        a =new long[]{3,1};
+        merge(a,0,1,1);
         System.out.println(Arrays.toString(a));
         TestCase.assertTrue(ArrayData.isSort(a));
     }
