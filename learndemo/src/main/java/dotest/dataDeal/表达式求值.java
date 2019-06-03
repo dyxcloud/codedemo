@@ -115,8 +115,8 @@ public class 表达式求值 {
                 numbers.push(Double.parseDouble(s));
             }
         });
-        System.out.println(numbers);
-        System.out.println(operators);
+//        System.out.println(numbers);
+//        System.out.println(operators);
         while (!operators.isEmpty()) {
             String pop = operators.pop();
             double n2 = numbers.pop();
