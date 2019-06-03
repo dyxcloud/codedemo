@@ -1,8 +1,7 @@
-package dotest.fileIO.NIO;
+package dotest.io.NIO;
 
 import java.nio.CharBuffer;
 
-import org.hamcrest.Condition.Step;
 import org.junit.Test;
 
 public class BufferDemo {

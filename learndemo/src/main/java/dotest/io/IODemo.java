@@ -1,4 +1,4 @@
-package dotest.fileIO;
+package dotest.io;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

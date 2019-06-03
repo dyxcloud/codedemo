@@ -1,15 +1,9 @@
-package dotest.fileIO.NIO;
+package dotest.io.NIO;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.CharBuffer;
-import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
-
-import org.junit.Test;
 
 public class FileChannelDemo {
 

@@ -1,4 +1,4 @@
-package dotest.fileIO.NIO;
+package dotest.io.NIO;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
