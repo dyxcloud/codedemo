@@ -1,4 +1,4 @@
-package dotest.io.NIO;
+package dotest.io.nio;
 
 import java.nio.CharBuffer;
 
