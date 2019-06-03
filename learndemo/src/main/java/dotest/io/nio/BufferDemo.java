@@ -6,6 +6,22 @@ import org.junit.Test;
 
 public class BufferDemo {
 
+	/**
+	 * 显示buffer的position、limit、capacity和buffer中包含的字符，若字符为0，则替换为'.'
+	 * @param buffer
+	 */
+	private void showBuffer(CharBuffer buffer) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < buffer.limit(); i++) {
+			char c = buffer.get(i);
+			if (c == 0) {
+				c = '.';
+			}
+			sb.append(c);
+		}
+		System.out.printf("position=%d, limit=%d, capacity=%d,content=%s\n", buffer.position(), buffer.limit(), buffer.capacity(), sb.toString());
+	}
+
 	@Test
 	public void bufferPropertiesTet() {
 		CharBuffer buffer = CharBuffer.allocate(10);
@@ -26,27 +42,8 @@ public class BufferDemo {
 		showBuffer(buffer);
 	}
 
-	/**
-	 * 显示buffer的position、limit、capacity和buffer中包含的字符，若字符为0，则替换为'.'
-	 * 
-	 * @param buffer
-	 */
-	private static void showBuffer(CharBuffer buffer) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < buffer.limit(); i++) {
-			char c = buffer.get(i);
-			if (c == 0) {
-				c = '.';
-			}
-			sb.append(c);
-		}
-		System.out.printf("position=%d, limit=%d, capacity=%d,content=%s\n", buffer.position(), buffer.limit(),
-				buffer.capacity(), sb.toString());
-	}
-
-
-
-	private static void testMark() {
+	@Test
+	public void testMark() {
 		CharBuffer buffer = CharBuffer.allocate(10);
 		showBuffer(buffer);
 		//设置mark位置为3
@@ -57,7 +54,35 @@ public class BufferDemo {
 		showBuffer(buffer);
 	}
 
-	public static void main(String[] args) {
-		
+	@Test
+	public void testCompact() {
+		CharBuffer buffer = CharBuffer.allocate(10);
+		buffer.put("abcde");
+		buffer.flip();
+		//先读取两个字符
+		buffer.get();
+		buffer.get();
+		showBuffer(buffer);
+		//压缩
+		buffer.compact();
+		showBuffer(buffer);
+		//继续写入
+		buffer.put("fghi");
+		buffer.flip();
+		showBuffer(buffer);
+		//从头读取后续的字符
+		char[] chars = new char[buffer.remaining()];
+		buffer.get(chars);
+		System.out.println(chars);
+	}
+
+	@Test
+	public void testSlice() {
+		CharBuffer buffer = CharBuffer.allocate(10);
+		buffer.put("abcdefghij");
+		buffer.position(5);
+		CharBuffer slice = buffer.slice();
+		showBuffer(buffer);
+		showBuffer(slice);
 	}
 }
