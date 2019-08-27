@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 
 @RestController//证明是controller并且返回json
 public class UserController {
@@ -30,5 +26,10 @@ public class UserController {
     @RequestMapping(value = "hello")
     public @ResponseBody String hello(){
         return "hello world";
+    }
+
+    @RequestMapping(value = "newfile.txt")
+    public @ResponseBody String file(){
+        return "这是动态生成的";
     }
 }
