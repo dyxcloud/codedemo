@@ -15,13 +15,13 @@ public class EightNumberSolver {
         new EightNumberSolver().breadFirstSearch(array);
     }
 
-    public int[] visited;
+    private int[] visited;
 
-    public EightNumberSolver() {
+    private EightNumberSolver() {
         visited = new int[11340];
     }
 
-    public int moveUp(int[] state) {
+    private int moveUp(int[] state) {
         int index = findSpace(state);
         if (index < 6) {
             state[index] = state[index + 3];
@@ -30,7 +30,7 @@ public class EightNumberSolver {
         return Permutation.encode(state, 9);
     }
 
-    public int moveDown(int[] state) {
+    private int moveDown(int[] state) {
         int index = findSpace(state);
         if (index > 2) {
             state[index] = state[index - 3];
@@ -39,7 +39,7 @@ public class EightNumberSolver {
         return Permutation.encode(state, 9);
     }
 
-    public int moveLeft(int[] state) {
+    private int moveLeft(int[] state) {
         int index = findSpace(state);
         if (index % 3 != 2) {
             state[index] = state[index + 1];
@@ -48,7 +48,7 @@ public class EightNumberSolver {
         return Permutation.encode(state, 9);
     }
 
-    public int moveRight(int[] state) {
+    private int moveRight(int[] state) {
         int index = findSpace(state);
         if (index % 3 != 0) {
             state[index] = state[index - 1];
@@ -57,7 +57,7 @@ public class EightNumberSolver {
         return Permutation.encode(state, 9);
     }
 
-    public int findSpace(int[] state) {
+    private int findSpace(int[] state) {
         int index = -1;
         for (int i = 0; i < 9; i++) {
             if (state[i] == 0)
@@ -66,13 +66,13 @@ public class EightNumberSolver {
         return index;
     }
 
-    public boolean isChecked(int n) {
+    private boolean isChecked(int n) {
         int a = n / 32;
         int b = n & 31;
         return ((visited[a] & (1 << b)) != 0);
     }
 
-    public void visit(int n) {
+    private void visit(int n) {
         int a = n / 32;
         int b = n & 31;
         visited[a] |= (1 << b);
@@ -81,7 +81,7 @@ public class EightNumberSolver {
     /**
      * 传入一个列表, 把他转化为code=0的列表
      */
-    public void breadFirstSearch(int[] array) {
+    private void breadFirstSearch(int[] array) {
         int s = Permutation.encode(array, 9);
         LinkedList<Node> q = new LinkedList<>();
         q.addLast(new Node(s, null));
@@ -143,7 +143,7 @@ public class EightNumberSolver {
         int n;
         Node previous;
 
-        public Node(int n, Node prev) {
+        Node(int n, Node prev) {
             this.n = n;
             this.previous = prev;
         }
