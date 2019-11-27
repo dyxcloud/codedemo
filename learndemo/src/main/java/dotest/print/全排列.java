@@ -89,11 +89,43 @@ public class 全排列 {
     }
 
 
+    private class A3{
+        int N;
+        boolean[] used;
+        int[] result;
+
+        A3(int n) {
+            N = n;
+            used = new boolean[n + 1];
+            result = new int[n];
+        }
+
+        void make(int level) {
+            for (int i = 1; i <= N ; i++) {
+                if (!used[i]) {
+                    used[i] = true;
+                    result[level] = i;
+                    make(level + 1);
+                    used[i] = false;
+                }
+            }
+            if (level == N - 1) {
+                for (int i = 0; i < N; i++) {
+                    System.out.print(result[i] + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         A1 a1 = new 全排列().new A1();
         A2 a2 = new 全排列().new A2();
 
-        List<List<Integer>> res = a2.permute(new int[]{1, 2, 3});
-        res.forEach(System.out::println);
+        // List<List<Integer>> res = a2.permute(new int[]{1, 2, 3});
+        // res.forEach(System.out::println);
+
+        A3 a3 = new 全排列().new A3(3);
+        a3.make(0);
     }
 }
