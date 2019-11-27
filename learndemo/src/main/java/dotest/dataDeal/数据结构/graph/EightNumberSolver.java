@@ -1,5 +1,6 @@
 package dotest.dataDeal.数据结构.graph;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
@@ -77,6 +78,9 @@ public class EightNumberSolver {
         visited[a] |= (1 << b);
     }
 
+    /**
+     * 传入一个列表, 把他转化为code=0的列表
+     */
     public void breadFirstSearch(int[] array) {
         int s = Permutation.encode(array, 9);
         LinkedList<Node> q = new LinkedList<>();
@@ -84,7 +88,7 @@ public class EightNumberSolver {
         while (!q.isEmpty()) {
             Node t = q.poll();
 
-            if (t.n == 0) {
+            if (t.n == 0) {//如果是终点, 就向前打印列表
                 Node iter = t;
                 while (iter != null) {
                     int[] arrayIter = Permutation.decode(iter.n, 9);
@@ -102,41 +106,29 @@ public class EightNumberSolver {
             }
 
             int[] state = Permutation.decode(t.n, 9);
-            int[] tmp = new int[9];
-            for (int i = 0; i < state.length; i++) {
-                tmp[i] = state[i];
-            }
 
+            int[] tmp = Arrays.copyOf(state,state.length);
             int n = moveUp(tmp);
             if (n != s && !isChecked(n)) {
                 visit(n);
                 q.addLast(new Node(n, t));
             }
 
-            for (int i = 0; i < state.length; i++) {
-                tmp[i] = state[i];
-            }
-
+            tmp = Arrays.copyOf(state,state.length);
             n = moveDown(tmp);
             if (n != s && !isChecked(n)) {
                 visit(n);
                 q.addLast(new Node(n, t));
             }
 
-            for (int i = 0; i < state.length; i++) {
-                tmp[i] = state[i];
-            }
-
+            tmp = Arrays.copyOf(state,state.length);
             n = moveLeft(tmp);
             if (n != s && !isChecked(n)) {
                 visit(n);
                 q.addLast(new Node(n, t));
             }
 
-            for (int i = 0; i < state.length; i++) {
-                tmp[i] = state[i];
-            }
-
+            tmp = Arrays.copyOf(state,state.length);
             n = moveRight(tmp);
             if (n != s && !isChecked(n)) {
                 visit(n);
