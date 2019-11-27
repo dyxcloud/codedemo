@@ -1,6 +1,5 @@
 package dotest.dataDeal.数据结构;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -237,15 +236,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
 
 class Node<T extends Comparable<T>> {
     T data;
-    /**
-     * 用于非递归遍历时,记录当前节点的遍历步数
-     * 一个节点有四种状态: 0未遍历, 1遍历第一个数值 3完成遍历(3个数值)
-     */
     int state;
     private Node<T> parent;
     private Node<T> left;
     private Node<T> right;
-
 
     Node(T d) {
         this.data = d;

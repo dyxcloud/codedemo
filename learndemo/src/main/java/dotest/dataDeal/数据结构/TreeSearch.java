@@ -6,7 +6,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Optional;
+import java.util.Queue;
 
 /**
  * 树的遍历,深度优先/广度优先
@@ -42,17 +45,12 @@ public class TreeSearch {
     public static void dfsPreOrder2(Deque<Node> stack) {
         Node current;
         while (!stack.isEmpty()) {
-            current = stack.getFirst();
-            if (current.state == 0) {
-                System.out.print(current.data);
-            } else if (current.state == 1) {
-                if (current.getLeft() != null) stack.addFirst(current.getLeft());
-            } else if (current.state == 2) {
-                if (current.getRight() != null) stack.addFirst(current.getRight());
-            } else if (current.state == 3) {
-                stack.removeFirst();
-            }
-            current.state++;
+            Node node = stack.removeFirst();
+            System.out.print(node.data);
+            Optional.ofNullable(node.getRight()).ifPresent(stack::addFirst);
+            Optional.ofNullable(node.getLeft()).ifPresent(stack::addFirst);
+            // if (node.getRight() != null) stack.addFirst(node.getRight());
+            // if (node.getLeft() != null) stack.addFirst(node.getLeft());
         }
     }
 
