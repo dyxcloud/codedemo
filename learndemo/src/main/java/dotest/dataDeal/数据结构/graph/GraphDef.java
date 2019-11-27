@@ -10,20 +10,37 @@ import java.util.Scanner;
  **/
 public class GraphDef {
     public static void main(String[] args) {
-        Scanner cin = new Scanner(System.in);
 
+        // Graph g = createByTypeIn();
+        Graph g = create();
+        // g.breadthFirstSearch();
+        g.depthFirstSearch(g.vertex[1]);
+    }
+
+    static Graph createByTypeIn(){
+        Scanner cin = new Scanner(System.in);
         int v = cin.nextInt();
         int e = cin.nextInt();
-
         Graph g = new Graph(v, e);
-
         for (int i = 0; i < e; i++) {
             int a = cin.nextInt();
             int b = cin.nextInt();
             g.addEdge(a, b);
         }
-
-        g.breadthFirstSearch();
+        return g;
+    }
+    static Graph create(){
+        Graph g = new Graph(7, 9);
+        g.addEdge(1,2);
+        g.addEdge(1,3);
+        g.addEdge(1,5);
+        g.addEdge(2,5);
+        g.addEdge(2,3);
+        g.addEdge(3,4);
+        g.addEdge(4,6);
+        g.addEdge(4,7);
+        g.addEdge(6,7);
+        return g;
     }
 }
 
@@ -67,6 +84,20 @@ class Graph {
 
                 n = n.nextArc;
             }
+        }
+    }
+
+    public void depthFirstSearch(ListHead v) {
+        v.visited = true;
+        System.out.println(v.data);
+        AdjacentListNode n = v.firstArc;
+        while (n != null) {
+            if (vertex[n.nodeIndex].visited) {
+                n = n.nextArc;
+                continue;
+            }
+            depthFirstSearch(vertex[n.nodeIndex]);
+            n = n.nextArc;
         }
     }
 }
