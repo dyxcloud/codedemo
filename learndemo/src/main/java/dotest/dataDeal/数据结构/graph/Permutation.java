@@ -34,7 +34,7 @@ public class Permutation {
             System.out.print(auxiliary[i] + " ");
         System.out.println();*/
 
-        for (i = 1; i <= len; i++) {
+        for (i = 0; i < len; i++) {
             for (j = 0; j < len; j++) {
                 if (auxiliary[j] == 0) {
                     result[j] = i;
@@ -79,6 +79,8 @@ public class Permutation {
             int[] result = decode(i, 5);
             System.out.println(Arrays.toString(result));
         }
-        System.out.println(encode(new int[]{5, 4, 3, 2, 1}, 5));
+
+        System.out.println(Arrays.toString(decode(362879,9)));
+        System.out.println(encode(new int[]{8, 7, 6, 5, 4, 3, 2, 1, 0}, 9));
     }
 }
