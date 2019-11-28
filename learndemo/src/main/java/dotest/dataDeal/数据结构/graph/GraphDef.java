@@ -1,7 +1,12 @@
 package dotest.dataDeal.数据结构.graph;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
+import junit.framework.TestCase;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Scanner;
 
 /**
@@ -36,13 +41,82 @@ public class GraphDef {
         return g;
     }
 
-    public static void main(String[] args) {
+    @Rule
+    public final SystemOutRule log = new SystemOutRule().enableLog();
 
-        // Graph g = createByTypeIn();
-        Graph g = create();
-        // g.bfs();
-        g.dfs(g.vertex[1]);
+    static void bfs(Graph g) {
+        Deque<ListHead> queue = new ArrayDeque<>(g.v);
+        queue.addLast(g.vertex[1]);
+        g.vertex[1].visited = true;
+        while (!queue.isEmpty()) {
+            ListHead tmp = queue.removeFirst();
+            System.out.print(tmp.data);
+            AdjacentListNode n = tmp.firstArc;
+            while (n != null) {
+                tmp = g.vertex[n.nodeIndex];
+                if (!tmp.visited) {
+                    queue.addLast(tmp);
+                    tmp.visited = true;
+                }
+                n = n.nextArc;
+            }
+        }
     }
+
+    @Test
+    public void testbfs(){
+        bfs(create());
+        TestCase.assertEquals("1235467", log.getLog());
+    }
+
+    static void dfs(Graph g, ListHead v) {
+        v.visited = true;
+        System.out.print(v.data);
+        AdjacentListNode n = v.firstArc;
+        while (n != null) {
+            if (g.vertex[n.nodeIndex].visited) {
+                n = n.nextArc;
+                continue;
+            }
+            dfs(g, g.vertex[n.nodeIndex]);
+            n = n.nextArc;
+        }
+    }
+
+    @Test
+    public void testdfs(){
+        Graph g = create();
+        dfs(g,g.vertex[1]);
+        TestCase.assertEquals("1253467", log.getLog());
+    }
+
+    static void dfs2(Graph g){
+        //因为一个顶点的边是单链表存储,不能反向压栈, 所以表现出来就是反向遍历
+        ListHead rootHead = g.vertex[1];
+        rootHead.visited = true;
+        Deque<ListHead> stack = new ArrayDeque<>();
+        stack.addFirst(rootHead);
+        while (!stack.isEmpty()) {
+            ListHead head = stack.removeFirst();
+            System.out.print(head.data);
+            AdjacentListNode n = head.firstArc;
+            while (n != null) {
+                ListHead nextHead = g.vertex[n.nodeIndex];
+                if (!nextHead.visited) {
+                    nextHead.visited = true;
+                    stack.addFirst(nextHead);
+                }
+                n = n.nextArc;
+            }
+        }
+    }
+
+    @Test
+    public void testdfs2(){
+        dfs2(create());
+        TestCase.assertEquals("1534762", log.getLog());
+    }
+
 }
 
 class Graph {
@@ -64,42 +138,6 @@ class Graph {
         vertex[b].linkTo(a);
     }
 
-    public void bfs() {
-        ArrayQueue<ListHead> q = new ArrayQueue<>(v);
-        q.add(vertex[1]);
-        vertex[1].visited = true;
-
-        while (!q.isEmpty()) {
-            ListHead tmp = q.remove(0);
-            System.out.println(tmp.data);
-
-            AdjacentListNode n = tmp.firstArc;
-
-            while (n != null) {
-                tmp = vertex[n.nodeIndex];
-                if (!tmp.visited) {
-                    q.add(tmp);
-                    tmp.visited = true;
-                }
-
-                n = n.nextArc;
-            }
-        }
-    }
-
-    public void dfs(ListHead v) {
-        v.visited = true;
-        System.out.println(v.data);
-        AdjacentListNode n = v.firstArc;
-        while (n != null) {
-            if (vertex[n.nodeIndex].visited) {
-                n = n.nextArc;
-                continue;
-            }
-            dfs(vertex[n.nodeIndex]);
-            n = n.nextArc;
-        }
-    }
 }
 
 class AdjacentListNode {
@@ -130,12 +168,10 @@ class ListHead {
             firstArc = new AdjacentListNode(end);
             return;
         }
-
         AdjacentListNode n = firstArc;
         while (n.nextArc != null) {
             n = n.nextArc;
         }
-
         n.nextArc = new AdjacentListNode(end);
     }
 }
