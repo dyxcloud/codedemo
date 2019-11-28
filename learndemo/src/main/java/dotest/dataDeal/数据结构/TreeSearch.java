@@ -109,11 +109,11 @@ public class TreeSearch {
         Node node = root;
         while(!stack.isEmpty()||node!=null){
             while(node!=null){
-                stack.addFirst(node);//已打印的放进stack
+                stack.addFirst(node);//依次压栈到树的最左端
                 node = node.getLeft();
             }
             if(!stack.isEmpty()){
-                node = stack.removeFirst();//拿出此节点的右节点
+                node = stack.removeFirst();
                 System.out.print(node.data);
                 node = node.getRight();
             }
