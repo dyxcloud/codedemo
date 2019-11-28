@@ -9,7 +9,6 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Optional;
-import java.util.Queue;
 
 /**
  * 树的遍历,深度优先/广度优先
@@ -24,14 +23,32 @@ public class TreeSearch {
      * B   C
      * D E F G
      */
-    private static Node<Character> initTree() {
+    private static Node<Character> initTree3() {
         Node<Character> d = new Node<>('D');
         Node<Character> e = new Node<>('E');
         Node<Character> f = new Node<>('F');
         Node<Character> g = new Node<>('G');
         Node<Character> b = new Node<>('B', d, e);
+        // Node<Character> b = new Node<>('B');
+        // b.setLeft(d);
         Node<Character> c = new Node<>('C', f, g);
         return new Node<>('A', b, c);
+    }
+
+    private static Node<Character> initTree2(){
+        Node<Character> b = new Node<>('B');
+        Node<Character> c = new Node<>('C');
+        return new Node<>('A', b, c);
+    }
+
+    private static Node<Character> root;
+
+    @Rule
+    public final SystemOutRule log = new SystemOutRule().enableLog();
+
+    @BeforeClass
+    public static void init() {
+        root = initTree3();
     }
 
     public static void dfsPreOrder1(Node node) {
@@ -41,21 +58,43 @@ public class TreeSearch {
     }
 
     //迭代遍历二叉树
-    // 使用辅助变量记录node的遍历情况
-    public static void dfsPreOrder2(Deque<Node> stack) {
-        Node current;
+    public static void dfsPreOrder2(Node root) {
+        Deque<Node> stack = new ArrayDeque<>();
+        stack.push(root);
         while (!stack.isEmpty()) {
             Node node = stack.removeFirst();
             System.out.print(node.data);
             Optional.ofNullable(node.getRight()).ifPresent(stack::addFirst);
             Optional.ofNullable(node.getLeft()).ifPresent(stack::addFirst);
-            // if (node.getRight() != null) stack.addFirst(node.getRight());
-            // if (node.getLeft() != null) stack.addFirst(node.getLeft());
         }
     }
 
-    public static void dfsPreOrder3(){
-        //TODO 前序遍历二叉树 非递归实现
+    public static void dfsPreOrder3(Node root){
+        Deque<Node> stack = new ArrayDeque<>();
+        Node node = root;
+        while(!stack.isEmpty()||node!=null){
+            while(node!=null){
+                System.out.print(node.data);
+                stack.addFirst(node);//已打印的放进stack
+                node = node.getLeft();
+            }
+            if(!stack.isEmpty()){
+                node = stack.removeFirst();//拿出此节点的右节点
+                node = node.getRight();
+            }
+        }
+    }
+
+    @Test
+    public void testPreOrder() {
+        dfsPreOrder1(root);
+        TestCase.assertEquals("ABDECFG", log.getLog());
+        log.clearLog();
+        dfsPreOrder2(root);
+        TestCase.assertEquals("ABDECFG", log.getLog());
+        log.clearLog();
+        dfsPreOrder3(root);
+        TestCase.assertEquals("ABDECFG", log.getLog());
     }
 
     //中序遍历的特性显示他遍历一个有序二叉树时总是升序
@@ -65,21 +104,31 @@ public class TreeSearch {
         if (node.getRight() != null) dfsInOrder1(node.getRight());
     }
 
-    public static void dfsInOrder2(Deque<Node> stack) {
-        Node current;
-        while (!stack.isEmpty()) {
-            current = stack.getFirst();
-            if (current.state == 0) {
-                if (current.getLeft() != null) stack.addFirst(current.getLeft());
-            } else if (current.state == 1) {
-                System.out.print(current.data);
-            } else if (current.state == 2) {
-                if (current.getRight() != null) stack.addFirst(current.getRight());
-            } else if (current.state == 3) {
-                stack.removeFirst();
+    public static void dfsInOrder2(Node root) {
+        Deque<Node> stack = new ArrayDeque<>();
+        Node node = root;
+        while(!stack.isEmpty()||node!=null){
+            while(node!=null){
+                stack.addFirst(node);//已打印的放进stack
+                node = node.getLeft();
             }
-            current.state++;
+            if(!stack.isEmpty()){
+                node = stack.removeFirst();//拿出此节点的右节点
+                System.out.print(node.data);
+                node = node.getRight();
+            }
         }
+    }
+
+    @Test
+    public void testInOrder() {
+        System.out.println("\n深度优先, 中序");
+        log.clearLog();
+        dfsInOrder1(root);
+        TestCase.assertEquals("DBEAFCG", log.getLog());
+        log.clearLog();
+        dfsInOrder2(root);
+        TestCase.assertEquals("DBEAFCG", log.getLog());
     }
 
     public static void dfsPostOrder1(Node node) {
@@ -88,21 +137,19 @@ public class TreeSearch {
         System.out.print(node.data);
     }
 
-    public static void dfsPostOrder2(Deque<Node> stack) {
-        Node current;
-        while (!stack.isEmpty()) {
-            current = stack.getFirst();
-            if (current.state == 0) {
-                if (current.getLeft() != null) stack.addFirst(current.getLeft());
-            } else if (current.state == 1) {
-                if (current.getRight() != null) stack.addFirst(current.getRight());
-            } else if (current.state == 2) {
-                System.out.print(current.data);
-            } else if (current.state == 3) {
-                stack.removeFirst();
-            }
-            current.state++;
-        }
+    public static void dfsPostOrder2(Node root) {
+        // TODO
+    }
+
+    @Test
+    public void testPostOrder() {
+        System.out.println("\n深度优先, 后序");
+        log.clearLog();
+        dfsPostOrder1(root);
+        TestCase.assertEquals("DEBFGCA", log.getLog());
+        log.clearLog();
+        dfsPostOrder2(root);
+        TestCase.assertEquals("DEBFGCA", log.getLog());
     }
 
     /**
@@ -113,80 +160,22 @@ public class TreeSearch {
      * defg 弹出c,添加fg
      * 依次弹出
      */
-    public static void bfs1(Queue<Node> queue) {
-        if (queue == null || queue.isEmpty()) return;
-        Node node = queue.remove();
-        System.out.print(node.data);
-        if (node.getLeft() != null) queue.add(node.getLeft());
-        if (node.getRight() != null) queue.add(node.getRight());
-        bfs1(queue);
-    }
-
-    public static void bfs2(Deque<Node> stack) {
-        //TODO loop
-    }
-
-    public static void printTree(Deque<Node> stack) {
-        //TODO 打印二叉树 结构图
-    }
-
-    private static Node<Character> root;
-
-    @Rule
-    public final SystemOutRule log = new SystemOutRule().enableLog();
-
-    @BeforeClass
-    public static void init() {
-        root = initTree();
-    }
-
-    @Test
-    public void testPreOrder() {
-        dfsPreOrder1(root);
-        TestCase.assertEquals("ABDECFG", log.getLog());
-
-        Deque<Node> nodes = new ArrayDeque<>();
-        nodes.push(root);
-        log.clearLog();
-        dfsPreOrder2(nodes);
-        TestCase.assertEquals("ABDECFG", log.getLog());
-    }
-
-    @Test
-    public void testInOrder() {
-        System.out.println("\n深度优先, 中序");
-        log.clearLog();
-        dfsInOrder1(root);
-        TestCase.assertEquals("DBEAFCG", log.getLog());
-
-        Deque<Node> stack = new ArrayDeque<>();
-        stack.addFirst(root);
-        log.clearLog();
-        dfsInOrder2(stack);
-        TestCase.assertEquals("DBEAFCG", log.getLog());
-    }
-
-    @Test
-    public void testPostOrder() {
-        System.out.println("\n深度优先, 后序");
-        log.clearLog();
-        dfsPostOrder1(root);
-        TestCase.assertEquals("DEBFGCA", log.getLog());
-
-        Deque<Node> stack = new ArrayDeque<>();
-        stack.addFirst(root);
-        log.clearLog();
-        dfsPostOrder2(stack);
-        TestCase.assertEquals("DEBFGCA", log.getLog());
+    public static void bfs(Deque<Node> deque) {
+        while(!deque.isEmpty()){
+            Node node = deque.removeFirst();
+            System.out.print(node.data);
+            Optional.ofNullable(node.getLeft()).ifPresent(deque::addLast);
+            Optional.ofNullable(node.getRight()).ifPresent(deque::addLast);
+        }
     }
 
     @Test
     public void testBfs() {
         System.out.println("\n广度优先");
-        Deque<Node> objects = new ArrayDeque<>();
-        objects.push(root);
+        Deque<Node> objectss = new ArrayDeque<>();
+        objectss.push(root);
         log.clearLog();
-        bfs1(objects);
+        bfs(objectss);
         TestCase.assertEquals("ABCDEFG", log.getLog());
     }
 }

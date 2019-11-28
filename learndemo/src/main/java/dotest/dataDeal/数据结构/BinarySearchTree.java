@@ -236,7 +236,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
 
 class Node<T extends Comparable<T>> {
     T data;
-    int state;
     private Node<T> parent;
     private Node<T> left;
     private Node<T> right;
