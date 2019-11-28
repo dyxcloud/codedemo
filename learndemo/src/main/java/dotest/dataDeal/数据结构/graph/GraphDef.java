@@ -9,13 +9,6 @@ import java.util.Scanner;
  * @create 2019-11-26
  **/
 public class GraphDef {
-    public static void main(String[] args) {
-
-        // Graph g = createByTypeIn();
-        Graph g = create();
-        // g.breadthFirstSearch();
-        g.depthFirstSearch(g.vertex[1]);
-    }
 
     static Graph createByTypeIn(){
         Scanner cin = new Scanner(System.in);
@@ -42,6 +35,14 @@ public class GraphDef {
         g.addEdge(6,7);
         return g;
     }
+
+    public static void main(String[] args) {
+
+        // Graph g = createByTypeIn();
+        Graph g = create();
+        // g.bfs();
+        g.dfs(g.vertex[1]);
+    }
 }
 
 class Graph {
@@ -49,11 +50,10 @@ class Graph {
     int e;
     ListHead[] vertex;
 
-    public Graph(int v, int e) {
+    Graph(int v, int e) {
         this.v = v;
         this.e = e;
         vertex = new ListHead[v + 1];
-
         for (int i = 1; i <= v; i++) {
             vertex[i] = new ListHead(i);
         }
@@ -64,7 +64,7 @@ class Graph {
         vertex[b].linkTo(a);
     }
 
-    public void breadthFirstSearch() {
+    public void bfs() {
         ArrayQueue<ListHead> q = new ArrayQueue<>(v);
         q.add(vertex[1]);
         vertex[1].visited = true;
@@ -87,7 +87,7 @@ class Graph {
         }
     }
 
-    public void depthFirstSearch(ListHead v) {
+    public void dfs(ListHead v) {
         v.visited = true;
         System.out.println(v.data);
         AdjacentListNode n = v.firstArc;
@@ -96,19 +96,19 @@ class Graph {
                 n = n.nextArc;
                 continue;
             }
-            depthFirstSearch(vertex[n.nodeIndex]);
+            dfs(vertex[n.nodeIndex]);
             n = n.nextArc;
         }
     }
 }
 
 class AdjacentListNode {
-    public int nodeIndex;
-    public int info;
+    int nodeIndex;
+    int info;
 
-    public AdjacentListNode nextArc;
+    AdjacentListNode nextArc;
 
-    public AdjacentListNode(int nodeIndex) {
+    AdjacentListNode(int nodeIndex) {
         this.nodeIndex = nodeIndex;
         nextArc = null;
     }
@@ -118,14 +118,14 @@ class ListHead {
     int data;
     AdjacentListNode firstArc;
 
-    public boolean visited;
+    boolean visited;
 
-    public ListHead(int data) {
+    ListHead(int data) {
         this.data = data;
         visited = false;
     }
 
-    public void linkTo(int end) {
+    void linkTo(int end) {
         if (firstArc == null) {
             firstArc = new AdjacentListNode(end);
             return;
