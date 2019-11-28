@@ -1,4 +1,4 @@
-package dotest.dataDeal.数据结构;
+package dotest.dataDeal.数据结构.tree;
 
 import junit.framework.TestCase;
 import org.junit.Test;

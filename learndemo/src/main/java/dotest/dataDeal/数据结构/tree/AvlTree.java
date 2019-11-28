@@ -1,12 +1,10 @@
-package dotest.dataDeal.数据结构;
+package dotest.dataDeal.数据结构.tree;
 
 import junit.framework.TestCase;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Iterator;
 
 /**
