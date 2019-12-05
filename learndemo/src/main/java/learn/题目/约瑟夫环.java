@@ -3,7 +3,8 @@ package learn.题目;
 import java.util.LinkedList;
 import java.util.List;
 
-public class JosephusRoll {
+@SuppressWarnings("NonAsciiCharacters")
+public class 约瑟夫环 {
 
 	/**
 	 * 约瑟夫环

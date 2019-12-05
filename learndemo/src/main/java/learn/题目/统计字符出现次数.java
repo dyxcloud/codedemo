@@ -1,5 +1,6 @@
 package learn.题目;
 
+@SuppressWarnings("ALL")
 public class 统计字符出现次数 {
 
 	public static void main(String[] args) {

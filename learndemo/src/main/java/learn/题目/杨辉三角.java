@@ -1,5 +1,6 @@
 package learn.题目;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class 杨辉三角 {
 
 	/**
@@ -10,7 +11,7 @@ public class 杨辉三角 {
 	 * @return 储存杨辉三角的二维数组
 	 * @throws Exception
 	 */
-	public static int[][] getSanJiao(int n) throws Exception {
+	public static int[][] getSanJiao(int n) {
 		int[][] arr = new int[n][];
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = new int[i + 1];
@@ -24,7 +25,7 @@ public class 杨辉三角 {
 		return arr;
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		int[][] arr = getSanJiao(10);
 		for (int[] is : arr) {
 			for (int i : is)

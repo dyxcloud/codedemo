@@ -1,18 +1,10 @@
 package learn.题目;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import org.junit.Test;
+
+import java.util.*;
 
 public class text01 {
-	public static void main(String[] args) {
-		// nizhuan();
-		// pingfangshu();
-		// lianjieList();
-		// getNum(23);
-		// printInFrame();
-		tran();
-
-	}
 
 	/*
 	 * 去除首字母,每个单词后追加ay
@@ -145,5 +137,102 @@ public class text01 {
 			System.out.print(i + "\t");
 		}
 	}
+
+    /**
+     * 有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+     * @param arr 原始有序数组
+     * @param num 要插入的数字
+     * @return 新的数组
+     */
+    public static int[] insertNumToArray(int[] arr, int num) {
+        int len = arr.length;
+        int[] arr2 = new int[len + 1];
+        int j = 0;// arr2的指针
+        int point = arr[len - 1] - arr[0];// 大于0表示升序，小于0表示降序
+        boolean flag = true;// true表示未进行插入操作
+
+        if (point == 0 || (point > 0 && num <= arr[0]) || (point < 0 && num >= arr[0])) {
+            arr2[0] = num;
+            j++;
+            flag = false;
+        } else if ((point < 0 && num <= arr[len - 1]) || (point > 0 && num >= arr[len - 1])) {
+            arr2[len] = num;
+            flag = false;
+        }
+        for (int i = 0; i < len; i++, j++) {
+            arr2[j] = arr[i];// 原始数组复制
+            // 中部插入判断
+            if (flag && (i + 1 < len) && (((num - arr[i]) ^ (arr[i + 1] - num)) >= 0))
+                arr2[++j] = num;
+        }
+        return arr2;
+    }
+
+    /**
+     * 有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前20项之和。
+     *
+     * @param index
+     *            第n个数
+     * @return 一个数组,索引中：0表示分子,1表示分母,2表示数列和
+     */
+    public static double[] getNumArr(int index) {
+        if (index < 1)
+            return new double[3];
+        if (index == 1)
+            return new double[] { 2D, 1D, 2D };
+        double[] arr = getNumArr(index - 1);
+        return new double[] { arr[0] + arr[1], arr[0], arr[2] + (arr[0] + arr[1]) / arr[0] };
+    }
+
+    /**
+     * 判断是否是回文字符串
+     */
+    public static boolean isHuiWen(String str, int start, int end) {
+        if ((start - end) == 1 || start == end)
+            return str.charAt(start) == str.charAt(end);
+        return (str.charAt(start)) == str.charAt(end) && isHuiWen(str, start + 1, end - 1);
+    }
+    @Test
+    public void testIsHuiWen() {
+        String str = "abaa"; System.out.println(isHuiWen(str, 0, str.length() - 1));
+    }
+
+
+    /**
+     * 找map中最大value对应的key
+     */
+    public static Integer getKeyOfMaxValue(Map<Integer, Integer> map) {
+        Set<Map.Entry<Integer, Integer>> entrySet = map.entrySet();
+        LinkedList<Map.Entry<Integer, Integer>> list = new LinkedList<>(entrySet);
+        list.sort(Comparator.comparingInt(Map.Entry::getValue));
+        return list.getLast().getKey();
+    }
+    @Test
+    public void testGetkeyofMaxValue() {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(1, 100);
+        map.put(2, 101);
+        map.put(3, 102);
+        map.put(4, 103);
+        System.out.println(getKeyOfMaxValue(map));
+    }
+
+
+
+
+    /**
+     * 字符串中，sub的出现次数
+     */
+    public static int getTimeOfSubInStr(String str, String sub) {
+        if (sub.length() == 0)
+            return 0;
+        String newStr = str.replace(sub, "");
+        return (str.length() - newStr.length()) / (sub.length());
+    }
+    @Test
+    public void testGetTimeOfSubInStr(){
+        System.out.println(getTimeOfSubInStr("abcdefgabcc", "ccs"));
+    }
+
 
 }

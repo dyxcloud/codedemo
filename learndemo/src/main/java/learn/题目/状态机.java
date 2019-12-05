@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  * @author DongYunxiang
  * @create 2019-06-21
  **/
+@SuppressWarnings("NonAsciiCharacters")
 public class 状态机 {
     //解析字符串, 最后导出:
     //I, have, a, good, news, :, ", hello, world, "

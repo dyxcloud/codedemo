@@ -1,3 +1,5 @@
+package learn.题目;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -5,6 +7,7 @@ import java.util.Random;
  * @author DongYunxiang
  * @create 2019-04-15
  **/
+@SuppressWarnings("NonAsciiCharacters")
 public class 不重复随机数 {
 
     void m1(){
