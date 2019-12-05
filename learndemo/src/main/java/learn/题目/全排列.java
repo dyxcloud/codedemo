@@ -1,5 +1,7 @@
 package learn.题目;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,11 @@ public class 全排列 {
                 }
             }
         }
+    }
+
+    @Test
+    public void testA1() {
+
     }
 
     /**
@@ -88,6 +95,12 @@ public class 全排列 {
         }
     }
 
+    @Test
+    public void testA2() {
+        A2 a2 = new 全排列().new A2();
+        List<List<Integer>> res = a2.permute(new int[]{1, 2, 3});
+        res.forEach(System.out::println);
+    }
 
     private class A3{
         int N;
@@ -118,14 +131,9 @@ public class 全排列 {
         }
     }
 
-    public static void main(String[] args) {
-        A1 a1 = new 全排列().new A1();
-        A2 a2 = new 全排列().new A2();
-
-        // List<List<Integer>> res = a2.permute(new int[]{1, 2, 3});
-        // res.forEach(System.out::println);
-
-        A3 a3 = new 全排列().new A3(3);
+    @Test
+    public void testA3(){
+        A3 a3 = new A3(3);
         a3.make(0);
     }
 }
