@@ -1,6 +1,6 @@
 package dotest.打印;
 
-public class SnakeMatrixDemo {
+public class 蛇形矩阵 {
 
 	/**
 	 * 生成一个蛇形矩阵
