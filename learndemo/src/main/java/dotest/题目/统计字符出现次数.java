@@ -1,6 +1,6 @@
-package dotest.打印;
+package dotest.题目;
 
-public class GetMostInString {
+public class 统计字符出现次数 {
 
 	public static void main(String[] args) {
 		String s = "======="; // 待统计字符串

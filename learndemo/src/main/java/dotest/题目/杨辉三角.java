@@ -1,4 +1,4 @@
-package dotest.打印;
+package dotest.题目;
 
 public class 杨辉三角 {
 
