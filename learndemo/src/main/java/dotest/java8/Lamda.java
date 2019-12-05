@@ -1,14 +1,10 @@
 package dotest.java8;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.IntConsumer;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Lamda {

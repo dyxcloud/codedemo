@@ -1,8 +1,8 @@
 package tooltest.apitest;
 
-import java.util.Properties;
-
 import org.apache.log4j.PropertyConfigurator;
+
+import java.util.Properties;
 
 public class Log4jDemo {
 

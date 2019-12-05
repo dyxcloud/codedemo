@@ -1,4 +1,4 @@
-package tooltest.apitest;
+package jdk;
 
 import java.math.RoundingMode;
 import java.text.NumberFormat;
