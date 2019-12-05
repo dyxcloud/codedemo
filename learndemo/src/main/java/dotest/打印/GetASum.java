@@ -1,6 +1,4 @@
-package dotest.print;
-
-import java.util.Arrays;
+package dotest.打印;
 
 public class GetASum {
 
