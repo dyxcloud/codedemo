@@ -1,6 +1,5 @@
 package learn.题目;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,20 +19,17 @@ public class 数字转汉字 {
         char[] chars = ("" + n).toCharArray();
 
         for(int i=0;i<chars.length;i++){
-            int p = chars.length-i-1;//从0开始
+            int p = chars.length-i-1;//个位为0
             int less = (int)chars[i] - (int)'0';
 
             if(less==0){
-                if((i==chars.length+1||chars[i+1]=='0')){
-                    if(p%4==0){
-                        if(IntStream.rangeClosed(p/4*4,p/4*4+3).anyMatch(z->chars[z]!='0')){
-                            result.append(dic2[p/4]);
-                        }
-                    }
-                }else {
-                    result.append(dic[less]);
-                }
+                //当前为万位且千万到万之间有非零数
+                if (p % 4 == 0 && IntStream.rangeClosed(i-3,i).anyMatch(z -> z >= 0 && chars[z] != '0'))
+                    result.append(dic2[p / 4]);
             }else{
+                //前一位非万且为0 加零
+                if (i != 0 && (p + 1) % 4 != 0 && chars[i - 1] == '0')
+                    result.append(dic[0]);
                 result.append(dic[less]);
                 result.append(dic1[p%4]);
                 if(p%4==0){
@@ -46,9 +42,12 @@ public class 数字转汉字 {
 
     @Test
     public void testnumberConvert() {
-        Assert.assertEquals(numberConvert(700_000_003),"七亿零三");
-        Assert.assertEquals(numberConvert(700_200_003),"七亿二十万零三");
-        Assert.assertEquals(numberConvert(712_287_993),"七亿一千二百二十八万七千九百九十三");
+        Assert.assertEquals("七",numberConvert(7));
+        Assert.assertEquals("七亿",numberConvert(700_000_000));
+        Assert.assertEquals("七亿零三",numberConvert(700_000_003));
+        Assert.assertEquals("七亿零二十万零三",numberConvert(700_200_003));
+        Assert.assertEquals("七亿零二十万九千零八十三",numberConvert(700_209_083));
+        Assert.assertEquals("七亿一千二百二十八万七千九百九十三",numberConvert(712_287_993));
     }
 
 
