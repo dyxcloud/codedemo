@@ -82,7 +82,13 @@ public class n06重建二叉树 {
             Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         //root=null
-        //前序中序不匹配时
+        {
+            int[] pre = new int[]{};
+            int[] in =  new int[]{};
+            TreeNode result = reConstructBinaryTree(pre,in);
+            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+        }
     }
 
 
