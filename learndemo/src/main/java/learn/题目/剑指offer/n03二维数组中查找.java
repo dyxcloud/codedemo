@@ -10,12 +10,12 @@ import org.junit.Test;
 @SuppressWarnings("NonAsciiCharacters")
 public class n03二维数组中查找 {
 
-    public boolean find(int[][] arr, int target) {
-        if(arr==null||arr.length==0||arr[0].length==0)
+    public boolean find(int[][] array, int target) {
+        if(array==null||array.length==0||array[0].length==0)
             return false;
-        int x = arr.length - 1, y = 0;//右上角
-        while (x >= 0 && y < arr[0].length) {
-            int tmp = arr[x][y];
+        int x = array.length - 1, y = 0;//右上角
+        while (x >= 0 && y < array[0].length) {
+            int tmp = array[x][y];
             if (tmp == target) {
                 return true;
             } else if (tmp > target) {
