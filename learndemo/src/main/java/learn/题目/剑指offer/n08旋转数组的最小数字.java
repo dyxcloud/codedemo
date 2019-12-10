@@ -23,6 +23,7 @@ public class n08旋转数组的最小数字 {
 
         while (l < r) {
             m = l + (r - l) / 2;
+            //[[l,,,,m],[m+1,,,,r]]
             if (arr[m] <= arr[r])//因为相邻时m=l所以要与r比较
                 r = m;
             else
