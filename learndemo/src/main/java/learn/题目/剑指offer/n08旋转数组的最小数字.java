@@ -11,32 +11,29 @@ import org.junit.Test;
 public class n08旋转数组的最小数字 {
 
 
-    public int minNumberInRotateArray(int [] arr) {
-        if(arr==null||arr.length==0) return -1;
-        if(arr.length==1) return arr[0];
-        if(arr[0]<arr[arr.length-1]) return arr[0];
+    public int minNumberInRotateArray(int[] arr) {
+        if (arr == null || arr.length == 0) return -1;
+        if (arr.length == 1) return arr[0];
+        if (arr[0] < arr[arr.length - 1]) return arr[0];
 
-        int l=0,r=arr.length-1;
-        int m = (l+r)/2;
-        if(arr[l]==arr[m]&&arr[m]==arr[r])
+        int l = 0, r = arr.length - 1;
+        int m = l + (r - l) / 2;
+        if (arr[l] == arr[m] && arr[m] == arr[r])
             return fore(arr);
 
-        while(l<r-1){
-            m = (l+r)/2;
-            if (arr[m - 1] > arr[m] && arr[m] <= arr[m + 1])
-                return arr[m];
-            else if(arr[r]<=arr[l]&&arr[l]<=arr[m]){
-                l = m;//折点在右
-            }else if(arr[m]<=arr[r]&&arr[r]<=arr[l]){
+        while (l < r) {
+            m = l + (r - l) / 2;
+            if (arr[m] <= arr[r])//因为相邻时m=l所以要与r比较
                 r = m;
-            }
+            else
+                l = m + 1;
         }
-        return Math.min(arr[l],arr[r]);
+        return arr[r];
     }
 
-    public int fore(int[] arr){
-        for(int i=1;i<arr.length;i++){
-            if(arr[i]<arr[i-1]) return arr[i];
+    public int fore(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) return arr[i];
         }
         return arr[0];
     }
@@ -44,6 +41,7 @@ public class n08旋转数组的最小数字 {
     @Test
     public void test(){
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{4,5,6,7,1,2,3}));
+        Assert.assertEquals(1,minNumberInRotateArray(new int[]{3,1,2}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{3,4,5,1,2}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{4,5,6,7,1}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{7,1,2,3,4,5,6}));
@@ -54,6 +52,7 @@ public class n08旋转数组的最小数字 {
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{2,2,2,2,2,1,2}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{2,1,2,2,2,2,2}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{3,3,3,3,3,1,2,2,2}));
+        Assert.assertEquals(1,minNumberInRotateArray(new int[]{3,1,2,2,2,2,2,2,2}));
         Assert.assertEquals(1,minNumberInRotateArray(new int[]{4,5,6,6,7,1,2,3,4}));
 
         Assert.assertEquals(-1,minNumberInRotateArray(new int[]{}));
