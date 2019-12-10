@@ -17,10 +17,9 @@ public class n07用两个栈实现队列 {
 
     public void push(int node) {
         in.push(node);
-
     }
 
-    public int pop() {
+    public int pop() {//out不保持空,作为输出保存区
         if (out.isEmpty())
             while (!in.isEmpty())
                 out.push(in.pop());
@@ -30,7 +29,7 @@ public class n07用两个栈实现队列 {
     }
 
     @Deprecated
-    public int pop_() {
+    public int pop_() {//out保持空
         while(!in.empty()){
             out.push(in.pop());
         }
