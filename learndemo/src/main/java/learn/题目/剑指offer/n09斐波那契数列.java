@@ -13,7 +13,6 @@ import java.util.HashMap;
 public class n09斐波那契数列 {
 
     HashMap<Integer,Integer> cache = new HashMap<>();
-
     @Deprecated
     public int Fibonacci_(int n) {
         if(n<0) throw new RuntimeException("wrong data");
@@ -62,24 +61,11 @@ public class n09斐波那契数列 {
         return b;
     }
 
+
     /**
      * 变态跳台阶
      * f(n) = f(n-1)+f(n-2)+....+f(0)+1
      */
-    public int JumpFloorII_(int target) {
-        if(target<1) return 0;
-        int[] arr = new int[target];
-        for(int i=1;i<target;i++){
-            arr[i] = JumpFloorII(i);
-        }
-        arr[0] = 1;
-        int result = 0;
-        for (int anArr : arr) {
-            result += anArr;
-        }
-        return result;
-    }
-
     public int JumpFloorII(int target) {
         if(target<1) return 0;
         int[] arr = new int[target+1];
@@ -93,7 +79,6 @@ public class n09斐波那契数列 {
         }
         return arr[arr.length-1];
     }
-
 
     @Test
     public void test2(){
