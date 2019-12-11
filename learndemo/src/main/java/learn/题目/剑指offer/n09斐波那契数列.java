@@ -28,9 +28,9 @@ public class n09斐波那契数列 {
     }
 
     public int Fibonacci(int n){
-        int a = 0, b = 1;
         if (n < 0) throw new RuntimeException("wrong data");
         if (n < 2) return n;
+        int a = 0, b = 1;
         for (int i = 2; i <= n; i++) {
             int r = a + b;
             a = b;
