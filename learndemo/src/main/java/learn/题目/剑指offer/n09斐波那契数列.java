@@ -47,4 +47,65 @@ public class n09斐波那契数列 {
         Assert.assertEquals(1,Fibonacci(1));
     }
 
+
+    /**
+     * 跳台阶
+     */
+    public int JumpFloor(int target) {
+        if(target<=2) return target;
+        int a=1,b=2;
+        for(int i=3;i<=target;i++){
+            int tmp = a+b;
+            a = b;
+            b = tmp;
+        }
+        return b;
+    }
+
+    /**
+     * 变态跳台阶
+     * f(n) = f(n-1)+f(n-2)+....+f(0)+1
+     */
+    public int JumpFloorII_(int target) {
+        if(target<1) return 0;
+        int[] arr = new int[target];
+        for(int i=1;i<target;i++){
+            arr[i] = JumpFloorII(i);
+        }
+        arr[0] = 1;
+        int result = 0;
+        for (int anArr : arr) {
+            result += anArr;
+        }
+        return result;
+    }
+
+    public int JumpFloorII(int target) {
+        if(target<1) return 0;
+        int[] arr = new int[target+1];
+        arr[0] = 1;
+        for(int i=1;i<arr.length;i++){
+            int result = 0;
+            for(int j=0;j<i;j++){
+                result+=arr[j];
+            }
+            arr[i] = result;
+        }
+        return arr[arr.length-1];
+    }
+
+
+    @Test
+    public void test2(){
+        Assert.assertEquals(8,JumpFloorII(4));
+        Assert.assertEquals(0,JumpFloorII(0));
+        Assert.assertEquals(1,JumpFloorII(1));
+        Assert.assertEquals(2,JumpFloorII(2));
+    }
+
+
+    /**
+     * 矩形覆盖
+     */
+
 }
