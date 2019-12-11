@@ -64,13 +64,11 @@ public class n09斐波那契数列 {
 
     /**
      * 变态跳台阶
-     * f(0) = 0
-     * f(1) = f(0)+1
-     * f(n) = f(n-1)+f(n-2)+....+f(0)+1
-     * f(n) = 最后剩1层的情况+最后剩2层的情况+最后剩3层的情况+....+最后剩n层的情况
+     * f(1) = 1
+     * f(n) = f(n-1)+f(n-2)+....+f(1)+1
+     * f(n) = 最后剩1层的情况+最后剩2层的情况+最后剩3层的情况+....+最后剩n-1层的情况+1
      */
     public int JumpFloorII(int target) {
-        if(target<1) return 0;
         int[] arr = new int[target+1];
         arr[0] = 1;
         for(int i=1;i<arr.length;i++){
@@ -84,7 +82,6 @@ public class n09斐波那契数列 {
     @Test
     public void test2(){
         Assert.assertEquals(8,JumpFloorII(4));
-        Assert.assertEquals(0,JumpFloorII(0));
         Assert.assertEquals(1,JumpFloorII(1));
         Assert.assertEquals(2,JumpFloorII(2));
     }
