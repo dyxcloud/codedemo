@@ -90,5 +90,16 @@ public class n09斐波那契数列 {
     /**
      * 矩形覆盖
      */
+    public int RectCover(int target) {
+        if(target<3) return target;
+        int result = 0;
+        int a=1,b=2;
+        for(int i=3;i<=target;i++){
+            int tmp = a+b;
+            a = b;
+            b = tmp;
+        }
+        return b;
+    }
 
 }
