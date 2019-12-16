@@ -28,7 +28,7 @@ public class n11数值的整数次方 {
         if (isLessThan0) exponent = -exponent;
         if (exponent == 1) return isLessThan0 ? 1 / base : base;
 
-        double result = 1;
+        double result;
         boolean isOdd = (exponent & 1) == 1;
         result = Power(base * base, exponent / 2);
         if (isOdd) result = result* base;
