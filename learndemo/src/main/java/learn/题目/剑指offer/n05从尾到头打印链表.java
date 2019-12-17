@@ -83,8 +83,15 @@ public class n05从尾到头打印链表 {
 class ListNode {
     int val;
     ListNode next = null;
-
     ListNode(int val) {
         this.val = val;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next.val +
+                '}';
     }
 }
