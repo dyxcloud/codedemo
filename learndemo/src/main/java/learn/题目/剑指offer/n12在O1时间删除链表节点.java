@@ -6,11 +6,10 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * @author DongYunxiang
- * @create 2019-12-16
+ * @create 2019-12-162222222222
  **/
 @SuppressWarnings("NonAsciiCharacters")
 public class n12在O1时间删除链表节点 {
@@ -52,7 +51,7 @@ public class n12在O1时间删除链表节点 {
             n4.next=null;
             List<Integer> result = getList(deleteNode(n1,n2));
             List<Integer> integers = Arrays.asList(1,3,4);
-            TestCase.assertTrue(IntStream.rangeClosed(0,result.size()-1).allMatch(i->integers.get(i).equals(result.get(i))));
+            TestCase.assertTrue(Arrays.equals(result.toArray(),integers.toArray()));
         }
         {
             ListNode n1 = new ListNode(1);
@@ -65,7 +64,7 @@ public class n12在O1时间删除链表节点 {
             n4.next=null;
             List<Integer> result = getList(deleteNode(n1,n1));
             List<Integer> integers = Arrays.asList(2,3,4);
-            TestCase.assertTrue(IntStream.rangeClosed(0,result.size()-1).allMatch(i->integers.get(i).equals(result.get(i))));
+            TestCase.assertTrue(Arrays.equals(result.toArray(),integers.toArray()));
         }
         {
             ListNode n1 = new ListNode(1);
@@ -78,7 +77,7 @@ public class n12在O1时间删除链表节点 {
             n4.next=null;
             List<Integer> result = getList(deleteNode(n1,n4));
             List<Integer> integers = Arrays.asList(1,2,3);
-            TestCase.assertTrue(IntStream.rangeClosed(0,result.size()-1).allMatch(i->integers.get(i).equals(result.get(i))));
+            TestCase.assertTrue(Arrays.equals(result.toArray(),integers.toArray()));
         }
         {
             ListNode n1 = new ListNode(1);
