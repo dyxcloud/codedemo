@@ -1,10 +1,9 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 /**
  * @author DongYunxiang
@@ -66,16 +65,16 @@ public class n05从尾到头打印链表 {
         {
             ArrayList<Integer> result = printListFromTailToHead(n1);
             List<Integer> integers = Arrays.asList(4, 3, 2, 1);
-            Assert.assertTrue(IntStream.rangeClosed(0,result.size()-1).allMatch(i->integers.get(i).equals(result.get(i))));
+            TestCase.assertTrue(Arrays.equals(result.toArray(),integers.toArray()));
         }
         {
             ArrayList<Integer> result = printListFromTailToHead(n4);
             List<Integer> integers = Collections.singletonList(4);
-            Assert.assertTrue(IntStream.rangeClosed(0,result.size()-1).allMatch(i->integers.get(i).equals(result.get(i))));
+            TestCase.assertTrue(Arrays.equals(result.toArray(),integers.toArray()));
         }
         {
             ArrayList<Integer> result = printListFromTailToHead(null);
-            Assert.assertTrue(result.isEmpty());
+            TestCase.assertTrue(result.isEmpty());
         }
     }
 
