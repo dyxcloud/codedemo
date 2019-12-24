@@ -80,15 +80,15 @@ public class n15链表中倒数第k个节点 {
         }
         {
             ListNode listNode = FindKthToTail(n1, 5);
-            TestCase.assertEquals(null,listNode);
+            TestCase.assertNull(listNode);
         }
         {
             ListNode listNode = FindKthToTail(n1, 0);
-            TestCase.assertEquals(null,listNode);
+            TestCase.assertNull(listNode);
         }
         {
             ListNode listNode = FindKthToTail(null, 1);
-            TestCase.assertEquals(null,listNode);
+            TestCase.assertNull(listNode);
         }
     }
 
@@ -145,7 +145,7 @@ public class n15链表中倒数第k个节点 {
             n5.next=n6;
             n6.next=n7;
             n7.next=null;
-            TestCase.assertTrue(!isLoop(n1));
+            TestCase.assertFalse(isLoop(n1));
         }
     }
 }
