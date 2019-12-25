@@ -14,15 +14,17 @@ import java.util.List;
 public class n16反转链表 {
 
     public ListNode ReverseList(ListNode head) {
-        ListNode l,m,r;
-        l = head;
-        m = l.next;
-        r = m.next;
+        if(head==null) return null;
+        if(head.next==null) return head;
 
-        r.next = m;
-        m.next = l;
-        l.next = null;
-        return r;
+        ListNode l=null,m = head;
+        while(m.next!=null){
+            m = head.next;
+            head.next = l;
+            l = head;
+        }
+
+        return m;
     }
 
     public List<Integer> toArray(ListNode head){
