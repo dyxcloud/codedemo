@@ -16,15 +16,14 @@ public class n16反转链表 {
     public ListNode ReverseList(ListNode head) {
         if(head==null) return null;
         if(head.next==null) return head;
-
-        ListNode l=null,m = head;
-        while(m.next!=null){
-            m = head.next;
-            head.next = l;
-            l = head;
+        ListNode l=null,m = head,r;
+        while(m!=null){
+            r = m.next;
+            m.next = l;
+            l = m;
+            m = r;
         }
-
-        return m;
+        return l;
     }
 
     public List<Integer> toArray(ListNode head){
@@ -41,10 +40,21 @@ public class n16反转链表 {
         ListNode n1 = new ListNode(1);
         ListNode n2 = new ListNode(2);
         ListNode n3 = new ListNode(3);
-        n1.next=n2;
-        n2.next=n3;
-        n3.next=null;
-        ListNode result = ReverseList(n1);
-        Assert.assertArrayEquals(new Integer[]{3, 2, 1}, toArray(result).toArray());
+        ListNode n4 = new ListNode(4);
+        {
+            n1.next=n2;
+            n2.next=n3;
+            n3.next=null;
+            ListNode result = ReverseList(n1);
+            Assert.assertArrayEquals(new Integer[]{3, 2, 1}, toArray(result).toArray());
+        }
+        {
+            n1.next=n2;
+            n2.next=n3;
+            n3.next=n4;
+            n4.next=null;
+            ListNode result = ReverseList(n1);
+            Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, toArray(result).toArray());
+        }
     }
 }
