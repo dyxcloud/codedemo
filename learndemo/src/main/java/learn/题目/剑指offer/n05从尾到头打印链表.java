@@ -15,28 +15,28 @@ public class n05从尾到头打印链表 {
     public ArrayList<Integer> printListFromTailToHead0(ListNode listNode) {
         ArrayList<Integer> ret = new ArrayList<>();
         if (listNode != null) {
-            ret.addAll(printListFromTailToHead(listNode.next));
+            ret.addAll(printListFromTailToHead0(listNode.next));
             ret.add(listNode.val);
         }
         return ret;
     }
 
     //会修改原链表
-    public ArrayList<Integer> printListFromTailToHead1(ListNode listNode) {
+    public ArrayList<Integer> printListFromTailToHead1(ListNode head) {
         // 头插法构建逆序链表
-        ListNode head = new ListNode(-1);
-        while (listNode != null) {
-            ListNode memo = listNode.next;
-            listNode.next = head.next;
-            head.next = listNode;
-            listNode = memo;
+        ListNode root = new ListNode(-1);
+        while (head != null) {
+            ListNode tmp = head.next;
+            head.next = root.next;
+            root.next = head;
+            head = tmp;
         }
         // 构建 ArrayList
         ArrayList<Integer> ret = new ArrayList<>();
-        head = head.next;
-        while (head != null) {
-            ret.add(head.val);
-            head = head.next;
+        root = root.next;
+        while (root != null) {
+            ret.add(root.val);
+            root = root.next;
         }
         return ret;
     }

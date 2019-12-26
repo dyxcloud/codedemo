@@ -13,7 +13,13 @@ import java.util.List;
 @SuppressWarnings("NonAsciiCharacters")
 public class n16反转链表 {
 
-    public ListNode ReverseList(ListNode head) {
+    /**
+     * 从头到尾遍历链表, 修改节点指向
+     * @param head
+     * @return
+     */
+    @Deprecated
+    public ListNode ReverseList_(ListNode head) {
         if(head==null) return null;
         if(head.next==null) return head;
         ListNode l=null,m = head,r;
@@ -24,6 +30,22 @@ public class n16反转链表 {
             m = r;
         }
         return l;
+    }
+
+    /**
+     * 头插法
+     * @param head
+     * @return
+     */
+    public ListNode ReverseList(ListNode head) {
+        ListNode root = new ListNode(-1);
+        while(head!=null){
+            ListNode tmp = head.next;
+            head.next = root.next;
+            root.next = head;
+            head = tmp;
+        }
+        return root.next;
     }
 
     public List<Integer> toArray(ListNode head){
