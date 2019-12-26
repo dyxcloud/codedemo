@@ -15,8 +15,6 @@ public class n16反转链表 {
 
     /**
      * 从头到尾遍历链表, 修改节点指向
-     * @param head
-     * @return
      */
     @Deprecated
     public ListNode ReverseList_(ListNode head) {
@@ -34,8 +32,6 @@ public class n16反转链表 {
 
     /**
      * 头插法
-     * @param head
-     * @return
      */
     public ListNode ReverseList(ListNode head) {
         ListNode root = new ListNode(-1);
@@ -47,6 +43,19 @@ public class n16反转链表 {
         }
         return root.next;
     }
+
+    /**
+     * 递归实现
+     */
+    public ListNode reverseListRecu(ListNode head){
+        if(head==null||head.next==null) return head;
+        ListNode next = head.next;
+        head.next = null;
+        ListNode result = reverseListRecu(next);
+        next.next = head;
+        return result;
+    }
+
 
     public List<Integer> toArray(ListNode head){
         List<Integer> list= new LinkedList<>();
@@ -67,7 +76,7 @@ public class n16反转链表 {
             n1.next=n2;
             n2.next=n3;
             n3.next=null;
-            ListNode result = ReverseList(n1);
+            ListNode result = reverseListRecu(n1);
             Assert.assertArrayEquals(new Integer[]{3, 2, 1}, toArray(result).toArray());
         }
         {
@@ -75,7 +84,7 @@ public class n16反转链表 {
             n2.next=n3;
             n3.next=n4;
             n4.next=null;
-            ListNode result = ReverseList(n1);
+            ListNode result = reverseListRecu(n1);
             Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, toArray(result).toArray());
         }
     }
