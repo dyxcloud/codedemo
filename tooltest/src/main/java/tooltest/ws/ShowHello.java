@@ -1,9 +1,9 @@
 package tooltest.ws;
 
-import javax.jws.WebService;
-import javax.xml.ws.Endpoint;
+// import javax.jws.WebService;
+// import javax.xml.ws.Endpoint;
 
-@WebService
+// @WebService
 public class ShowHello {
 
     public String show(String name){
@@ -13,7 +13,7 @@ public class ShowHello {
     public static void main(String[] args) {
         String address = "http://localhost:8080/show";
         Object s = new ShowHello();
-        Endpoint.publish(address,s);
+        // Endpoint.publish(address,s);
         System.out.println("show ws run...");
     }
 
