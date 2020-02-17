@@ -50,6 +50,7 @@
     </build>
     <modules>
         <module>tooltest</module>
+        <module>springbootdemo</module>
     </modules>
 
 </project>
