@@ -18,7 +18,9 @@ public class 最大子串 {
         max = s1.length() > s2.length() ? s1 : s2;
         min = s1.length() < s2.length() ? s1 : s2;
 
+        //外围控制子串长度, 长>短
         for (int i = 0; i < min.length(); i++) {
+            //控制子串在min中的位置, 从左到右
             for (int x = 0,y=min.length()-i; y!=min.length()+1; x++,y++) {
                 String sub=min.substring(x, y);
                 if(max.contains(sub)){
