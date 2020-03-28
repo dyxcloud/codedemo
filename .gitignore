@@ -2,4 +2,5 @@
 *.class
 *.log
 .idea
-target
+target/
+classes/
