@@ -6,6 +6,7 @@ import org.junit.Test;
  * @author DongYunxiang
  * @create 2019-05-30
  **/
+@SuppressWarnings("NonAsciiCharacters")
 public class 立方根 {
 
     public double get3(double x) {
