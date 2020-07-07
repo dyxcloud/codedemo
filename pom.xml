@@ -49,8 +49,10 @@
         </plugins>
     </build>
     <modules>
-        <module>tooltest</module>
+        <module>learndemo</module>
         <module>springbootdemo</module>
+        <module>springbootwebdemo</module>
+        <module>tooltest</module>
     </modules>
 
 </project>
