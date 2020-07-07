@@ -32,31 +32,37 @@ public class 链表求和 {
             ListNode l1 = ListNode.create(2, 4, 3);
             ListNode l2 = ListNode.create(5, 6, 4);
             Integer[] r = {7, 0, 8};
-            TestCase.assertEquals(Arrays.toString(r),Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+        }
+        {
+            ListNode l1 = ListNode.create(9, 7, 8);
+            ListNode l2 = ListNode.create(6, 8, 5);
+            Integer[] r = {5, 6, 4, 1};
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(1, 2, 3, 4, 5);
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
             Integer[] r = {2, 4, 6, 8, 0, 1};
-            TestCase.assertEquals(Arrays.toString(r),Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(1, 2, 3);
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
             Integer[] r = {2, 4, 6, 4, 5};
-            TestCase.assertEquals(Arrays.toString(r),Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
-            Integer[] r = {1,2,3,4,5};
-            TestCase.assertEquals(Arrays.toString(r),Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+            Integer[] r = {1, 2, 3, 4, 5};
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = null;
             Integer[] r = {};
-            TestCase.assertEquals(Arrays.toString(r),Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
+            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbers(l1, l2)).toArray()));
         }
     }
 
