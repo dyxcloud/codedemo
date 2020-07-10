@@ -23,7 +23,7 @@ public class TreeSearch {
      * B   C
      * D E F G
      */
-    private static Node<Character> initTree3() {
+    public static Node<Character> initTree3() {
         Node<Character> d = new Node<>('D');
         Node<Character> e = new Node<>('E');
         Node<Character> f = new Node<>('F');
@@ -35,7 +35,7 @@ public class TreeSearch {
         return new Node<>('A', b, c);
     }
 
-    private static Node<Character> initTree2(){
+    public static Node<Character> initTree2(){
         Node<Character> b = new Node<>('B');
         Node<Character> c = new Node<>('C');
         return new Node<>('A', b, c);
@@ -177,5 +177,28 @@ public class TreeSearch {
         log.clearLog();
         bfs(objectss);
         TestCase.assertEquals("ABCDEFG", log.getLog());
+    }
+
+
+    public static void printATree(Node<Character> node){
+        if(node==null) return;
+        if(node.getLeft()!=null){
+            System.out.println(node.data+" left= "+node.getLeft().data);
+        }
+        if(node.getRight()!=null){
+            System.out.println(node.data+" right= "+node.getRight().data);
+        }
+        if(node.getLeft()!=null){
+            printATree(node.getLeft());
+        }
+        if(node.getRight()!=null){
+            printATree(node.getRight());
+        }
+    }
+
+    @Test
+    public void testprint(){
+        Node<Character> node = initTree3();
+        printATree(node);
     }
 }
