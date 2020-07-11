@@ -44,9 +44,16 @@ public class 还原二叉树 {
             TreeSearch.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
-        {
-            char[] preArr = {'A', 'B', 'D', 'E', 'C', 'F', 'G'};
-            char[] inArr = {'D', 'B', 'E', 'A', 'F', 'C', 'G'};
+        {//右支和root相同
+            char[] preArr = {'A', 'B', 'D', 'E', 'C', 'A', 'G'};
+            char[] inArr = {'D', 'B', 'E', 'A', 'A', 'C', 'G'};
+            Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
+            TreeSearch.printATree(node);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        }
+        {//左支和root相同 不支持
+            char[] preArr = {'A', 'B', 'A', 'E', 'C', 'F', 'G'};
+            char[] inArr = {'A', 'B', 'E', 'A', 'F', 'C', 'G'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
             TreeSearch.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
