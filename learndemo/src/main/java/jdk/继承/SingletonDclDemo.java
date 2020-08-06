@@ -1,4 +1,4 @@
-package jdk.extend;
+package jdk.继承;
 
 /**
  * 单例模式demo,使用双重校验锁实现

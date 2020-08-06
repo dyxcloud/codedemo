@@ -1,4 +1,4 @@
-package jdk.extend;
+package jdk.继承;
 
 public class extendsDemo {
 
