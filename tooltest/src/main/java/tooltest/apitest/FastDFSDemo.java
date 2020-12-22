@@ -1,14 +1,14 @@
 package tooltest.apitest;
 
 import org.apache.commons.io.FilenameUtils;
-import org.csource.fastdfs.ClientGlobal;
+/*import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.StorageClient1;
 import org.csource.fastdfs.TrackerClient;
-import org.csource.fastdfs.TrackerServer;
+import org.csource.fastdfs.TrackerServer;*/
 
 public class FastDFSDemo {
 	
-    public String uploadToFastDfs(byte[] fileBuff, String filename) throws Exception {
+   /* public String uploadToFastDfs(byte[] fileBuff, String filename) throws Exception {
         // 1、指定FastDFS配置文件位置,初始化FastDFS配置文件
         ClientGlobal.init(this.getClass().getResource("/fdfs_client.conf").getPath());
         // 2、创建跟踪服务器客户端
@@ -51,5 +51,5 @@ public class FastDFSDemo {
 //		System.out.println(deleteFromFastDfs());
 		
 		System.out.println(FastDFSDemo.class.getClassLoader());
-	}
+	}*/
 }
