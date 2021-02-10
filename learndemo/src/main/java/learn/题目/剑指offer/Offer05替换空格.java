@@ -8,10 +8,11 @@ import org.junit.Test;
  * @create 2019-12-09
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n04替换空格 {
+public class Offer05替换空格 {
 
-    public String replaceSpace(StringBuffer str) {
-        if (str == null) return null;
+    public String replaceSpace(String s) {
+        if (s == null) return null;
+        StringBuilder str = new StringBuilder(s);
         int len = str.length();
         int count = 0;
         for (int i = 0; i < len; i++) {
@@ -37,12 +38,12 @@ public class n04替换空格 {
 
     @Test
     public void testreplace(){
-        Assert.assertEquals("We%20are%20happy.", replaceSpace(new StringBuffer("We are happy.")));
-        Assert.assertEquals("We%20%20are%20%20happy.", replaceSpace(new StringBuffer("We  are  happy.")));
-        Assert.assertEquals("Wearehappy.", replaceSpace(new StringBuffer("Wearehappy.")));
+        Assert.assertEquals("We%20are%20happy.", replaceSpace("We are happy."));
+        Assert.assertEquals("We%20%20are%20%20happy.", replaceSpace("We  are  happy."));
+        Assert.assertEquals("Wearehappy.", replaceSpace("Wearehappy."));
         Assert.assertEquals(null, replaceSpace(null));
-        Assert.assertEquals("", replaceSpace(new StringBuffer("")));
-        Assert.assertEquals("%20", replaceSpace(new StringBuffer(" ")));
-        Assert.assertEquals("%20%20%20", replaceSpace(new StringBuffer("   ")));
+        Assert.assertEquals("", replaceSpace(""));
+        Assert.assertEquals("%20", replaceSpace(" "));
+        Assert.assertEquals("%20%20%20", replaceSpace("   "));
     }
 }

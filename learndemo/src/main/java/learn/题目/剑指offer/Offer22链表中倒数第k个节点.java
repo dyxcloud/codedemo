@@ -8,13 +8,13 @@ import org.junit.Test;
  * @create 2019-12-17
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n15链表中倒数第k个节点 {
+public class Offer22链表中倒数第k个节点 {
 
     /**
      * 使用循环数组
      */
     @Deprecated
-    public ListNode FindKthToTail_(ListNode head, int k) {
+    public ListNode getKthFromEnd_(ListNode head, int k) {
         if(k<=0) return null;
         ListNode[] tmp = new ListNode[k];
         int index = 0;
@@ -41,7 +41,7 @@ public class n15链表中倒数第k个节点 {
     /**
      * 使用双指针
      */
-    public ListNode FindKthToTail(ListNode head, int k) {
+    public ListNode getKthFromEnd(ListNode head, int k) {
         if(k<=0) return null;
         ListNode i=head,j=null;
         while(i!=null){
@@ -63,31 +63,31 @@ public class n15链表中倒数第k个节点 {
         n3.next=n4;
         n4.next=null;
         {
-            ListNode listNode = FindKthToTail(n1, 2);
+            ListNode listNode = getKthFromEnd(n1, 2);
             TestCase.assertEquals(n3,listNode);
         }
         {
-            ListNode listNode = FindKthToTail(n1, 1);
+            ListNode listNode = getKthFromEnd(n1, 1);
             TestCase.assertEquals(n4,listNode);
         }
         {
-            ListNode listNode = FindKthToTail(n1, 4);
+            ListNode listNode = getKthFromEnd(n1, 4);
             TestCase.assertEquals(n1,listNode);
         }
         {
-            ListNode listNode = FindKthToTail(n1, 3);
+            ListNode listNode = getKthFromEnd(n1, 3);
             TestCase.assertEquals(n2,listNode);
         }
         {
-            ListNode listNode = FindKthToTail(n1, 5);
+            ListNode listNode = getKthFromEnd(n1, 5);
             TestCase.assertNull(listNode);
         }
         {
-            ListNode listNode = FindKthToTail(n1, 0);
+            ListNode listNode = getKthFromEnd(n1, 0);
             TestCase.assertNull(listNode);
         }
         {
-            ListNode listNode = FindKthToTail(null, 1);
+            ListNode listNode = getKthFromEnd(null, 1);
             TestCase.assertNull(listNode);
         }
     }

@@ -7,7 +7,7 @@ import org.junit.Test;
  * @create 2019-12-16
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n13打印1到最大的n位数 {
+public class Offer17打印1到最大的n位数 {
 
     public void print1ToMaxOfNDigits(int n) {
         if(n<0) throw new RuntimeException("wrong data n");

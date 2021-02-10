@@ -11,7 +11,7 @@ import java.util.List;
  * @create 2019-12-25
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n16反转链表 {
+public class Offer24反转链表 {
 
     /**
      * 从头到尾遍历链表, 修改节点指向
@@ -47,11 +47,11 @@ public class n16反转链表 {
     /**
      * 递归实现
      */
-    public ListNode reverseListRecu(ListNode head){
+    public ListNode reverseList(ListNode head){
         if(head==null||head.next==null) return head;
         ListNode next = head.next;
         head.next = null;
-        ListNode result = reverseListRecu(next);
+        ListNode result = reverseList(next);
         next.next = head;
         return result;
     }
@@ -76,7 +76,7 @@ public class n16反转链表 {
             n1.next=n2;
             n2.next=n3;
             n3.next=null;
-            ListNode result = reverseListRecu(n1);
+            ListNode result = reverseList(n1);
             Assert.assertArrayEquals(new Integer[]{3, 2, 1}, toArray(result).toArray());
         }
         {
@@ -84,7 +84,7 @@ public class n16反转链表 {
             n2.next=n3;
             n3.next=n4;
             n4.next=null;
-            ListNode result = reverseListRecu(n1);
+            ListNode result = reverseList(n1);
             Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, toArray(result).toArray());
         }
     }

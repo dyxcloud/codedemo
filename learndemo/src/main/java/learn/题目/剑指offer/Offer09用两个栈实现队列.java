@@ -12,22 +12,22 @@ import java.util.Stack;
  * @create 2019-12-10
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n07用两个栈实现队列 {
+public class Offer09用两个栈实现队列 {
 
-    class MyQueue{
+    class CQueue {
         Stack<Integer> in = new Stack<>();
         Stack<Integer> out = new Stack<>();
 
-        public void push(int node) {
+        public void appendTail(int node) {
             in.push(node);
         }
 
-        public int pop() {//out不保持空,作为输出保存区
+        public int deleteHead() {//out不保持空,作为输出保存区
             if (out.isEmpty())
                 while (!in.isEmpty())
                     out.push(in.pop());
             if (out.isEmpty())
-                throw new RuntimeException("queue is empty");
+                return -1;
             return out.pop();
         }
 
@@ -47,20 +47,20 @@ public class n07用两个栈实现队列 {
     @Test
     public void test0(){
         {
-            MyQueue queue = new MyQueue();
-            queue.push(1);
-            queue.push(2);
-            Assert.assertEquals(1,queue.pop());
-            Assert.assertEquals(2,queue.pop());
+            CQueue queue = new CQueue();
+            queue.appendTail(1);
+            queue.appendTail(2);
+            Assert.assertEquals(1,queue.deleteHead());
+            Assert.assertEquals(2,queue.deleteHead());
         }
         {
-            MyQueue queue = new MyQueue();
-            queue.push(1);
-            queue.push(3);
-            Assert.assertEquals(1,queue.pop());
-            queue.push(2);
-            Assert.assertEquals(3,queue.pop());
-            Assert.assertEquals(2,queue.pop());
+            CQueue queue = new CQueue();
+            queue.appendTail(1);
+            queue.appendTail(3);
+            Assert.assertEquals(1,queue.deleteHead());
+            queue.appendTail(2);
+            Assert.assertEquals(3,queue.deleteHead());
+            Assert.assertEquals(2,queue.deleteHead());
         }
     }
 

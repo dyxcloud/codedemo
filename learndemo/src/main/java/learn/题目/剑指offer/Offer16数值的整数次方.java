@@ -8,10 +8,10 @@ import org.junit.Test;
  * @create 2019-12-16
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class n11数值的整数次方 {
+public class Offer16数值的整数次方 {
 
     @Deprecated
-    public double Power_(double base, int exponent) {
+    public double myPow_(double base, int exponent) {
         boolean isLessThan0 = exponent<0;
         if(isLessThan0) exponent = -exponent;
         double result = 1;
@@ -21,24 +21,25 @@ public class n11数值的整数次方 {
         if(isLessThan0) result = 1/result;
         return result;
     }
-    public double Power(double base, int exponent){
+    public double myPow(double base, int exponentInt){
+        long exponent = exponentInt;
         if (exponent == 0) return 1;
-
         boolean isLessThan0 = exponent < 0;
         if (isLessThan0) exponent = -exponent;
         if (exponent == 1) return isLessThan0 ? 1 / base : base;
 
         double result;
         boolean isOdd = (exponent & 1) == 1;
-        result = Power(base * base, exponent / 2);
+        result = myPow(base * base, (int)(exponent / 2));
         if (isOdd) result = result* base;
         return isLessThan0 ? 1 / result : result;
     }
     @Test
     public void testPower(){
-        TestCase.assertEquals(9.0,Power(3,2));
-        TestCase.assertEquals(1.0/9,Power(3,-2));
-        TestCase.assertEquals(1.0,Power(3,0));
+        TestCase.assertEquals(9.0, myPow(3,2));
+        TestCase.assertEquals(1.0/9, myPow(3,-2));
+        TestCase.assertEquals(1.0, myPow(3,0));
+        TestCase.assertEquals(0.0, myPow(2.0,-2147483648));
     }
 
 
