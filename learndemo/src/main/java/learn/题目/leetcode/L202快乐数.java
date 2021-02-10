@@ -9,7 +9,7 @@ import java.util.HashSet;
  * @author DongYunxiang
  * @create 2020-07-08
  **/
-public class HappyNumber {
+public class L202快乐数 {
 
     @Test
     public void testFunc() {

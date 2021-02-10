@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 @SuppressWarnings("NonAsciiCharacters")
-public class 旋转数组189 {
+public class L189旋转数组 {
 
     @Test
     public void test1() {

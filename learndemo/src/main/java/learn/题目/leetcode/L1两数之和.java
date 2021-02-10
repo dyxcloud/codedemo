@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-public class L001TwoSum {
+public class L1两数之和 {
 
     public int[] twoSumHash(int[] nums, int target) {
         int[] result = new int[2];
