@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.other;
 
 import org.junit.Assert;
 import org.junit.Test;

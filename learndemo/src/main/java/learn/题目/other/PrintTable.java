@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.other;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ public class PrintTable {
 | slow_query_log_file | /opt/mysql/data/localhost-slow.log |
 +---------------------+------------------------------------+
      */
-    
-    
+
+
     public void printTable(Map<String, String> map) {
         int longKey = 0;
         int longValue = 0;
@@ -42,7 +42,7 @@ public class PrintTable {
         }
         System.out.println(len);
     }
-    
+
     private void printRow(String key, String value, int longKey, int longValue) {
         System.out.print("|");
         printCell(key, longKey);
@@ -50,14 +50,14 @@ public class PrintTable {
         printCell(value, longValue);
         System.out.print("|\r\n");
     }
-    
+
     private void printCell(String str,int length) {
         System.out.print(" " + str);
         int n = length - str.length();
         for (int i = 0; i < n; i++) System.out.print(" ");
         System.out.print(" ");
     }
-    
+
     public static void main(String[] args) {
         PrintTable table = new PrintTable();
         HashMap<String, String> map = new HashMap<String,String>();

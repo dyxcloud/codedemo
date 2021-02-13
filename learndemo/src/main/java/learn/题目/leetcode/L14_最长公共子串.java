@@ -1,10 +1,10 @@
-package learn.题目;
+package learn.题目.leetcode;
 
 /**
  * @author DongYunxiang
  * @create 2019-04-15
  **/
-public class 最大子串 {
+public class L14_最长公共子串 {
 
     public static void main(String[] args) {
         String s1 = "abcdefg";

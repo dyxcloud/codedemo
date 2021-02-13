@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.leetcode;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class 回文数 {

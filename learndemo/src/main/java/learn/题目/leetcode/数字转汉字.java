@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.leetcode;
 
 import org.junit.Assert;
 import org.junit.Test;

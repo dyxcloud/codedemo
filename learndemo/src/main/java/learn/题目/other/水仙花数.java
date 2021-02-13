@@ -1,10 +1,17 @@
-package learn.题目;
+package learn.题目.other;
+
+import org.junit.Test;
 
 /**
  * @author DongYunxiang
  * @create 2019-04-15
  **/
 public class 水仙花数 {
+
+    @Test
+    public void ttt(){
+        m1();
+    }
 
     void m1() {
         int x = 99999999;//遍历10~99999999中的自幂数
