@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-13
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer15二进制中1的个数 {
+public class Of15二进制中1的个数 {
 
     @Deprecated
     public int hammingWeight1(int n) {

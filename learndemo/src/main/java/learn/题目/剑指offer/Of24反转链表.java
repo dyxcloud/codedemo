@@ -11,7 +11,7 @@ import java.util.List;
  * @create 2019-12-25
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer24反转链表 {
+public class Of24反转链表 {
 
     /**
      * 从头到尾遍历链表, 修改节点指向

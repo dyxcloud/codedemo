@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-17
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer22链表中倒数第k个节点 {
+public class Of22链表中倒数第k个节点 {
 
     /**
      * 使用循环数组

@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @create 2019-12-17
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer21调整数组顺序使奇数位于偶数前面 {
+public class Of21调整数组顺序使奇数位于偶数前面 {
 
     /**
      * 不保留原先相对位置

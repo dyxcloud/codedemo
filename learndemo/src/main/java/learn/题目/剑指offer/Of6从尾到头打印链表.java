@@ -10,7 +10,7 @@ import java.util.*;
  * @create 2019-12-09
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer06从尾到头打印链表 {
+public class Of6从尾到头打印链表 {
 
     public ArrayList<Integer> reversePrint0(ListNode listNode) {
         ArrayList<Integer> ret = new ArrayList<>();

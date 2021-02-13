@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-16
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer16数值的整数次方 {
+public class Of16数值的整数次方 {
 
     @Deprecated
     public double myPow_(double base, int exponent) {

@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @create 2019-12-11
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer10斐波那契数列 {
+public class Of10斐波那契数列 {
 
     HashMap<Integer,Integer> cache = new HashMap<>();
     @Deprecated

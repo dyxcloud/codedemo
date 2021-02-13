@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-10
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer11旋转数组的最小数字 {
+public class Of11旋转数组的最小数字 {
 
 
     public int minArray(int[] arr) {

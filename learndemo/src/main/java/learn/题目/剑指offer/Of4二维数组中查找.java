@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-06
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer04二维数组中查找 {
+public class Of4二维数组中查找 {
 
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
         if(matrix==null||matrix.length==0||matrix[0].length==0)

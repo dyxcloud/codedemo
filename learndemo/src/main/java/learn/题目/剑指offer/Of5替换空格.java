@@ -8,7 +8,7 @@ import org.junit.Test;
  * @create 2019-12-09
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer05替换空格 {
+public class Of5替换空格 {
 
     public String replaceSpace(String s) {
         if (s == null) return null;

@@ -12,7 +12,7 @@ import java.util.List;
  * @create 2019-12-09
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer07重建二叉树 {
+public class Of7重建二叉树 {
 
     public TreeNode buildTree(int [] preorder, int [] inorder) {
         if (preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0) return null;

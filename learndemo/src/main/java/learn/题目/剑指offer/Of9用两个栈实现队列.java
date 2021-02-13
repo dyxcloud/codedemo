@@ -12,7 +12,7 @@ import java.util.Stack;
  * @create 2019-12-10
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class Offer09用两个栈实现队列 {
+public class Of9用两个栈实现队列 {
 
     class CQueue {
         Stack<Integer> in = new Stack<>();
