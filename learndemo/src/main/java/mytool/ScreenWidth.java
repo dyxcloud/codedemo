@@ -1,6 +1,6 @@
 package mytool;
 
-import learn.题目.表达式求值;
+import learn.题目.other.中缀表达式求值;
 import org.junit.Test;
 
 /**
@@ -21,7 +21,7 @@ public class ScreenWidth {
 
         public void setRatio(String ratio) {
             this.ratio = ratio;
-            r = 表达式求值.get(ratio);
+            r = 中缀表达式求值.get(ratio);
             //(ratio^2 + 1)^(1/2)
             rl = Math.sqrt(r*r+1);
         }

@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.other;
 
 @SuppressWarnings("ALL")
 public class 统计字符出现次数 {
@@ -7,7 +7,7 @@ public class 统计字符出现次数 {
 		String s = "======="; // 待统计字符串
 		getMostInStr(s);
 	}
-	
+
 	/**
 	 * 获得字符串中出现次数最多的字符
 	 * @param s

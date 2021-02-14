@@ -1,4 +1,4 @@
-package learn.题目;
+package learn.题目.other;
 
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * @create 2019-04-03
  **/
 @SuppressWarnings("NonAsciiCharacters")
-public class 表达式求值 {
+public class 中缀表达式求值 {
 
 
     private static final List<Character> symbolPer = Arrays.asList('{', '[', '(');
