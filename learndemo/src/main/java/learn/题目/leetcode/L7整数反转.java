@@ -4,10 +4,6 @@ package learn.题目.leetcode;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author DongYunxiang
  * @create 2021-02-19
