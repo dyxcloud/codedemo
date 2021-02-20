@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import static learn.题目.剑指offer.ListNode.getList;
+
 /**
  * @author DongYunxiang
  * @create 2019-12-162222222222
@@ -29,14 +31,6 @@ public class n12在O1时间删除链表节点 {
             }
         }
         return head;
-    }
-    public List<Integer> getList(ListNode head){
-        LinkedList<Integer> list = new LinkedList<>();
-        while(head!=null){
-            list.add(head.val);
-            head=head.next;
-        }
-        return list;
     }
     @Test
     public void testdelete(){

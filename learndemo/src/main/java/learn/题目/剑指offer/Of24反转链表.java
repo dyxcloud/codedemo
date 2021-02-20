@@ -57,15 +57,6 @@ public class Of24反转链表 {
     }
 
 
-    public List<Integer> toArray(ListNode head){
-        List<Integer> list= new LinkedList<>();
-        while(head!=null){
-            list.add(head.val);
-            head = head.next;
-        }
-        return list;
-    }
-
     @Test
     public void testlist(){
         ListNode n1 = new ListNode(1);
@@ -77,7 +68,7 @@ public class Of24反转链表 {
             n2.next=n3;
             n3.next=null;
             ListNode result = reverseList(n1);
-            Assert.assertArrayEquals(new Integer[]{3, 2, 1}, toArray(result).toArray());
+            Assert.assertArrayEquals(new Integer[]{3, 2, 1}, ListNode.getList(result).toArray());
         }
         {
             n1.next=n2;
@@ -85,7 +76,7 @@ public class Of24反转链表 {
             n3.next=n4;
             n4.next=null;
             ListNode result = reverseList(n1);
-            Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, toArray(result).toArray());
+            Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, ListNode.getList(result).toArray());
         }
     }
 }
