@@ -20,17 +20,27 @@ public class L35搜索插入顺序 {
 
     public int searchInsert(int[] nums, int target) {
         int l = 0, r = nums.length - 1;
-        while (l < r) {
+        while (l <= r) {
             int m = l + (r - l) / 2;
             if (nums[m] == target) {
                 return m;
             } else if (nums[m] > target) {
-                r = m;
+                if (nums[m - 1] < target) {
+                    return m;
+                }
+                r = m - 1;
             } else {
-                l = m;
+                if (nums[m + 1] > target) {
+                    return m + 1;
+                }
+                l = m + 1;
             }
         }
-        return -1;
+        if (target < nums[0]) {
+            return 0;
+        } else {
+            return nums.length;
+        }
     }
 
     @Test
@@ -39,6 +49,7 @@ public class L35搜索插入顺序 {
         TestCase.assertEquals(1, searchInsert(new int[]{1, 3, 5, 6}, 2));
         TestCase.assertEquals(4, searchInsert(new int[]{1, 3, 5, 6}, 7));
         TestCase.assertEquals(0, searchInsert(new int[]{1, 3, 5, 6}, 0));
+        TestCase.assertEquals(0, searchInsert(new int[]{1}, 1));
     }
 
 }
