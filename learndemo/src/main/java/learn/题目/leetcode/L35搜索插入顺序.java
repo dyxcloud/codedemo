@@ -24,16 +24,17 @@ public class L35搜索插入顺序 {
             int m = l + (r - l) / 2;
             if (nums[m] == target) {
                 return m;
-            } else if (nums[m] > target) {
-                if (nums[m - 1] < target) {
+            }
+            if (nums[m] > target) {
+                r = m - 1;
+                if (r >= 0 && nums[r] < target) {
                     return m;
                 }
-                r = m - 1;
             } else {
-                if (nums[m + 1] > target) {
-                    return m + 1;
-                }
                 l = m + 1;
+                if (l < nums.length && nums[l] > target) {
+                    return l;
+                }
             }
         }
         if (target < nums[0]) {
@@ -43,13 +44,18 @@ public class L35搜索插入顺序 {
         }
     }
 
+    interface SearchFunc {
+        int searchInsert(int[] nums, int target);
+    }
+
     @Test
     public void tt() {
-        TestCase.assertEquals(2, searchInsert(new int[]{1, 3, 5, 6}, 5));
-        TestCase.assertEquals(1, searchInsert(new int[]{1, 3, 5, 6}, 2));
-        TestCase.assertEquals(4, searchInsert(new int[]{1, 3, 5, 6}, 7));
-        TestCase.assertEquals(0, searchInsert(new int[]{1, 3, 5, 6}, 0));
-        TestCase.assertEquals(0, searchInsert(new int[]{1}, 1));
+        SearchFunc func = this::searchInsert;
+        TestCase.assertEquals(2, func.searchInsert(new int[]{1, 3, 5, 6}, 5));
+        TestCase.assertEquals(1, func.searchInsert(new int[]{1, 3, 5, 6}, 2));
+        TestCase.assertEquals(4, func.searchInsert(new int[]{1, 3, 5, 6}, 7));
+        TestCase.assertEquals(0, func.searchInsert(new int[]{1, 3, 5, 6}, 0));
+        TestCase.assertEquals(0, func.searchInsert(new int[]{1}, 1));
     }
 
 }
