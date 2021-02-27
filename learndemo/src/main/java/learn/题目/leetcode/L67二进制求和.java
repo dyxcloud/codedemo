@@ -15,10 +15,14 @@ public class L67二进制求和 {
             longChars = b.toCharArray();
         }
         int pre = 0;
-        for (int is = shortChars.length - 1, il = is + (longChars.length - shortChars.length);
-             is >= 0;
-             is--, il--) {
-            int s = shortChars[is] == '1' ? 1 : 0;
+        for (int is = shortChars.length - 1, il = longChars.length - 1; il >= 0; il--) {
+            int s;
+            if (is >= 0) {
+                s = shortChars[is] == '1' ? 1 : 0;
+                is--;
+            } else {
+                s = 0;
+            }
             int l = longChars[il] == '1' ? 1 : 0;
             int sum = pre + s + l;
             switch (sum) {
@@ -37,24 +41,6 @@ public class L67二进制求和 {
                 case 3:
                     pre = 1;
                     longChars[il] = '1';
-                    break;
-            }
-        }
-        for (int il = longChars.length - shortChars.length - 1; il >= 0; il--) {
-            int l = longChars[il] == '1' ? 1 : 0;
-            int sum = pre + l;
-            switch (sum) {
-                case 0:
-                    pre = 0;
-                    longChars[il] = '0';
-                    break;
-                case 1:
-                    pre = 0;
-                    longChars[il] = '1';
-                    break;
-                case 2:
-                    pre = 1;
-                    longChars[il] = '0';
                     break;
             }
         }
