@@ -56,13 +56,36 @@ public class L101对称二叉树 {
         return ql.isEmpty() && qr.isEmpty();
     }
 
+    //迭代 一个队列
+    public boolean isSymmetric2(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>(Arrays.asList(root.left, root.right));
+        while (!q.isEmpty()) {
+            TreeNode pl = q.poll();
+            TreeNode pr = q.poll();
+            if (pl == null && pr == null) {
+                continue;
+            }
+            if (pl == null || pr == null) {
+                return false;
+            }
+            if (pl.val != pr.val) {
+                return false;
+            }
+            q.offer(pl.left);
+            q.offer(pr.right);
+            q.offer(pl.right);
+            q.offer(pr.left);
+        }
+        return true;
+    }
+
     interface Func {
         boolean isSymmetric(TreeNode root);
     }
 
     @Test
     public void ttt() {
-        Func f = this::isSymmetric1;
+        Func f = this::isSymmetric2;
         {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, new TreeNode(3), new TreeNode(4))
