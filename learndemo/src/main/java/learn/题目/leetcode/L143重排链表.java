@@ -15,16 +15,9 @@ public class L143重排链表 {
         //快慢指针获取中点
         ListNode fast = head;
         ListNode slow = head;
-        while (fast != null) {
-            if (fast.next != null) {
-                fast = fast.next.next;
-                slow = slow.next;
-                if (fast != null && fast.next != null && fast.next.next == null) {
-                    break;
-                }
-            } else {
-                fast = null;
-            }
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
         ListNode secondHead = slow.next;
         slow.next = null;
@@ -39,7 +32,7 @@ public class L143重排链表 {
         }
         secondHead = dummyHead.next;
         //双指针合并
-        while (secondHead != null) {
+        while (head != null && secondHead != null) {
             ListNode firstNext = head.next;
             ListNode secondNext = secondHead.next;
             head.next = secondHead;
