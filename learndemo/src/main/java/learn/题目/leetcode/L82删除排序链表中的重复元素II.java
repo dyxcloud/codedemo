@@ -9,6 +9,9 @@ import java.util.Collections;
 
 public class L82删除排序链表中的重复元素II {
 
+    //解法0 第一次遍历记录重复节点 第二次遍历删除重复节点
+
+    //解法1 双指针
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
