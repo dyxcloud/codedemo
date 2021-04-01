@@ -11,38 +11,31 @@ public class L1006笨阶乘 {
         if (N <= 0) {
             return 0;
         }
-        if(N==1){
+        if (N == 1) {
             return 1;
         }
         int result = 0;
         int subResult = N--;
         int index = 0;
         while (N > 0) {
-            char oper = operators[index%4];
-            switch (oper){
+            char oper = operators[index % 4];
+            switch (oper) {
                 case '-':
                     subResult = -N;
-                    if(N==1){
-                        return result+subResult;
-                    }
                     break;
                 case '*':
-                    subResult*=N;
-                    if(N==1){
-                        return result+subResult;
-                    }
+                    subResult *= N;
                     break;
                 case '/':
-                    subResult/=N;
-                    if(N==1){
-                        return result+subResult;
-                    }
+                    subResult /= N;
                     break;
                 case '+':
-                    result+=subResult;
-                    result+=N;
-                    subResult = 1;
+                    result += subResult;
+                    result += N;
                     break;
+            }
+            if (N == 1 && oper != '+') {
+                return result + subResult;
             }
             index++;
             N--;
