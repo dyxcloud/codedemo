@@ -3,11 +3,13 @@ package learn.题目.leetcode;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.util.function.IntUnaryOperator;
+
 public class L1006笨阶乘 {
 
     final char[] operators = {'*', '/', '+', '-'};
 
-    public int clumsy(int N) {
+    public int clumsy0(int N) {
         if (N <= 0) {
             return 0;
         }
@@ -43,10 +45,29 @@ public class L1006笨阶乘 {
         return result;
     }
 
+    //四次操作策略不同, 所以迭代的步进应该为4, 迭代内部一次性处理*/+-
+    public int clumsy(int N) {
+        if (N == 3) {
+            return 6;
+        } else if (N <= 2) {
+            return N;
+        }
+        int result = 0;
+        result += (N * (N - 1) / (N - 2) + (N - 3));
+        N -= 4;
+        while (N >= 4) {
+            result += (-N * (N - 1) / (N - 2) + (N - 3));
+            N -= 4;
+        }
+        return result - clumsy(N);
+    }
+
+
     @Test
     public void tt() {
-        TestCase.assertEquals(7, clumsy(4));
-        TestCase.assertEquals(12, clumsy(10));
-        TestCase.assertEquals(1, clumsy(1));
+        IntUnaryOperator f = this::clumsy;
+        TestCase.assertEquals(7, f.applyAsInt(4));
+        TestCase.assertEquals(12, f.applyAsInt(10));
+        TestCase.assertEquals(1, f.applyAsInt(1));
     }
 }
