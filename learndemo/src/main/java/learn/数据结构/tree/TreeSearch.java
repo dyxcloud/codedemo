@@ -9,6 +9,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Optional;
+import java.util.Queue;
 
 /**
  * 树的遍历,深度优先/广度优先
@@ -61,28 +62,30 @@ public class TreeSearch {
     }
 
     //迭代遍历二叉树
+    //先后将右子树和左子放入栈中，利用栈后入先出的原理遍历。
     public static void dfsPreOrder2(Node root) {
         Deque<Node> stack = new ArrayDeque<>();
         stack.push(root);
         while (!stack.isEmpty()) {
-            Node node = stack.removeFirst();
+            Node node = stack.pop();
             System.out.print(node.data);
-            Optional.ofNullable(node.right).ifPresent(stack::addFirst);
-            Optional.ofNullable(node.left).ifPresent(stack::addFirst);
+            Optional.ofNullable(node.right).ifPresent(stack::push);
+            Optional.ofNullable(node.left).ifPresent(stack::push);
         }
     }
 
+    //循环左子数，将右子树放入栈中。左子树为空时，依次弹栈，从最下层开始访问右子树
     public static void dfsPreOrder3(Node root) {
         Deque<Node> stack = new ArrayDeque<>();
         Node node = root;
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
                 System.out.print(node.data);
-                stack.addFirst(node);//已打印的放进stack
+                stack.push(node);//已打印的放进stack
                 node = node.left;
             }
             if (!stack.isEmpty()) {
-                node = stack.removeFirst();//拿出此节点的右节点
+                node = stack.pop();//拿出此节点的右节点
                 node = node.right;
             }
         }
@@ -115,11 +118,11 @@ public class TreeSearch {
         Node node = root;
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
-                stack.addFirst(node);//依次压栈到树的最左端
+                stack.push(node);//依次压栈到树的最左端
                 node = node.left;
             }
             if (!stack.isEmpty()) {
-                node = stack.removeFirst();
+                node = stack.pop();
                 System.out.print(node.data);
                 node = node.right;
             }
@@ -169,22 +172,22 @@ public class TreeSearch {
      * defg 弹出c,添加fg
      * 依次弹出
      */
-    public static void bfs(Deque<Node> deque) {
+    public static void bfs(Node root) {
+        Queue<Node> deque = new ArrayDeque<>();
+        deque.offer(root);
         while (!deque.isEmpty()) {
-            Node node = deque.removeFirst();
+            Node node = deque.poll();
             System.out.print(node.data);
-            Optional.ofNullable(node.left).ifPresent(deque::addLast);
-            Optional.ofNullable(node.right).ifPresent(deque::addLast);
+            Optional.ofNullable(node.left).ifPresent(deque::offer);
+            Optional.ofNullable(node.right).ifPresent(deque::offer);
         }
     }
 
     @Test
     public void testBfs() {
         System.out.println("\n广度优先");
-        Deque<Node> objectss = new ArrayDeque<>();
-        objectss.push(root);
         log.clearLog();
-        bfs(objectss);
+        bfs(root);
         TestCase.assertEquals("ABCDEFG", log.getLog());
     }
 
