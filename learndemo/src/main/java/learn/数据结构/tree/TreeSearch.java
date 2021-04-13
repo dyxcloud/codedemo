@@ -80,13 +80,12 @@ public class TreeSearch {
         Node node = root;
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
-                System.out.print(node.data);
-                stack.push(node);//已打印的放进stack
-                node = node.left;
+                System.out.print(node.data);//打印
+                stack.push(node);//结点压栈(需要用right)
+                node = node.left;//读取left
             }
             if (!stack.isEmpty()) {
-                node = stack.pop();//拿出此节点的右节点
-                node = node.right;
+                node = stack.pop().right;//读取right
             }
         }
     }
