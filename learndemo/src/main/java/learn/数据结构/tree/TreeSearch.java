@@ -35,7 +35,7 @@ public class TreeSearch {
         return new Node<>('A', b, c);
     }
 
-    public static Node<Character> initTree2(){
+    public static Node<Character> initTree2() {
         Node<Character> b = new Node<>('B');
         Node<Character> c = new Node<>('C');
         return new Node<>('A', b, c);
@@ -52,9 +52,12 @@ public class TreeSearch {
     }
 
     public static void dfsPreOrder1(Node node) {
+        if (node == null) {
+            return;
+        }
         System.out.print(node.data);
-        if (node.getLeft() != null) dfsPreOrder1(node.getLeft());
-        if (node.getRight() != null) dfsPreOrder1(node.getRight());
+        dfsPreOrder1(node.left);
+        dfsPreOrder1(node.right);
     }
 
     //迭代遍历二叉树
@@ -64,23 +67,23 @@ public class TreeSearch {
         while (!stack.isEmpty()) {
             Node node = stack.removeFirst();
             System.out.print(node.data);
-            Optional.ofNullable(node.getRight()).ifPresent(stack::addFirst);
-            Optional.ofNullable(node.getLeft()).ifPresent(stack::addFirst);
+            Optional.ofNullable(node.right).ifPresent(stack::addFirst);
+            Optional.ofNullable(node.left).ifPresent(stack::addFirst);
         }
     }
 
-    public static void dfsPreOrder3(Node root){
+    public static void dfsPreOrder3(Node root) {
         Deque<Node> stack = new ArrayDeque<>();
         Node node = root;
-        while(!stack.isEmpty()||node!=null){
-            while(node!=null){
+        while (!stack.isEmpty() || node != null) {
+            while (node != null) {
                 System.out.print(node.data);
                 stack.addFirst(node);//已打印的放进stack
-                node = node.getLeft();
+                node = node.left;
             }
-            if(!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 node = stack.removeFirst();//拿出此节点的右节点
-                node = node.getRight();
+                node = node.right;
             }
         }
     }
@@ -99,23 +102,26 @@ public class TreeSearch {
 
     //中序遍历的特性显示他遍历一个有序二叉树时总是升序
     public static void dfsInOrder1(Node node) {
-        if (node.getLeft() != null) dfsInOrder1(node.getLeft());
+        if (node == null) {
+            return;
+        }
+        dfsInOrder1(node.left);
         System.out.print(node.data);
-        if (node.getRight() != null) dfsInOrder1(node.getRight());
+        dfsInOrder1(node.right);
     }
 
     public static void dfsInOrder2(Node root) {
         Deque<Node> stack = new ArrayDeque<>();
         Node node = root;
-        while(!stack.isEmpty()||node!=null){
-            while(node!=null){
+        while (!stack.isEmpty() || node != null) {
+            while (node != null) {
                 stack.addFirst(node);//依次压栈到树的最左端
-                node = node.getLeft();
+                node = node.left;
             }
-            if(!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 node = stack.removeFirst();
                 System.out.print(node.data);
-                node = node.getRight();
+                node = node.right;
             }
         }
     }
@@ -132,8 +138,11 @@ public class TreeSearch {
     }
 
     public static void dfsPostOrder1(Node node) {
-        if (node.getLeft() != null) dfsPostOrder1(node.getLeft());
-        if (node.getRight() != null) dfsPostOrder1(node.getRight());
+        if (node == null) {
+            return;
+        }
+        dfsPostOrder1(node.left);
+        dfsPostOrder1(node.right);
         System.out.print(node.data);
     }
 
@@ -161,11 +170,11 @@ public class TreeSearch {
      * 依次弹出
      */
     public static void bfs(Deque<Node> deque) {
-        while(!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             Node node = deque.removeFirst();
             System.out.print(node.data);
-            Optional.ofNullable(node.getLeft()).ifPresent(deque::addLast);
-            Optional.ofNullable(node.getRight()).ifPresent(deque::addLast);
+            Optional.ofNullable(node.left).ifPresent(deque::addLast);
+            Optional.ofNullable(node.right).ifPresent(deque::addLast);
         }
     }
 
@@ -180,24 +189,24 @@ public class TreeSearch {
     }
 
 
-    public static void printATree(Node<Character> node){
-        if(node==null) return;
-        if(node.getLeft()!=null){
-            System.out.println(node.data+" left= "+node.getLeft().data);
+    public static void printATree(Node<Character> node) {
+        if (node == null) return;
+        if (node.left != null) {
+            System.out.println(node.data + " left= " + node.left.data);
         }
-        if(node.getRight()!=null){
-            System.out.println(node.data+" right= "+node.getRight().data);
+        if (node.right != null) {
+            System.out.println(node.data + " right= " + node.right.data);
         }
-        if(node.getLeft()!=null){
-            printATree(node.getLeft());
+        if (node.left != null) {
+            printATree(node.left);
         }
-        if(node.getRight()!=null){
-            printATree(node.getRight());
+        if (node.right != null) {
+            printATree(node.right);
         }
     }
 
     @Test
-    public void testprint(){
+    public void testprint() {
         Node<Character> node = initTree3();
         printATree(node);
     }

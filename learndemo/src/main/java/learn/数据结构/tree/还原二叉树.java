@@ -85,8 +85,8 @@ public class 还原二叉树 {
         System.arraycopy(preArr, 1, preLArr, 0, preLArr.length);
         System.arraycopy(preArr, 1 + preLArr.length, preRArr, 0, preRArr.length);
         //递归处理左右子数组,并赋值到根数组
-        rootNode.setLeft(recoveryTreeByPreAndIn(preLArr, inLArr));
-        rootNode.setRight(recoveryTreeByPreAndIn(preRArr, inRArr));
+        rootNode.left = recoveryTreeByPreAndIn(preLArr, inLArr);
+        rootNode.right = recoveryTreeByPreAndIn(preRArr, inRArr);
         return rootNode;
     }
 
