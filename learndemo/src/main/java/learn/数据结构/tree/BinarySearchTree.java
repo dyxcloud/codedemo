@@ -191,7 +191,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         insert321546(tree);
         Deque<Node<Integer>> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
-        TreeSearch.dfsInOrder1(tree.getRoot());
     }
 
     @Test
@@ -254,5 +253,21 @@ class Node<T extends Comparable<T>> {
     @Override
     public String toString() {
         return "Node{data=" + data + '}';
+    }
+
+    public static void printATree(Node<Character> node) {
+        if (node == null) return;
+        if (node.left != null) {
+            System.out.println(node.data + " left= " + node.left.data);
+        }
+        if (node.right != null) {
+            System.out.println(node.data + " right= " + node.right.data);
+        }
+        if (node.left != null) {
+            printATree(node.left);
+        }
+        if (node.right != null) {
+            printATree(node.right);
+        }
     }
 }
