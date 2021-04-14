@@ -12,33 +12,20 @@ import java.util.function.BiFunction;
  **/
 public class L160相交链表 {
 
+    // 501xyz41xyz
+    // 41xyz501xyz
+    //两条链表相加长度一定相等, 第一个相同位置的值相等的结点就是交点
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;
         }
-        if (headA == headB) {
-            return headA;
+        ListNode a = headA;
+        ListNode b = headB;
+        while (a != b) {
+            a = a == null ? headB : a.next;
+            b = b == null ? headA : b.next;
         }
-        ListNode n1 = headA;
-        while (n1.next != null) {
-            n1 = n1.next;
-        }
-        n1.next = headB;
-        ListNode fast = headA;
-        ListNode result = null;
-        while (fast != null) {
-            if (fast.next == null) {
-                break;
-            }
-            fast = fast.next.next;
-            headA = headA.next;
-            if (fast == headA) {
-                result = headA;
-                break;
-            }
-        }
-        n1.next = null;
-        return result;
+        return a;
     }
 
     @Test
