@@ -47,14 +47,47 @@ public class L155最小栈 {
         }
     }
 
-    //TODO 辅助栈
+    //辅助栈
+    public static class MinStack1{
+
+        Deque<Integer> stack;
+        Deque<Integer> getMinStack;
+
+        public MinStack1() {
+            stack = new ArrayDeque<>();
+            getMinStack = new ArrayDeque<>();
+        }
+
+        public void push(int val) {
+
+            if (getMinStack.isEmpty()) {
+                getMinStack.push(val);
+            } else {
+                getMinStack.push(Math.min(getMinStack.peek(),val));
+            }
+            stack.push(val);
+        }
+
+        public void pop() {
+            Integer pop = stack.pop();
+            getMinStack.pop();
+        }
+
+        public int top() {
+            return stack.peek();
+        }
+
+        public int getMin() {
+            return getMinStack.peek();
+        }
+    }
 
     //头插 辅助属性
 
     @Test
     public void ttt() {
         {
-            MinStack minStack = new MinStack();
+            MinStack1 minStack = new MinStack1();
             minStack.push(-2);
             minStack.push(0);
             minStack.push(-3);
@@ -64,7 +97,7 @@ public class L155最小栈 {
             TestCase.assertEquals(-2, minStack.getMin());
         }
         {
-            MinStack minStack = new MinStack();
+            MinStack1 minStack = new MinStack1();
             minStack.push(512);
             minStack.push(-1024);
             minStack.push(-1024);
