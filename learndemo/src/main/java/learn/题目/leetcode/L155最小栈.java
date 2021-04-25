@@ -9,7 +9,7 @@ import java.util.Deque;
 public class L155最小栈 {
 
     //记录最小值
-    public static class MinStack{
+    public static class MinStack {
 
         Deque<Integer> stack;
         Integer min;
@@ -48,7 +48,7 @@ public class L155最小栈 {
     }
 
     //辅助栈
-    public static class MinStack1{
+    public static class MinStack1 {
 
         Deque<Integer> stack;
         Deque<Integer> getMinStack;
@@ -63,7 +63,7 @@ public class L155最小栈 {
             if (getMinStack.isEmpty()) {
                 getMinStack.push(val);
             } else {
-                getMinStack.push(Math.min(getMinStack.peek(),val));
+                getMinStack.push(Math.min(getMinStack.peek(), val));
             }
             stack.push(val);
         }
@@ -83,11 +83,50 @@ public class L155最小栈 {
     }
 
     //头插 辅助属性
+    public static class MinStack2 {
+
+        MinNode top;
+
+        public MinStack2() {
+        }
+
+        public void push(int val) {
+            if (top == null) {
+                top = new MinNode(val, val, null);
+            } else {
+                top = new MinNode(val, Math.min(top.min, val), top);
+            }
+        }
+
+        public void pop() {
+            top = top.next;
+        }
+
+        public int top() {
+            return top.val;
+        }
+
+        public int getMin() {
+            return top.min;
+        }
+
+        class MinNode {
+            int val;
+            int min;
+            MinNode next;
+
+            public MinNode(int val, int min, MinNode next) {
+                this.val = val;
+                this.min = min;
+                this.next = next;
+            }
+        }
+    }
 
     @Test
     public void ttt() {
         {
-            MinStack1 minStack = new MinStack1();
+            MinStack2 minStack = new MinStack2();
             minStack.push(-2);
             minStack.push(0);
             minStack.push(-3);
@@ -97,7 +136,7 @@ public class L155最小栈 {
             TestCase.assertEquals(-2, minStack.getMin());
         }
         {
-            MinStack1 minStack = new MinStack1();
+            MinStack2 minStack = new MinStack2();
             minStack.push(512);
             minStack.push(-1024);
             minStack.push(-1024);
