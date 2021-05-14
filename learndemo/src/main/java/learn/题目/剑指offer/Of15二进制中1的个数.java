@@ -3,6 +3,8 @@ package learn.题目.剑指offer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.function.IntUnaryOperator;
+
 /**
  * @author DongYunxiang
  * @create 2019-12-13
@@ -18,20 +20,27 @@ public class Of15二进制中1的个数 {
         }
         return result;
     }
+
     public int hammingWeight(int n) {
         int result = 0;
-        while(n!=0){
-            n = n & (n-1);//操作后消去最低位的1
+        while (n != 0) {
+            n = n & (n - 1);//操作后消去最低位的1
             result++;
         }
         return result;
     }
+
+    public int hammingWeight2(int n) {
+        return Integer.bitCount(n);
+    }
+
     @Test
-    public void testNumberOf1(){
-        Assert.assertEquals(2, hammingWeight(9));
-        Assert.assertEquals(1, hammingWeight(-2147483648));
-        Assert.assertEquals(32, hammingWeight(-1));
-        Assert.assertEquals(0, hammingWeight(0));
+    public void testNumberOf1() {
+        IntUnaryOperator f = this::hammingWeight2;
+        Assert.assertEquals(2, f.applyAsInt(9));
+        Assert.assertEquals(1, f.applyAsInt(-2147483648));
+        Assert.assertEquals(32, f.applyAsInt(-1));
+        Assert.assertEquals(0, f.applyAsInt(0));
     }
 
 }
