@@ -14,6 +14,7 @@ import java.util.function.ToIntFunction;
  **/
 public class L543二叉树的直径 {
 
+    //遍历树, 求出每一个node的直径
     static class Solution1 {
 
         int max = 0;
@@ -22,16 +23,18 @@ public class L543二叉树的直径 {
             if (root == null || (root.left == null && root.right == null)) {
                 return 0;
             }
-            max = Math.max(length(root), max);
-            diameterOfBinaryTree(root.left);
-            diameterOfBinaryTree(root.right);
+            length(root);
             return max;
         }
 
         //经过根节点的直径
         public int length(TreeNode node) {
+            if(node==null) return 0;
             int l = maxDepth(node.left);
             int r = maxDepth(node.right);
+            max = Math.max(l+r, max);
+            length(node.left);
+            length(node.right);
             return l + r;
         }
 
@@ -55,9 +58,35 @@ public class L543二叉树的直径 {
         }
     }
 
+    //优化, 计算深度的时候已经可以求出节点的直径
+    static class Solution10 {
+
+        int max = 0;
+
+        public int diameterOfBinaryTree(TreeNode root) {
+            maxDepth(root);
+            return max;
+        }
+
+        //最大深度
+        public int maxDepth(TreeNode node) {
+            if (node == null) {
+                return 0;
+            }
+            if (node.left == null && node.right == null) {
+                return 1;
+            }
+            int l = maxDepth(node.left);
+            int r = maxDepth(node.right);
+            //同时求出这个node的直径
+            max = Math.max(max, l + r);
+            return 1 + Math.max(l, r);
+        }
+    }
+
     @Test
     public void ttt() {
-        ToIntFunction<TreeNode> f = new Solution1()::diameterOfBinaryTree;
+        ToIntFunction<TreeNode> f = new Solution10()::diameterOfBinaryTree;
         {
             TreeNode root = new TreeNode(2
                     , new TreeNode(3, new TreeNode(4), null)
