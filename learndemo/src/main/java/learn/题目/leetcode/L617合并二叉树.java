@@ -13,7 +13,20 @@ import java.util.function.BiFunction;
 public class L617合并二叉树 {
 
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-        return null;
+        if (root1 == null && root2 == null) {
+            return null;
+        }
+        int sum = 0;
+        if (root1 != null) {
+            sum += root1.val;
+        }
+        if (root2 != null) {
+            sum += root2.val;
+        }
+        TreeNode root = new TreeNode(sum);
+        root.left = mergeTrees((root1 == null) ? null : root1.left, (root2 == null) ? null : root2.left);
+        root.right = mergeTrees((root1 == null) ? null : root1.right, (root2 == null) ? null : root2.right);
+        return root;
     }
 
     @Test
