@@ -12,7 +12,7 @@ import java.util.function.BiFunction;
  **/
 public class L617合并二叉树 {
 
-    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+    public TreeNode mergeTrees0(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null) {
             return null;
         }
@@ -24,8 +24,25 @@ public class L617合并二叉树 {
             sum += root2.val;
         }
         TreeNode root = new TreeNode(sum);
-        root.left = mergeTrees((root1 == null) ? null : root1.left, (root2 == null) ? null : root2.left);
-        root.right = mergeTrees((root1 == null) ? null : root1.right, (root2 == null) ? null : root2.right);
+        root.left = mergeTrees0((root1 == null) ? null : root1.left, (root2 == null) ? null : root2.left);
+        root.right = mergeTrees0((root1 == null) ? null : root1.right, (root2 == null) ? null : root2.right);
+        return root;
+    }
+
+    //改进, 如果一个树=null, 就不需要合并了
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null) {
+            return null;
+        }
+        if (root1 == null) {
+            return root2;
+        }
+        if (root2 == null) {
+            return root1;
+        }
+        TreeNode root = new TreeNode(root1.val + root2.val);
+        root.left = mergeTrees(root1.left, root2.left);
+        root.right = mergeTrees(root1.right, root2.right);
         return root;
     }
 
