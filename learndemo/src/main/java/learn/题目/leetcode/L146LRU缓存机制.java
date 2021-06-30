@@ -4,7 +4,9 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author DongYunxiang
@@ -14,7 +16,7 @@ public class L146LRU缓存机制 {
 
     static class LRUCache {
 
-        Map<Integer, Node> data;
+        HashMap<Integer, Node> data;
         int maxSize;
         final Node root;
         Node last;
@@ -25,11 +27,11 @@ public class L146LRU缓存机制 {
             root = new Node(-1, -1);
         }
 
-        private void unlink(Node node){
+        private void unlink(Node node) {
             if (last == node) {
-                if(node.pre!=root){
+                if (node.pre != root) {
                     last = node.pre;
-                }else{
+                } else {
                     last = null;
                 }
             } else {
@@ -38,7 +40,7 @@ public class L146LRU缓存机制 {
             node.pre.next = node.next;
         }
 
-        private void linkHead(Node node){
+        private void linkHead(Node node) {
             if (last == null) {
                 last = node;
             }
@@ -52,13 +54,13 @@ public class L146LRU缓存机制 {
             //修改前驱的next
             root.next = node;
         }
-        
+
         public int get(int key) {
             if (!data.containsKey(key)) {
                 return -1;
             }
             Node node = data.get(key);
-            if(root.next!=node){
+            if (root.next != node) {
                 unlink(node);
                 linkHead(node);
             }
@@ -69,7 +71,7 @@ public class L146LRU缓存机制 {
             if (data.containsKey(key)) {
                 Node node = data.get(key);
                 node.value = value;
-                if(root.next!=node){
+                if (root.next != node) {
                     unlink(node);
                     linkHead(node);
                 }
@@ -126,16 +128,63 @@ public class L146LRU缓存机制 {
         }
     }
 
+    static class LRUCache1 {
+
+        LinkedHashMap<Integer, Integer> data;
+        int maxSize;
+
+        public LRUCache1(int capacity) {
+            data = new LinkedHashMap<>((int) (capacity / 0.75) + 1,0.75F,true);
+            maxSize = capacity;
+        }
+
+        public int get(int key) {
+            return data.getOrDefault(key, -1);
+        }
+
+        public void put(int key, int value) {
+            if (!data.containsKey(key) && data.size() >= maxSize){
+                Set<Integer> integers = data.keySet();
+                Integer next = integers.iterator().next();
+                data.remove(next);
+            }
+            data.put(key, value);
+        }
+    }
+
+    static class LRUCache2 extends LinkedHashMap<Integer,Integer> {
+
+        int maxSize;
+        
+        public LRUCache2(int capacity) {
+            super((int) (capacity / 0.75) + 1,0.75F,true);
+            maxSize = capacity;
+        }
+
+        public int get(int key) {
+            return getOrDefault(key, -1);
+        }
+
+        public void put(int key, int value) {
+            super.put(key,value);
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+            return size()>maxSize;
+        }
+    }
+
     @Test
     public void tt() {
-        LRUCache lRUCache;
+        LRUCache2 lRUCache;
         {
-            lRUCache = new LRUCache(1);
+            lRUCache = new LRUCache2(1);
             lRUCache.put(2, 1);
             TestCase.assertEquals(1, lRUCache.get(2));
         }
         {
-            lRUCache = new LRUCache(2);
+            lRUCache = new LRUCache2(2);
             lRUCache.put(1, 1); // 缓存是 {1=1}
             lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
             TestCase.assertEquals(1, lRUCache.get(1));
@@ -147,7 +196,7 @@ public class L146LRU缓存机制 {
             TestCase.assertEquals(4, lRUCache.get(4));
         }
         {
-            lRUCache = new LRUCache(1);
+            lRUCache = new LRUCache2(1);
             lRUCache.put(2, 1); // 缓存是 {1=1}
             TestCase.assertEquals(1, lRUCache.get(2));
             lRUCache.put(3, 2); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
@@ -155,7 +204,7 @@ public class L146LRU缓存机制 {
             TestCase.assertEquals(2, lRUCache.get(3));
         }
         {
-            lRUCache = new LRUCache(2);
+            lRUCache = new LRUCache2(2);
             lRUCache.put(2, 1);
             lRUCache.put(2, 2);
             TestCase.assertEquals(2, lRUCache.get(2));
