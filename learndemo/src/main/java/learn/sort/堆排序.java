@@ -7,24 +7,24 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
+import java.util.stream.IntStream;
 
 /**
  * @author DongYunxiang
  * @create 2019-05-25
  **/
-public class 堆排序 {
+public class 堆排序 extends SortFunction{
 
-    public void sort(long[] arr){
+    public void sort(int[] arr){
         Heap.buildHeap(arr);
         for(int i = arr.length-1;i>0;i--){
-            ArrayData.swap(arr,0,i);
+            swap(arr,0,i);
             Heap.maxHeapify(arr,i,0);
         }
     }
 
-    public void sortWithPriorityQueue(long[] arr){
-        PriorityQueue<Long> heap = LongStream.of(arr).boxed().collect(Collectors.toCollection(PriorityQueue::new));
+    public void sortWithPriorityQueue(int[] arr){
+        PriorityQueue<Integer> heap = IntStream.of(arr).boxed().collect(Collectors.toCollection(PriorityQueue::new));
        int i = 0;
        while(!heap.isEmpty()){
            arr[i++] = heap.poll();
@@ -33,16 +33,18 @@ public class 堆排序 {
 
     @Test
     public void testSort(){
-        sort(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
-        TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
+        int[] arr = getArr();
+        sort(arr);
+        System.out.println(Arrays.toString(arr));
+        TestCase.assertTrue(isSort(arr));
     }
 
     @Test
     public void testsortWithPriorityQueue(){
-        sortWithPriorityQueue(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
-        TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
+        int[] arr = getArr();
+        sortWithPriorityQueue(arr);
+        System.out.println(Arrays.toString(arr));
+        TestCase.assertTrue(isSort(arr));
     }
 
 }

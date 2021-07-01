@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Heap {
 
     /*对两个子节点都是最大堆的父节点进行修复*/
-    public static void maxHeapify(long[] arr, int length, int rootIndex) {
+    public static void maxHeapify(int[] arr, int length, int rootIndex) {
         if (rootIndex >= length) return;
         int largest = rootIndex;
         int left = rootIndex * 2 + 1;
@@ -23,14 +23,14 @@ public class Heap {
             largest = right;
         }
         if (largest != rootIndex) {
-            long t = arr[rootIndex];
+            int t = arr[rootIndex];
             arr[rootIndex] = arr[largest];
             arr[largest] = t;
             maxHeapify(arr, length, largest);
         }
     }
 
-    public static void buildHeap(long[] arr){
+    public static void buildHeap(int[] arr){
         if(arr.length<2) return;
         int rootIndex = (arr.length-2)/2;
         while(rootIndex>=0){
@@ -41,14 +41,14 @@ public class Heap {
 
     @Test
     public void testmaxHeapify() {
-        long[] arr = {1, 8, 9, 4, 5, 6, 7};
+        int[] arr = {1, 8, 9, 4, 5, 6, 7};
         maxHeapify(arr, arr.length, 0);
         System.out.println(Arrays.toString(arr));
     }
 
     @Test
     public void testbuild(){
-        long[] arr = {0,1,2,3,4,5,6,7};
+        int[] arr = {0,1,2,3,4,5,6,7};
         buildHeap(arr);
         System.out.println(Arrays.toString(arr));
     }
