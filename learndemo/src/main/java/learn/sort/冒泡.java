@@ -1,64 +1,17 @@
 package learn.sort;
 
+import junit.framework.TestCase;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.Comparator;
-
-import static learn.sort.ArrayData.swap;
 
 
 /**
  * @author DongYunxiang
- * @create 2019-04-15
+ * @create 2017年12月18日
  **/
-public class 冒泡 {
+public class 冒泡 extends SortFunction {
 
-    /**
-     * 冒泡排序
-     * @author DongYunxiang
-     * @date 2017年12月18日
-     * @param list
-     */
-    public <T extends Comparable<T>> void bubbleSort(T[] list) {
-        boolean swapped = true;
-        for (int i = list.length - 1; i > 0 && swapped; i--) {
-            swapped = false;
-            for (int j = 0; j < i; j++) {
-                if (list[j].compareTo(list[j + 1]) > 0) {
-                    T temp = list[j];
-                    list[j] = list[j + 1];
-                    list[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-    }
-
-    /**
-     * 冒泡排序,自定义比较器
-     * @author DongYunxiang
-     * @date 2017年12月18日
-     * @param list
-     * @param comp
-     */
-    public <T extends Comparable<T>> void bubbleSort(T[] list, Comparator<T> comp) {
-        boolean swapped = true;
-        for (int i = list.length - 1; i > 0 && swapped; i--) {
-            swapped = false;
-            for (int j = 0; j < i; j++) {
-                if (comp.compare(list[j], list[j + 1]) > 0) {
-                    T temp = list[j];
-                    list[j] = list[j + 1];
-                    list[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-    }
-
-    void doit(long[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {//从0位开始获取最小的
+    void bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
             for (int n = arr.length - 1; n > i; n--) {
                 if (arr[n] < arr[n - 1]) {
                     swap(arr, n, n - 1);
@@ -67,10 +20,24 @@ public class 冒泡 {
         }
     }
 
+    void bubbleSort2(int[] arr) {
+        boolean swapped = true;
+        for (int i = 0; i < arr.length - 1 && swapped; i++) {
+            swapped = false;//如果标记没有被置为true,说明后面已经有序
+            for (int n = arr.length - 1; n > i; n--) {
+                if (arr[n] < arr[n - 1]) {
+                    swap(arr, n, n - 1);
+                    swapped = true;
+                }
+            }
+        }
+    }
+
     @Test
     public void testdoit() {
-        doit(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
+        int[] arr = getArr();
+        bubbleSort2(arr);
+        TestCase.assertTrue(isSort(arr));
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author DongYunxiang
  * @create 2019-04-17
  **/
-public class 插入排序 {
+public class 插入排序 extends SortFunction{
 
     /*
     首先设定插入次数，即循环次数，for(int i=1;i
@@ -17,9 +17,9 @@ public class 插入排序 {
     将当前数放置到空着的位置，即j+1。
      */
 
-    public void insertSort(long[] a) {
+    public void insertSort(int[] a) {
         int length = a.length;//数组长度，将这个提取出来是为了提高速度。
-        long insertNum;//要插入的数
+        int insertNum;//要插入的数
         for (int i = 1; i < length; i++) {//插入的次数
             insertNum = a[i];//要插入的数
             int j = i - 1;//已经排序好的序列元素个数
@@ -33,13 +33,14 @@ public class 插入排序 {
 
     @Test
     public void testinsertSort() {
-        insertSort(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
+        int[] arr = getArr();
+        insertSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
-    void doit(long[] arr){
+    void doit(int[] arr){
         for(int i=1;i<arr.length;i++){//默认数组第0位是有序数组,从第1位开始进行插入
-            long value = arr[i];//需要定位的数值
+            int value = arr[i];//需要定位的数值
             int index = i;//未定位的数值的索引
             while(index>0 && value<arr[index-1]){
                 arr[index] = arr[index-1];
@@ -51,8 +52,8 @@ public class 插入排序 {
 
     @Test
     public void testdoit() {
-        doit(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
-
+        int[] arr = getArr();
+        doit(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }

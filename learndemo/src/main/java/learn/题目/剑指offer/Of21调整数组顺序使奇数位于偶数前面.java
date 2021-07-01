@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
 import junit.framework.TestCase;
-import learn.sort.ArrayData;
+import learn.sort.SortFunction;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public class Of21调整数组顺序使奇数位于偶数前面 {
                 if(l>=r) break;
             }
             if(l<r){
-                ArrayData.swap(nums,l,r);
+                SortFunction.swap(nums,l,r);
                 l++;
                 r--;
             }

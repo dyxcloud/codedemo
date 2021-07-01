@@ -9,13 +9,13 @@ import java.util.Arrays;
  * @author DongYunxiang
  * @create 2019-05-31
  **/
-public class 归并 {
+public class 归并 extends SortFunction{
 
-    public void mergeSort(long[] arr){
+    public void mergeSort(int[] arr){
         mergeSort(arr,0,arr.length-1);
     }
 
-    private void mergeSort(long[] arr,int start,int end){
+    private void mergeSort(int[] arr,int start,int end){
         if(end-start<1){
             return;
         }
@@ -31,8 +31,8 @@ public class 归并 {
         merge(arr, start, mid+1, end);
     }
 
-    private void merge(long[] arr, int low, int mid, int high){
-        long[] temp = new long[high-low+1];
+    private void merge(int[] arr, int low, int mid, int high){
+        int[] temp = new int[high-low+1];
         int p = 0;
         int i=low,j=mid;
         while(i<mid&&j<=high){
@@ -55,20 +55,21 @@ public class 归并 {
 
     @Test
     public void testMerge(){
-        long[] a = {1,3,7,9,2,4,6,8};
+        int[] a = {1,3,7,9,2,4,6,8};
         merge(a,0,4,7);
         System.out.println(Arrays.toString(a));
-        TestCase.assertTrue(ArrayData.isSort(a));
+        TestCase.assertTrue(isSort(a));
 
-        a =new long[]{3,1};
+        a =new int[]{3,1};
         merge(a,0,1,1);
         System.out.println(Arrays.toString(a));
-        TestCase.assertTrue(ArrayData.isSort(a));
+        TestCase.assertTrue(isSort(a));
     }
     @Test
     public void testSort(){
-        mergeSort(ArrayData.ARR);
-        System.out.println(Arrays.toString(ArrayData.ARR));
-        TestCase.assertTrue(ArrayData.isSort(ArrayData.ARR));
+        int[] arr = getArr();
+        mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
+        TestCase.assertTrue(isSort(arr));
     }
 }
