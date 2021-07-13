@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @author DongYunxiang
  * @create 2019-05-31
  **/
-public class 基数排序 {
+public class 基数排序 extends SortFunction{
 
     public int n = 10;//取基数时使用的进制
 
@@ -45,9 +45,9 @@ public class 基数排序 {
 
     @Test
     public void testSort(){
-        int[] ar = ArrayData.getIntArr();
+        int[] ar = getArr();
         sort(ar);
         System.out.println(Arrays.toString(ar));
-        TestCase.assertTrue(ArrayData.isSort(ar));
+        TestCase.assertTrue(isSort(ar));
     }
 }

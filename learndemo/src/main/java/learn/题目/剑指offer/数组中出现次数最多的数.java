@@ -1,6 +1,7 @@
 package learn.题目.剑指offer;
 
 import junit.framework.TestCase;
+import learn.题目.leetcode.L169多数元素;
 import org.junit.Test;
 
 @SuppressWarnings({"NonAsciiCharacters"})
@@ -13,35 +14,7 @@ public class 数组中出现次数最多的数 {
     }
 
     public static int MoreThanHalfNum_Solution(int... array) {
-        //非法输入判断
-        if (array == null || array.length <= 0)
-            return 0;
-        int times = 1;
-        int number = array[0];
-        //查看是否存在有可能次数大于数组长度一半的数字
-        for (int i = 1; i < array.length; i++) {
-            if (times <= 0) {
-                number = array[i];
-                times = 0;
-            }
-            if (array[i] == number) {
-                times++;
-            } else {
-                times--;
-            }
-        }
-        //判断该数字次数是否大于数组长度一半
-        if (times > 0) {
-            int count = 0;
-            for (int value : array) {
-                if (value == number)
-                    count++;
-            }
-            if (count > array.length / 2)
-                return number;
-            else
-                return 0;
-        } else
-            return 0;
+        L169多数元素 l169 = new L169多数元素();
+        return l169.majorityElement1(array);
     }
 }

@@ -32,21 +32,21 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         while (true) {
             if (node.data.compareTo(t) > 0) {
                 //小数, 放左边
-                if (node.getLeft() == null) {
-                    node.setLeft(new Node<>(t));
-                    node.getLeft().setParent(node);
+                if (node.left == null) {
+                    node.left = new Node<>(t);
+                    node.left.parent = node;
                     break;
                 } else {
-                    node = node.getLeft();
+                    node = node.left;
                 }
             } else {
                 //大数,放右边
-                if (node.getRight() == null) {
-                    node.setRight(new Node<>(t));
-                    node.getRight().setParent(node);
+                if (node.right == null) {
+                    node.right = new Node<>(t);
+                    node.right.parent = node;
                     break;
                 } else {
-                    node = node.getRight();
+                    node = node.right;
                 }
             }
         }
@@ -60,44 +60,44 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
             if (result == 0)
                 return true;
             else if (result > 0)
-                node = node.getLeft();
+                node = node.left;
             else
-                node = node.getRight();
+                node = node.right;
         }
         return false;
     }
 
     public void remove(Node<T> n) {
-        Node<T> p = n.getParent();
+        Node<T> p = n.parent;
         Node<T> next, child;
         // 叶子结点，直接删除即可。要考虑待删除结点是root的情况。
-        if (n.getLeft() == null && n.getRight() == null) {
+        if (n.left == null && n.right == null) {
             if (n == getRoot()) {
                 setRoot(null);
-            } else if (n == p.getLeft()) {
-                p.setLeft(null);
-            } else if (n == p.getRight()) {
-                p.setRight(null);
+            } else if (n == p.left) {
+                p.left = null;
+            } else if (n == p.right) {
+                p.right = null;
             }
         }
         // 内部结点，把它的后继的值拷进来，然后递归删除它的后继。
-        else if (n.getLeft() != null && n.getRight() != null) {
+        else if (n.left != null && n.right != null) {
             next = successorIn(n);
             n.data = next.data;
             remove(next);
         }
         // 只有一个孩子的结点，把它的孩子交给它的父结点即可。
         else {
-            child = n.getLeft()!=null? n.getLeft():n.getRight();
+            child = n.left != null ? n.left : n.right;
             if (n == getRoot()) {
-                child.setParent(null);
+                child.parent = null;
                 setRoot(child);
-            }else if (n == p.getLeft()) {
-                child.setParent(p);
-                p.setLeft(child);
+            } else if (n == p.left) {
+                child.parent = p;
+                p.left = child;
             } else {
-                child.setParent(p);
-                p.setRight(child);
+                child.parent = p;
+                p.right = child;
             }
         }
     }
@@ -111,17 +111,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     Node<T> successorIn(Node<T> n) {
         if (n == null) return null;
         Node<T> p;
-        if (n.getRight() != null) {
-            p = n.getRight();
-            while (p.getLeft() != null) {
-                p = p.getLeft();
+        if (n.right != null) {
+            p = n.right;
+            while (p.left != null) {
+                p = p.left;
             }
             return p;
         } else {
-            p = n.getParent();
-            while (p != null && p.getLeft() != n) {
+            p = n.parent;
+            while (p != null && p.left != n) {
                 n = p;
-                p = n.getParent();
+                p = n.parent;
             }
             return p;
         }
@@ -151,14 +151,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         private Node<T> getFirstIn() {
             if (getRoot() == null) return null;
             Node<T> n = getRoot();
-            while (n.getLeft() != null) {
-                n = n.getLeft();
+            while (n.left != null) {
+                n = n.left;
             }
             return n;
         }
     }
 
-    void insert321546(BinarySearchTree<Integer> tree){
+    void insert321546(BinarySearchTree<Integer> tree) {
         tree.insert(3);
         tree.insert(2);
         tree.insert(1);
@@ -167,22 +167,22 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         tree.insert(6);
     }
 
-    void insert123456(BinarySearchTree<Integer> tree){
-            tree.insert(1);
-            tree.insert(2);
-            tree.insert(3);
-            tree.insert(4);
-            tree.insert(5);
-            tree.insert(6);
+    void insert123456(BinarySearchTree<Integer> tree) {
+        tree.insert(1);
+        tree.insert(2);
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(6);
     }
 
-    void insert654321(BinarySearchTree<Integer> tree){
-            tree.insert(6);
-            tree.insert(5);
-            tree.insert(4);
-            tree.insert(3);
-            tree.insert(2);
-            tree.insert(1);
+    void insert654321(BinarySearchTree<Integer> tree) {
+        tree.insert(6);
+        tree.insert(5);
+        tree.insert(4);
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(1);
     }
 
     @Test
@@ -191,7 +191,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
         insert321546(tree);
         Deque<Node<Integer>> objects = new ArrayDeque<>();
         objects.push(tree.getRoot());
-        TreeSearch.dfsInOrder1(tree.getRoot());
     }
 
     @Test
@@ -236,9 +235,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
 
 class Node<T extends Comparable<T>> {
     T data;
-    private Node<T> parent;
-    private Node<T> left;
-    private Node<T> right;
+    public Node<T> parent;
+    public Node<T> left;
+    public Node<T> right;
 
     Node(T d) {
         this.data = d;
@@ -251,32 +250,24 @@ class Node<T extends Comparable<T>> {
     }
 
 
-    public Node<T> getParent() {
-        return parent;
-    }
-
-    public void setParent(Node<T> parent) {
-        this.parent = parent;
-    }
-
-    public Node<T> getLeft() {
-        return left;
-    }
-
-    public void setLeft(Node<T> left) {
-        this.left = left;
-    }
-
-    public Node<T> getRight() {
-        return right;
-    }
-
-    public void setRight(Node<T> right) {
-        this.right = right;
-    }
-
     @Override
     public String toString() {
         return "Node{data=" + data + '}';
+    }
+
+    public static void printATree(Node<Character> node) {
+        if (node == null) return;
+        if (node.left != null) {
+            System.out.println(node.data + " left= " + node.left.data);
+        }
+        if (node.right != null) {
+            System.out.println(node.data + " right= " + node.right.data);
+        }
+        if (node.left != null) {
+            printATree(node.left);
+        }
+        if (node.right != null) {
+            printATree(node.right);
+        }
     }
 }

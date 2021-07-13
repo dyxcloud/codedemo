@@ -20,42 +20,42 @@ public class 还原二叉树 {
             char[] preArr = {'A', 'B', 'D', 'E', 'C', 'F', 'G'};
             char[] inArr = {'D', 'B', 'E', 'A', 'F', 'C', 'G'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
         {
             char[] preArr = {'A', 'B', 'C',};
             char[] inArr = {'B', 'A', 'C',};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
         {
             char[] preArr = {'A', 'B', 'D', 'E', 'C'};
             char[] inArr = {'D', 'B', 'E', 'A', 'C'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
         {
             char[] preArr = {'A', 'B'};
             char[] inArr = {'B', 'A'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
         {//右支和root相同
             char[] preArr = {'A', 'B', 'D', 'E', 'C', 'A', 'G'};
             char[] inArr = {'D', 'B', 'E', 'A', 'A', 'C', 'G'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
         {//左支和root相同 不支持
             char[] preArr = {'A', 'B', 'A', 'E', 'C', 'F', 'G'};
             char[] inArr = {'A', 'B', 'E', 'A', 'F', 'C', 'G'};
             Node<Character> node = recoveryTreeByPreAndIn(preArr, inArr);
-            TreeSearch.printATree(node);
+            Node.printATree(node);
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         }
     }
@@ -85,8 +85,8 @@ public class 还原二叉树 {
         System.arraycopy(preArr, 1, preLArr, 0, preLArr.length);
         System.arraycopy(preArr, 1 + preLArr.length, preRArr, 0, preRArr.length);
         //递归处理左右子数组,并赋值到根数组
-        rootNode.setLeft(recoveryTreeByPreAndIn(preLArr, inLArr));
-        rootNode.setRight(recoveryTreeByPreAndIn(preRArr, inRArr));
+        rootNode.left = recoveryTreeByPreAndIn(preLArr, inLArr);
+        rootNode.right = recoveryTreeByPreAndIn(preRArr, inRArr);
         return rootNode;
     }
 

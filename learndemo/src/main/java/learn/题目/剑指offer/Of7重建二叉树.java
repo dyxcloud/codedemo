@@ -92,7 +92,7 @@ public class Of7重建二叉树 {
     }
 
 
-    public List<Integer> dfsPreOrder(TreeNode node){
+    public static List<Integer> dfsPreOrder(TreeNode node){
         LinkedList<Integer> result = new LinkedList<>();
         if(node==null) return result;
         result.add(node.val);
