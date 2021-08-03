@@ -11,16 +11,48 @@ import java.util.function.IntFunction;
  **/
 public class L338比特位计数 {
 
-    public int[] countBits(int n) {
+    /**
+     * 暴力计算
+     */
+    public int[] countBits0(int n) {
         int[] result = new int[n + 1];
         for (int i = 0; i <= n; i++) {
             int num = i;
-            int count = 0;
             while (num != 0) {
                 num = num & (num - 1);
-                count++;
+                result[i]++;
             }
-            result[i] = count;
+        }
+        return result;
+    }
+
+    
+    /*
+    DP
+0   0
+1   1
+10  1
+11  2
+100 1
+101 2
+110 2
+111 3
+1000    1
+1001    2
+1010    2
+1011    3
+1100    2
+1101    3
+1110    3
+1111    4
+
+f(i) = f(i>>1) + (i&1)
+     */
+
+    public int[] countBits(int n) {
+        int[] result = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            result[i] = result[i >> 1] + (i & 1);
         }
         return result;
     }
