@@ -1,10 +1,10 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class L1两数之和 {
 
@@ -71,42 +71,6 @@ public class L1两数之和 {
         {
             int[] arr = {-3, 4, 3, 90};
             Assert.assertArrayEquals(new int[]{0, 2}, twoSum(arr, 0));
-        }
-    }
-
-    public List<List<Integer>> threeSum(int[] nums) {
-        LinkedHashSet<List<Integer>> result = new LinkedHashSet<>();
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (nums[i] > 0) {
-                break;
-            }
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
-            int target = -nums[i];
-            HashMap<Integer, Integer> map = new HashMap<>();
-            for (int j = i + 1; j < nums.length; j++) {
-                int n = target - nums[j];
-                Integer integer = map.get(n);
-                if (integer != null) {
-                    List<Integer> list = Arrays.asList(nums[i], nums[integer], nums[j]);
-                    Collections.sort(list);
-                    result.add(list);
-                }
-                map.put(nums[j], j);
-            }
-        }
-        return new ArrayList<>(result);
-    }
-
-    @Test
-    public void test3() {
-        {
-            int[] arr = {-1, 0, 1, 2, -1, -4};
-            TestCase.assertEquals(
-                    Arrays.asList(Arrays.asList(-1, 0, 1), Arrays.asList(-1, -1, 2))
-                    , threeSum(arr));
         }
     }
 
