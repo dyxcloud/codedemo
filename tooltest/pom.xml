@@ -12,6 +12,10 @@
     <artifactId>tooltest</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
 
         <!-- database -->
         <dependency>

@@ -6,21 +6,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.annotation.Resource;
+
 
 @SpringBootApplication
 public class SpringBootRunner implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootRunner.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootRunner.class, args);
+    }
 
 
-	@Autowired
-	SecondKill secondKill;
+    @Resource
+    SecondKill secondKill;
 
-	public void run(String... args) {
-		secondKill.run();
-	}
+    public void run(String... args) {
+        secondKill.run();
+    }
 
 
 }
