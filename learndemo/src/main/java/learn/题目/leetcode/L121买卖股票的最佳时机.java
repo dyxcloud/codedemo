@@ -82,7 +82,7 @@ public class L121买卖股票的最佳时机 {
     
         
     /*
-    DP法
+    DP法 类似最大子序和解法
         7   1   5   3   6   4
     6   x   x   x   x   x   0
     3   x   x   x   x   3   3
