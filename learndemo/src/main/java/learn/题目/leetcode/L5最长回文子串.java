@@ -115,9 +115,36 @@ aaabaaa a
         return s.substring(maxIndex - maxLen + 1, maxIndex + 1);
     }
 
+
+    /**
+     * 中心扩展
+     * a a a a
+     */
+    public String longestPalindrome2(String s) {
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expand(s, i, i);
+            int len2 = expand(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start + 1) {
+                start = i - ((len - 1) / 2);
+                end = i + (len / 2);
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private int expand(String s, int l, int r) {
+        while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+            l--;
+            r++;
+        }
+        return r - l - 1;
+    }
+
     @Test
     public void tt() {
-        UnaryOperator<String> func = this::longestPalindrome;
+        UnaryOperator<String> func = this::longestPalindrome2;
         TestCase.assertTrue(Arrays.asList("bab", "aba").contains(func.apply("babad")));
         TestCase.assertEquals("bb", func.apply("cbbd"));
         TestCase.assertEquals("aa", func.apply("aa"));
