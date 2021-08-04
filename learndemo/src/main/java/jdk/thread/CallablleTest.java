@@ -40,15 +40,8 @@ public class CallablleTest {
         Future<Integer> result = executorService.submit(task);
         System.out.println("主线程正在运行");
         TimeUnit.SECONDS.sleep(1);
-        int time = 10;
-        while (time > 0) {
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
-            time--;
-        }
         System.out.println("获取到子线程运行的结果: " + result.get());
         System.out.println("所有任务执行完毕");
-        System.out.println(((ThreadPoolExecutor) executorService).getActiveCount());
     }
 
     @Test
