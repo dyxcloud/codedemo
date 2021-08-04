@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
 @SuppressWarnings("NonAsciiCharacters")
-public class 回文数 {
+public class 打印回文数 {
 
 	public static void main(String[] args) {
 		// 打印5位回文数
