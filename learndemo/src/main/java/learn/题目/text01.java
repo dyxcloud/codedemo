@@ -183,20 +183,7 @@ public class text01 {
         double[] arr = getNumArr(index - 1);
         return new double[] { arr[0] + arr[1], arr[0], arr[2] + (arr[0] + arr[1]) / arr[0] };
     }
-
-    /**
-     * 判断是否是回文字符串
-     */
-    public static boolean isHuiWen(String str, int start, int end) {
-        if ((start - end) == 1 || start == end)
-            return str.charAt(start) == str.charAt(end);
-        return (str.charAt(start)) == str.charAt(end) && isHuiWen(str, start + 1, end - 1);
-    }
-    @Test
-    public void testIsHuiWen() {
-        String str = "abaa"; System.out.println(isHuiWen(str, 0, str.length() - 1));
-    }
-
+    
 
     /**
      * 找map中最大value对应的key
