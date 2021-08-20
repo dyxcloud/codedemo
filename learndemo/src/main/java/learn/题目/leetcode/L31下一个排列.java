@@ -10,24 +10,18 @@ public class L31下一个排列 {
 
     public void nextPermutation(int[] nums) {
         //找到降序数
-        int l = -1;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            if (nums[i] < nums[i + 1]) {
-                l = i;
-                break;
-            }
+        int l = nums.length - 2;
+        while (l >= 0 && nums[l] >= nums[l + 1]) {
+            l--;
         }
         if (l == -1) {
             //字典序的最后一个
             reverse(nums, 0);
         } else {
             //找到第一个大于l的数
-            int r = -1;
-            for (int i = nums.length - 1; i > l; i--) {
-                if (nums[i] > nums[l]) {
-                    r = i;
-                    break;
-                }
+            int r = nums.length - 1;
+            while (r > l && nums[l] >= nums[r]) {
+                r--;
             }
             swap(nums, l, r);
             //使l之后为升序
