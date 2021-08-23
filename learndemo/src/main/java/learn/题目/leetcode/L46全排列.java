@@ -36,7 +36,7 @@ public class L46全排列 {
     }
 
     /**
-     * 回溯法
+     * 回溯法, 双队列
      */
     static class l46_2 {
         
@@ -68,6 +68,41 @@ public class L46全排列 {
         }
     }
 
+    /**
+     * 回溯法, swap, 展开交换的情况树
+     */
+    static class l46_3{
+        List<List<Integer>> res;
+        
+        public List<List<Integer>> permute(int[] nums) {
+            res = new ArrayList<>();
+            if (nums == null || nums.length == 0) return res;
+            exchange(nums, 0);
+            return res;
+        }
+
+        /**
+         * @param i 交换起点index
+         */
+        private void exchange(int[] nums, int i) {
+            if (i == nums.length - 1) {
+                res.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
+                return;
+            }
+            // 将当前位置的数跟后面的数交换，并搜索解
+            for (int j = i; j < nums.length; j++) {
+                swap(nums, i, j);
+                exchange(nums, i + 1);
+                swap(nums, i, j);
+            }
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+    }
 
     @Test
     public void tt() {
