@@ -28,16 +28,14 @@ public class L39组合总和 {
             if (candidates[i] > currentTarget) {
                 continue;
             }
+            current.add(candidates[i]);
             int nextTarget = currentTarget - candidates[i];
             if (nextTarget > 0) {
-                current.add(candidates[i]);
                 helper(current, nextTarget, i);
-                current.remove(current.size() - 1);
-            } else if (nextTarget == 0) {
-                current.add(candidates[i]);
+            } else {
                 result.add(new ArrayList<>(current));
-                current.remove(current.size() - 1);
             }
+            current.remove(current.size() - 1);
         }
     }
 
