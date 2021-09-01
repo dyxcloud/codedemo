@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.ToIntFunction;
 
@@ -112,12 +112,12 @@ f(0,l-2) f(1,l-1) f(1,l-1) f(2,l)
     @Test
     public void ttt() {
         ToIntFunction<int[]> func = this::maxSubArray;
-        TestCase.assertEquals(6, func.applyAsInt(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
-        TestCase.assertEquals(41, func.applyAsInt(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 40}));
-        TestCase.assertEquals(1, func.applyAsInt(new int[]{1}));
-        TestCase.assertEquals(0, func.applyAsInt(new int[]{0}));
-        TestCase.assertEquals(-1, func.applyAsInt(new int[]{-1}));
-        TestCase.assertEquals(-100000, func.applyAsInt(new int[]{-100000}));
+        Assertions.assertEquals(6, func.applyAsInt(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+        Assertions.assertEquals(41, func.applyAsInt(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 40}));
+        Assertions.assertEquals(1, func.applyAsInt(new int[]{1}));
+        Assertions.assertEquals(0, func.applyAsInt(new int[]{0}));
+        Assertions.assertEquals(-1, func.applyAsInt(new int[]{-1}));
+        Assertions.assertEquals(-100000, func.applyAsInt(new int[]{-100000}));
         System.out.println(count);
     }
 

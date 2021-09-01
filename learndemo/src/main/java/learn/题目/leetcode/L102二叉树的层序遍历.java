@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
@@ -36,7 +36,7 @@ public class L102二叉树的层序遍历 {
             TreeNode root = new TreeNode(3
                     , new TreeNode(9)
                     , new TreeNode(20, new TreeNode(15), new TreeNode(7)));
-            TestCase.assertEquals(Arrays.asList(Arrays.asList(3), Arrays.asList(9, 20), Arrays.asList(15, 7)), f.apply(root));
+            Assertions.assertEquals(Arrays.asList(Arrays.asList(3), Arrays.asList(9, 20), Arrays.asList(15, 7)), f.apply(root));
         }
     }
 }

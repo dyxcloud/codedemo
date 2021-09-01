@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -24,9 +24,9 @@ public class L7整数反转 {
 
     @Test
     public void tt() {
-        TestCase.assertEquals(321, reverse(123));
-        TestCase.assertEquals(-321, reverse(-123));
-        TestCase.assertEquals(21, reverse(120));
-        TestCase.assertEquals(0, reverse(0));
+        Assertions.assertEquals(321, reverse(123));
+        Assertions.assertEquals(-321, reverse(-123));
+        Assertions.assertEquals(21, reverse(120));
+        Assertions.assertEquals(0, reverse(0));
     }
 }

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +32,7 @@ public class L136只出现一次的数字 {
     @Test
     public void tt() {
         ToIntFunction<int[]> f = this::singleNumber;
-        TestCase.assertEquals(1, f.applyAsInt(new int[]{2, 2, 1}));
-        TestCase.assertEquals(4, f.applyAsInt(new int[]{4, 1, 2, 1, 2}));
+        Assertions.assertEquals(1, f.applyAsInt(new int[]{2, 2, 1}));
+        Assertions.assertEquals(4, f.applyAsInt(new int[]{4, 1, 2, 1, 2}));
     }
 }

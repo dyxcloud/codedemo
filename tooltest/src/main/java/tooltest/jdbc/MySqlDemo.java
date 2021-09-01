@@ -1,6 +1,6 @@
 package tooltest.jdbc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -47,7 +47,7 @@ public class MySqlDemo {
         String url = "jdbc:mysql://localhost:3306/day02";
         Connection conn = DriverManager.getConnection(url, "root", "root");
         String sql = "insert into ta values(5,999);";
-        String sql2 = "nsert into ta values(6,233);";
+        String sql2 = "insert into ta values(6,233);";
         Statement statement = conn.createStatement();
         statement.addBatch(sql);
         statement.addBatch(sql2);

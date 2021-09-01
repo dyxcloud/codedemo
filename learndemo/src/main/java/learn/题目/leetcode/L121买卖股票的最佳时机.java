@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -141,8 +141,8 @@ public class L121买卖股票的最佳时机 {
     @Test
     public void tt() {
         ToIntFunction<int[]> f = this::maxProfit;
-        TestCase.assertEquals(5, f.applyAsInt(new int[]{7, 1, 5, 3, 6, 4}));
-        TestCase.assertEquals(0, f.applyAsInt(new int[]{7, 6, 4, 3, 1}));
-        TestCase.assertEquals(0, f.applyAsInt(new int[]{}));
+        Assertions.assertEquals(5, f.applyAsInt(new int[]{7, 1, 5, 3, 6, 4}));
+        Assertions.assertEquals(0, f.applyAsInt(new int[]{7, 6, 4, 3, 1}));
+        Assertions.assertEquals(0, f.applyAsInt(new int[]{}));
     }
 }

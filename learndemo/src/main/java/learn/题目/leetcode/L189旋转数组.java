@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class L189旋转数组 {
@@ -12,37 +12,37 @@ public class L189旋转数组 {
             int[] arr = {1, 2, 3, 4, 5, 6, 7};
             int[] target = {5, 6, 7, 1, 2, 3, 4};
             rotate(arr, 3);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
         {
             int[] arr = {1, 2, 3, 4, 5, 6, 7};
             int[] target = {4, 5, 6, 7, 1, 2, 3};
             rotate(arr, 4);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
         {
             int[] arr = {1, 2, 3, 4, 5, 6, 7};
             int[] target = {7, 1, 2, 3, 4, 5, 6};
             rotate(arr, 1);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
         {
             int[] arr = {1, 2, 3, 4, 5, 6, 7};
             int[] target = {1, 2, 3, 4, 5, 6, 7};
             rotate(arr, 0);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
         {
             int[] arr = {1, 2, 3, 4, 5, 6};
             int[] target = {4, 5, 6, 1, 2, 3};
             rotate(arr, 3);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
         {
             int[] arr = {1, 2, 3, 4, 5, 6};
             int[] target = {3,4,5,6,1,2};
             rotate(arr, 4);
-            Assert.assertArrayEquals(target, arr);
+            Assertions.assertArrayEquals(target, arr);
         }
     }
 

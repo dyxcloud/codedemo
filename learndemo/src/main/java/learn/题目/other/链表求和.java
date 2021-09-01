@@ -1,7 +1,7 @@
 package learn.题目.other;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -33,43 +33,43 @@ public class 链表求和 {
             ListNode l1 = ListNode.create(3, 4, 2);
             ListNode l2 = ListNode.create(4, 6, 5);
             Integer[] r = {8, 0, 7};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(8, 7, 9);
             ListNode l2 = ListNode.create(5, 8, 6);
             Integer[] r = {1, 4, 6, 5};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(5, 4, 3, 2, 1);
             ListNode l2 = ListNode.create(5, 4, 3, 2, 1);
             Integer[] r = {1, 0, 8, 6, 4, 2};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(3, 2, 1);
             ListNode l2 = ListNode.create(5, 4, 3, 2, 1);
             Integer[] r = {5, 4, 6, 4, 2};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = ListNode.create(5, 4, 3, 2, 1);
             Integer[] r = {5, 4, 3, 2, 1};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = null;
             Integer[] r = {};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(0);
             ListNode l2 = ListNode.create(0);
             Integer[] r = {0};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersReverse(l1, l2)).toArray()));
         }
     }
 
@@ -116,43 +116,43 @@ public class 链表求和 {
             ListNode l1 = ListNode.create(2, 4, 3);
             ListNode l2 = ListNode.create(5, 6, 4);
             Integer[] r = {7, 0, 8};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(9, 7, 8);
             ListNode l2 = ListNode.create(6, 8, 5);
             Integer[] r = {5, 6, 4, 1};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(1, 2, 3, 4, 5);
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
             Integer[] r = {2, 4, 6, 8, 0, 1};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(1, 2, 3);
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
             Integer[] r = {2, 4, 6, 4, 5};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = ListNode.create(1, 2, 3, 4, 5);
             Integer[] r = {1, 2, 3, 4, 5};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = null;
             ListNode l2 = null;
             Integer[] r = {};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
         {
             ListNode l1 = ListNode.create(0);
             ListNode l2 = ListNode.create(0);
             Integer[] r = {0};
-            TestCase.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
+            Assertions.assertEquals(Arrays.toString(r), Arrays.toString(ListNode.getList(addTwoNumbersLoop(l1, l2)).toArray()));
         }
     }
 

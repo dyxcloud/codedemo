@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.ToIntBiFunction;
 
@@ -142,11 +142,11 @@ public class L33搜索旋转排序数组 {
     @Test
     public void tt() {
         ToIntBiFunction<int[], Integer> func = this::search;
-        TestCase.assertEquals(-1, func.applyAsInt(new int[]{1, 2, 3, 4}, 0));
-        TestCase.assertEquals(4, func.applyAsInt(new int[]{4, 5, 6, -1, 0, 1, 2}, 0));
-        TestCase.assertEquals(4, func.applyAsInt(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
-        TestCase.assertEquals(-1, func.applyAsInt(new int[]{4, 5, 6, 7, 0, 1, 2}, 3));
-        TestCase.assertEquals(-1, func.applyAsInt(new int[]{1}, 0));
-        TestCase.assertEquals(0, func.applyAsInt(new int[]{1}, 1));
+        Assertions.assertEquals(-1, func.applyAsInt(new int[]{1, 2, 3, 4}, 0));
+        Assertions.assertEquals(4, func.applyAsInt(new int[]{4, 5, 6, -1, 0, 1, 2}, 0));
+        Assertions.assertEquals(4, func.applyAsInt(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
+        Assertions.assertEquals(-1, func.applyAsInt(new int[]{4, 5, 6, 7, 0, 1, 2}, 3));
+        Assertions.assertEquals(-1, func.applyAsInt(new int[]{1}, 0));
+        Assertions.assertEquals(0, func.applyAsInt(new int[]{1}, 1));
     }
 }

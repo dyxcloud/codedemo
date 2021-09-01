@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.function.UnaryOperator;
@@ -36,12 +36,12 @@ public class L260只出现一次的数字III {
         int[] result;
         result = f.apply(new int[]{1, 2, 1, 3, 2, 5});
         Arrays.sort(result);
-        Assert.assertArrayEquals(new int[]{3, 5}, result);
+        Assertions.assertArrayEquals(new int[]{3, 5}, result);
         result = f.apply(new int[]{-1, 0});
         Arrays.sort(result);
-        Assert.assertArrayEquals(new int[]{-1, 0}, result);
+        Assertions.assertArrayEquals(new int[]{-1, 0}, result);
         result = f.apply(new int[]{0, 1});
         Arrays.sort(result);
-        Assert.assertArrayEquals(new int[]{0, 1}, result);
+        Assertions.assertArrayEquals(new int[]{0, 1}, result);
     }
 }

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class L58最后一个单词的长度 {
 
@@ -29,9 +29,9 @@ public class L58最后一个单词的长度 {
 
     @Test
     public void tt() {
-        TestCase.assertEquals(5, lengthOfLastWord("Hello World"));
-        TestCase.assertEquals(0, lengthOfLastWord(" "));
-        TestCase.assertEquals(1, lengthOfLastWord("a"));
-        TestCase.assertEquals(1, lengthOfLastWord("a "));
+        Assertions.assertEquals(5, lengthOfLastWord("Hello World"));
+        Assertions.assertEquals(0, lengthOfLastWord(" "));
+        Assertions.assertEquals(1, lengthOfLastWord("a"));
+        Assertions.assertEquals(1, lengthOfLastWord("a "));
     }
 }

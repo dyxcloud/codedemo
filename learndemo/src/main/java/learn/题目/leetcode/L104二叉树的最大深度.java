@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;
@@ -50,7 +50,7 @@ public class L104二叉树的最大深度 {
             TreeNode root = new TreeNode(3
                     , new TreeNode(9)
                     , new TreeNode(20, new TreeNode(15), new TreeNode(7)));
-            TestCase.assertEquals(3, maxDepth1(root));
+            Assertions.assertEquals(3, maxDepth1(root));
         }
     }
 }

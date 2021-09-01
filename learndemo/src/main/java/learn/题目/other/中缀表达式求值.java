@@ -1,7 +1,7 @@
 package learn.题目.other;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -134,20 +134,20 @@ public class 中缀表达式求值 {
 
     @Test
     public void testIsLegal() {
-        TestCase.assertTrue(isLegal("{[()]}"));
-        TestCase.assertTrue(!isLegal("(()))"));
-        TestCase.assertTrue(!isLegal("(()]"));
-        TestCase.assertTrue(!isLegal("{(})"));
+        Assertions.assertTrue(isLegal("{[()]}"));
+        Assertions.assertTrue(!isLegal("(()))"));
+        Assertions.assertTrue(!isLegal("(()]"));
+        Assertions.assertTrue(!isLegal("{(})"));
     }
 
     @Test
     public void testGet() {
-        TestCase.assertEquals(get("1 + 2 - 3 * 4 + 4 / 2"), -7.0);
-        TestCase.assertEquals(get("1 + 2 - 3 * 4 + 4 / 2/1 + 2 - 3 * 4 + 4 / 2+1 + 2 - 3 * 4 + 4 / 2"), -22.0);
-        TestCase.assertEquals(get("((11+33)/11-2*4)*(8-3)"), -20.0);
-        TestCase.assertEquals(get("((11+33)/11-2*4)*(8-3)"), -20.0);
-        TestCase.assertEquals(get("-1 + 2 - 3 * 4 + 4 / 2"), -9.0);
-        TestCase.assertEquals(get("((-11+33)/11-2*4)*(8-3)"), -30.0);
+        Assertions.assertEquals(get("1 + 2 - 3 * 4 + 4 / 2"), -7.0);
+        Assertions.assertEquals(get("1 + 2 - 3 * 4 + 4 / 2/1 + 2 - 3 * 4 + 4 / 2+1 + 2 - 3 * 4 + 4 / 2"), -22.0);
+        Assertions.assertEquals(get("((11+33)/11-2*4)*(8-3)"), -20.0);
+        Assertions.assertEquals(get("((11+33)/11-2*4)*(8-3)"), -20.0);
+        Assertions.assertEquals(get("-1 + 2 - 3 * 4 + 4 / 2"), -9.0);
+        Assertions.assertEquals(get("((-11+33)/11-2*4)*(8-3)"), -30.0);
     }
 
 }

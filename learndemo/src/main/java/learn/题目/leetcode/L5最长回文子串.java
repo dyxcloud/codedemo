@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.function.UnaryOperator;
@@ -145,9 +145,9 @@ aaabaaa a
     @Test
     public void tt() {
         UnaryOperator<String> func = this::longestPalindrome2;
-        TestCase.assertTrue(Arrays.asList("bab", "aba").contains(func.apply("babad")));
-        TestCase.assertEquals("bb", func.apply("cbbd"));
-        TestCase.assertEquals("aa", func.apply("aa"));
-        TestCase.assertEquals("a", func.apply("ac"));
+        Assertions.assertTrue(Arrays.asList("bab", "aba").contains(func.apply("babad")));
+        Assertions.assertEquals("bb", func.apply("cbbd"));
+        Assertions.assertEquals("aa", func.apply("aa"));
+        Assertions.assertEquals("a", func.apply("ac"));
     }
 }

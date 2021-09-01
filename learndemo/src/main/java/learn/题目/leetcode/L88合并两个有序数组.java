@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -35,19 +35,19 @@ public class L88合并两个有序数组 {
             int[] nums1 = {1, 2, 3, 0, 0, 0};
             f.merge(nums1, 3, new int[]{2, 5, 6}, 3);
             System.out.println(Arrays.toString(nums1));
-            Assert.assertArrayEquals(new int[]{1, 2, 2, 3, 5, 6}, nums1);
+            Assertions.assertArrayEquals(new int[]{1, 2, 2, 3, 5, 6}, nums1);
         }
         {
             int[] nums1 = {1};
             f.merge(nums1, 1, new int[]{}, 0);
             System.out.println(Arrays.toString(nums1));
-            Assert.assertArrayEquals(new int[]{1}, nums1);
+            Assertions.assertArrayEquals(new int[]{1}, nums1);
         }
         {
             int[] nums1 = {4, 5, 6, 0, 0, 0};
             f.merge(nums1, 3, new int[]{1, 2, 3}, 3);
             System.out.println(Arrays.toString(nums1));
-            Assert.assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, nums1);
+            Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, nums1);
         }
     }
 }

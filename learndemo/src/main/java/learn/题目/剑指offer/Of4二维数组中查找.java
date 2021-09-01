@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -30,12 +30,12 @@ public class Of4二维数组中查找 {
     @Test
     public void testfind() {
         int[][] arr = {{1, 2, 4, 6}, {2, 4, 7, 8}, {8, 9, 10, 11}, {9, 12, 13, 15}};
-        Assert.assertEquals(true, findNumberIn2DArray(arr, 7));
-        Assert.assertEquals(true, findNumberIn2DArray(arr, 1));
-        Assert.assertEquals(true, findNumberIn2DArray(arr, 15));
-        Assert.assertEquals(false, findNumberIn2DArray(arr, 0));
-        Assert.assertEquals(false, findNumberIn2DArray(arr, 99));
-        Assert.assertEquals(false, findNumberIn2DArray(arr, 3));
-        Assert.assertEquals(false, findNumberIn2DArray(null, 3));
+        Assertions.assertEquals(true, findNumberIn2DArray(arr, 7));
+        Assertions.assertEquals(true, findNumberIn2DArray(arr, 1));
+        Assertions.assertEquals(true, findNumberIn2DArray(arr, 15));
+        Assertions.assertEquals(false, findNumberIn2DArray(arr, 0));
+        Assertions.assertEquals(false, findNumberIn2DArray(arr, 99));
+        Assertions.assertEquals(false, findNumberIn2DArray(arr, 3));
+        Assertions.assertEquals(false, findNumberIn2DArray(null, 3));
     }
 }

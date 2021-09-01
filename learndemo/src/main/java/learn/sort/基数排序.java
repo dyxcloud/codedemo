@@ -1,7 +1,7 @@
 package learn.sort;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -48,6 +48,6 @@ public class 基数排序 extends SortFunction{
         int[] ar = getArr();
         sort(ar);
         System.out.println(Arrays.toString(ar));
-        TestCase.assertTrue(isSort(ar));
+        Assertions.assertTrue(isSort(ar));
     }
 }

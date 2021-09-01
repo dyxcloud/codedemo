@@ -1,6 +1,6 @@
 package learn.数据结构.tree;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings({"NonAsciiCharacters"})
 public class 还原二叉树 {

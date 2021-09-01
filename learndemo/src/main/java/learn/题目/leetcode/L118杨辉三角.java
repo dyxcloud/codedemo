@@ -1,6 +1,6 @@
 package learn.题目.leetcode;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

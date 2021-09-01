@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class L69次方根 {
@@ -85,13 +85,13 @@ public class L69次方根 {
 
     @Test
     public void testmethod() {
-        TestCase.assertEquals(2, getSize(121, 2));
-        TestCase.assertEquals(2, getSize(100, 2));
-        TestCase.assertEquals(1, getSize(81, 2));
-        TestCase.assertEquals(1, getSize(9, 2));
-        TestCase.assertEquals(1, getSize(1, 2));
-        TestCase.assertEquals(0, getSize(0, 2));
-        TestCase.assertEquals(1, getSize(27, 3));
+        Assertions.assertEquals(2, getSize(121, 2));
+        Assertions.assertEquals(2, getSize(100, 2));
+        Assertions.assertEquals(1, getSize(81, 2));
+        Assertions.assertEquals(1, getSize(9, 2));
+        Assertions.assertEquals(1, getSize(1, 2));
+        Assertions.assertEquals(0, getSize(0, 2));
+        Assertions.assertEquals(1, getSize(27, 3));
     }
 
 }

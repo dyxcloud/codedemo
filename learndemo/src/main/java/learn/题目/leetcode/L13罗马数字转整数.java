@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -90,10 +90,10 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
     @Test
     public void t() {
-        TestCase.assertEquals(3, romanToInt("III"));
-        TestCase.assertEquals(4, romanToInt("IV"));
-        TestCase.assertEquals(9, romanToInt("IX"));
-        TestCase.assertEquals(58, romanToInt("LVIII"));
-        TestCase.assertEquals(1994, romanToInt("MCMXCIV"));
+        Assertions.assertEquals(3, romanToInt("III"));
+        Assertions.assertEquals(4, romanToInt("IV"));
+        Assertions.assertEquals(9, romanToInt("IX"));
+        Assertions.assertEquals(58, romanToInt("LVIII"));
+        Assertions.assertEquals(1994, romanToInt("MCMXCIV"));
     }
 }

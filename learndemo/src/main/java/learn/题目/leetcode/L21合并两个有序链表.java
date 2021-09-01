@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
 import learn.题目.剑指offer.ListNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -74,7 +74,7 @@ public class L21合并两个有序链表 {
             ListNode l1 = new ListNode(1, l3);
             ListNode result = mergeTwoLists(n1, l1);
             List<Integer> integers = Arrays.asList(1, 1, 2, 3, 4, 4);
-            Assert.assertArrayEquals(ListNode.getList(result).toArray(), integers.toArray());
+            Assertions.assertArrayEquals(ListNode.getList(result).toArray(), integers.toArray());
         }
     }
 }

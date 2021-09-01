@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
@@ -13,8 +13,8 @@ public class L202快乐数 {
 
     @Test
     public void testFunc() {
-        TestCase.assertTrue(isHappy(19));
-        TestCase.assertFalse(isHappy(11));
+        Assertions.assertTrue(isHappy(19));
+        Assertions.assertFalse(isHappy(11));
     }
 
     /**
@@ -61,9 +61,9 @@ public class L202快乐数 {
 
     @Test
     public void testMethod() {
-        TestCase.assertEquals(65, getNext(81));
-        TestCase.assertEquals(17, getNext(14));
-        TestCase.assertEquals(1, getNext(1));
-        TestCase.assertEquals(0, getNext(0));
+        Assertions.assertEquals(65, getNext(81));
+        Assertions.assertEquals(17, getNext(14));
+        Assertions.assertEquals(1, getNext(1));
+        Assertions.assertEquals(0, getNext(0));
     }
 }

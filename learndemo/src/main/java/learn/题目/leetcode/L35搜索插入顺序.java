@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -51,11 +51,11 @@ public class L35搜索插入顺序 {
     @Test
     public void tt() {
         SearchFunc func = this::searchInsert;
-        TestCase.assertEquals(2, func.searchInsert(new int[]{1, 3, 5, 6}, 5));
-        TestCase.assertEquals(1, func.searchInsert(new int[]{1, 3, 5, 6}, 2));
-        TestCase.assertEquals(4, func.searchInsert(new int[]{1, 3, 5, 6}, 7));
-        TestCase.assertEquals(0, func.searchInsert(new int[]{1, 3, 5, 6}, 0));
-        TestCase.assertEquals(0, func.searchInsert(new int[]{1}, 1));
+        Assertions.assertEquals(2, func.searchInsert(new int[]{1, 3, 5, 6}, 5));
+        Assertions.assertEquals(1, func.searchInsert(new int[]{1, 3, 5, 6}, 2));
+        Assertions.assertEquals(4, func.searchInsert(new int[]{1, 3, 5, 6}, 7));
+        Assertions.assertEquals(0, func.searchInsert(new int[]{1, 3, 5, 6}, 0));
+        Assertions.assertEquals(0, func.searchInsert(new int[]{1}, 1));
     }
 
 }

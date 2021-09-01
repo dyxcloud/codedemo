@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;
@@ -65,18 +65,18 @@ public class L234回文链表 {
         Predicate<ListNode> f = this::isPalindrome;
         {
             ListNode root = ListNode.creatList(1, 2);
-            TestCase.assertEquals(false, f.test(root));
+            Assertions.assertEquals(false, f.test(root));
         }
         {
             ListNode root = ListNode.creatList(1, 2, 2, 1);
-            TestCase.assertEquals(true, f.test(root));
+            Assertions.assertEquals(true, f.test(root));
         }
         {
             ListNode root = ListNode.creatList(1, 2, 3, 2, 1);
-            TestCase.assertEquals(true, f.test(root));
+            Assertions.assertEquals(true, f.test(root));
         }
         {
-            TestCase.assertEquals(true, f.test(null));
+            Assertions.assertEquals(true, f.test(null));
         }
     }
 

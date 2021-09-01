@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -181,36 +181,36 @@ public class L146LRU缓存机制 {
         {
             lRUCache = new LRUCache2(1);
             lRUCache.put(2, 1);
-            TestCase.assertEquals(1, lRUCache.get(2));
+            Assertions.assertEquals(1, lRUCache.get(2));
         }
         {
             lRUCache = new LRUCache2(2);
             lRUCache.put(1, 1); // 缓存是 {1=1}
             lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
-            TestCase.assertEquals(1, lRUCache.get(1));
+            Assertions.assertEquals(1, lRUCache.get(1));
             lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
-            TestCase.assertEquals(-1, lRUCache.get(2));
+            Assertions.assertEquals(-1, lRUCache.get(2));
             lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
-            TestCase.assertEquals(-1, lRUCache.get(1));
-            TestCase.assertEquals(3, lRUCache.get(3));
-            TestCase.assertEquals(4, lRUCache.get(4));
+            Assertions.assertEquals(-1, lRUCache.get(1));
+            Assertions.assertEquals(3, lRUCache.get(3));
+            Assertions.assertEquals(4, lRUCache.get(4));
         }
         {
             lRUCache = new LRUCache2(1);
             lRUCache.put(2, 1); // 缓存是 {1=1}
-            TestCase.assertEquals(1, lRUCache.get(2));
+            Assertions.assertEquals(1, lRUCache.get(2));
             lRUCache.put(3, 2); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
-            TestCase.assertEquals(-1, lRUCache.get(2));
-            TestCase.assertEquals(2, lRUCache.get(3));
+            Assertions.assertEquals(-1, lRUCache.get(2));
+            Assertions.assertEquals(2, lRUCache.get(3));
         }
         {
             lRUCache = new LRUCache2(2);
             lRUCache.put(2, 1);
             lRUCache.put(2, 2);
-            TestCase.assertEquals(2, lRUCache.get(2));
+            Assertions.assertEquals(2, lRUCache.get(2));
             lRUCache.put(1, 1);
             lRUCache.put(4, 1);
-            TestCase.assertEquals(-1, lRUCache.get(2));
+            Assertions.assertEquals(-1, lRUCache.get(2));
         }
     }
 }

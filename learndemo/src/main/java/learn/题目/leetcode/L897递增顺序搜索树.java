@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang

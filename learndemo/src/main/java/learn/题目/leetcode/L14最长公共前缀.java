@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class L14最长公共前缀 {
 
@@ -29,7 +29,7 @@ public class L14最长公共前缀 {
 
     @Test
     public void ttt() {
-        TestCase.assertEquals("fl", longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
-        TestCase.assertEquals("", longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
+        Assertions.assertEquals("fl", longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+        Assertions.assertEquals("", longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
     }
 }

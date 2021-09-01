@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class L9回文数 {
 
@@ -20,10 +20,10 @@ public class L9回文数 {
 
     @Test
     public void ttt(){
-        TestCase.assertTrue(isPalindrome(121));
-        TestCase.assertFalse(isPalindrome(-121));
-        TestCase.assertFalse(isPalindrome(10));
-        TestCase.assertFalse(isPalindrome(-101));
+        Assertions.assertTrue(isPalindrome(121));
+        Assertions.assertFalse(isPalindrome(-121));
+        Assertions.assertFalse(isPalindrome(10));
+        Assertions.assertFalse(isPalindrome(-101));
     }
 
 }

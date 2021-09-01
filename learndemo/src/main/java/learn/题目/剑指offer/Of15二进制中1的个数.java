@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.IntUnaryOperator;
 
@@ -37,10 +37,10 @@ public class Of15二进制中1的个数 {
     @Test
     public void testNumberOf1() {
         IntUnaryOperator f = this::hammingWeight2;
-        Assert.assertEquals(2, f.applyAsInt(9));
-        Assert.assertEquals(1, f.applyAsInt(-2147483648));
-        Assert.assertEquals(32, f.applyAsInt(-1));
-        Assert.assertEquals(0, f.applyAsInt(0));
+        Assertions.assertEquals(2, f.applyAsInt(9));
+        Assertions.assertEquals(1, f.applyAsInt(-2147483648));
+        Assertions.assertEquals(32, f.applyAsInt(-1));
+        Assertions.assertEquals(0, f.applyAsInt(0));
     }
 
 }

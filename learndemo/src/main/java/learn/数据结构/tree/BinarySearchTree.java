@@ -1,7 +1,7 @@
 package learn.数据结构.tree;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -197,12 +197,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<Node<
     public void testContains() {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
         insert321546(tree);
-        TestCase.assertTrue(tree.contains(6));
-        TestCase.assertTrue(tree.contains(4));
-        TestCase.assertTrue(tree.contains(2));
-        TestCase.assertFalse(tree.contains(0));
-        TestCase.assertFalse(tree.contains(10));
-        TestCase.assertFalse(tree.contains(null));
+        Assertions.assertTrue(tree.contains(6));
+        Assertions.assertTrue(tree.contains(4));
+        Assertions.assertTrue(tree.contains(2));
+        Assertions.assertFalse(tree.contains(0));
+        Assertions.assertFalse(tree.contains(10));
+        Assertions.assertFalse(tree.contains(null));
     }
 
     @Test

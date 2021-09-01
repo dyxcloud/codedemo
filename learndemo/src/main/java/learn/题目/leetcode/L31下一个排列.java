@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Consumer;
 
@@ -52,27 +52,27 @@ public class L31下一个排列 {
         {
             int[] arr = {1, 2, 3};
             func.accept(arr);
-            Assert.assertArrayEquals(new int[]{1, 3, 2}, arr);
+            Assertions.assertArrayEquals(new int[]{1, 3, 2}, arr);
         }
         {
             int[] arr = {1, 3, 2};
             func.accept(arr);
-            Assert.assertArrayEquals(new int[]{2, 1, 3}, arr);
+            Assertions.assertArrayEquals(new int[]{2, 1, 3}, arr);
         }
         {
             int[] arr = {3, 2, 1};
             func.accept(arr);
-            Assert.assertArrayEquals(new int[]{1, 2, 3}, arr);
+            Assertions.assertArrayEquals(new int[]{1, 2, 3}, arr);
         }
         {
             int[] arr = {1, 1, 5};
             func.accept(arr);
-            Assert.assertArrayEquals(new int[]{1, 5, 1}, arr);
+            Assertions.assertArrayEquals(new int[]{1, 5, 1}, arr);
         }
         {
             int[] arr = {1};
             func.accept(arr);
-            Assert.assertArrayEquals(new int[]{1}, arr);
+            Assertions.assertArrayEquals(new int[]{1}, arr);
         }
     }
 }

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +46,7 @@ public class L22括号生成 {
     @Test
     public void tt() {
         IntFunction<List<String>> func = this::generateParenthesis;
-        TestCase.assertEquals(Arrays.asList("((()))", "(()())", "(())()", "()(())", "()()()"), func.apply(3));
-        TestCase.assertEquals(Collections.singletonList("()"), func.apply(1));
+        Assertions.assertEquals(Arrays.asList("((()))", "(()())", "(())()", "()(())", "()()()"), func.apply(3));
+        Assertions.assertEquals(Collections.singletonList("()"), func.apply(1));
     }
 }

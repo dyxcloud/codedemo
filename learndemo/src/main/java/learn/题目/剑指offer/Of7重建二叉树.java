@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -43,51 +43,51 @@ public class Of7重建二叉树 {
             int[] pre = new int[]{1, 2, 4, 7, 3, 5, 6, 8};
             int[] in =  new int[]{4, 7, 2, 1, 5, 3, 8, 6};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         {
             int[] pre = new int[]{1,2,3};
             int[] in =  new int[]{2,1,3};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         {
             int[] pre = new int[]{1,2,4,5,3,6,7};
             int[] in =  new int[]{4,2,5,1,6,3,7};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         {
             int[] pre = new int[]{1,2,4};
             int[] in =  new int[]{4,2,1};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         {
             int[] pre = new int[]{1,3,7};
             int[] in =  new int[]{1,3,7};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         {
             int[] pre = new int[]{1};
             int[] in =  new int[]{1};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
         //root=null
         {
             int[] pre = new int[]{};
             int[] in =  new int[]{};
             TreeNode result = buildTree(pre,in);
-            Assert.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
-            Assert.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
+            Assertions.assertTrue(Arrays.equals(dfsPreOrder(result).stream().mapToInt(Integer::intValue).toArray(),pre));
+            Assertions.assertTrue(Arrays.equals(dfsInOrder(result).stream().mapToInt(Integer::intValue).toArray(),in));
         }
     }
 

@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -63,7 +63,7 @@ public class L111二叉树的最小深度 {
             TreeNode root = new TreeNode(3
                     , new TreeNode(9)
                     , new TreeNode(20, new TreeNode(15), new TreeNode(7)));
-            TestCase.assertEquals(2, f.applyAsInt(root));
+            Assertions.assertEquals(2, f.applyAsInt(root));
         }
         {
             TreeNode root = new TreeNode(2
@@ -71,20 +71,20 @@ public class L111二叉树的最小深度 {
                     , null, new TreeNode(4
                     , null, new TreeNode(5
                     , null, new TreeNode(6)))));
-            TestCase.assertEquals(5, f.applyAsInt(root));
+            Assertions.assertEquals(5, f.applyAsInt(root));
         }
         {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, new TreeNode(4), new TreeNode(5))
                     , new TreeNode(3));
-            TestCase.assertEquals(2, f.applyAsInt(root));
+            Assertions.assertEquals(2, f.applyAsInt(root));
         }
         {
-            TestCase.assertEquals(0, f.applyAsInt(null));
+            Assertions.assertEquals(0, f.applyAsInt(null));
         }
         {
             TreeNode root = new TreeNode(1);
-            TestCase.assertEquals(1, f.applyAsInt(root));
+            Assertions.assertEquals(1, f.applyAsInt(root));
         }
     }
 

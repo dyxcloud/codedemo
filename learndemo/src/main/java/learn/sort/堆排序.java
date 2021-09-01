@@ -1,8 +1,8 @@
 package learn.sort;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.数据结构.Heap;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -37,7 +37,7 @@ public class 堆排序 extends SortFunction{
         int[] arr = getArr();
         sort(arr);
         System.out.println(Arrays.toString(arr));
-        TestCase.assertTrue(isSort(arr));
+        Assertions.assertTrue(isSort(arr));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class 堆排序 extends SortFunction{
         int[] arr = getArr();
         sortWithPriorityQueue(arr);
         System.out.println(Arrays.toString(arr));
-        TestCase.assertTrue(isSort(arr));
+        Assertions.assertTrue(isSort(arr));
     }
 
 }

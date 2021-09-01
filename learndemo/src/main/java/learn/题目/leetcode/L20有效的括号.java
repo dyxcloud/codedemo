@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -44,10 +44,10 @@ public class L20有效的括号 {
 
     @Test
     public void tt() {
-        TestCase.assertTrue(isValid("()"));
-        TestCase.assertTrue(isValid("()[]{}"));
-        TestCase.assertFalse(isValid("(]"));
-        TestCase.assertFalse(isValid("([)]"));
-        TestCase.assertTrue(isValid("{[]}"));
+        Assertions.assertTrue(isValid("()"));
+        Assertions.assertTrue(isValid("()[]{}"));
+        Assertions.assertFalse(isValid("(]"));
+        Assertions.assertFalse(isValid("([)]"));
+        Assertions.assertTrue(isValid("{[]}"));
     }
 }

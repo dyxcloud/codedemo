@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -41,26 +41,26 @@ public class Of11旋转数组的最小数字 {
 
     @Test
     public void test(){
-        Assert.assertEquals(1, minArray(new int[]{4,5,6,7,1,2,3}));
-        Assert.assertEquals(1, minArray(new int[]{3,1,2}));
-        Assert.assertEquals(1, minArray(new int[]{3,4,5,1,2}));
-        Assert.assertEquals(1, minArray(new int[]{4,5,6,7,1}));
-        Assert.assertEquals(1, minArray(new int[]{7,1,2,3,4,5,6}));
-        Assert.assertEquals(1, minArray(new int[]{2,1}));
+        Assertions.assertEquals(1, minArray(new int[]{4,5,6,7,1,2,3}));
+        Assertions.assertEquals(1, minArray(new int[]{3,1,2}));
+        Assertions.assertEquals(1, minArray(new int[]{3,4,5,1,2}));
+        Assertions.assertEquals(1, minArray(new int[]{4,5,6,7,1}));
+        Assertions.assertEquals(1, minArray(new int[]{7,1,2,3,4,5,6}));
+        Assertions.assertEquals(1, minArray(new int[]{2,1}));
 
-        Assert.assertEquals(1, minArray(new int[]{4,5,6,7,1,1,2,3}));
-        Assert.assertEquals(1, minArray(new int[]{1,1,1}));
-        Assert.assertEquals(1, minArray(new int[]{2,2,2,2,2,1,2}));
-        Assert.assertEquals(1, minArray(new int[]{2,1,2,2,2,2,2}));
-        Assert.assertEquals(1, minArray(new int[]{3,3,3,3,3,1,2,2,2}));
-        Assert.assertEquals(1, minArray(new int[]{3,1,2,2,2,2,2,2,2}));
-        Assert.assertEquals(1, minArray(new int[]{4,5,6,6,7,1,2,3,4}));
+        Assertions.assertEquals(1, minArray(new int[]{4,5,6,7,1,1,2,3}));
+        Assertions.assertEquals(1, minArray(new int[]{1,1,1}));
+        Assertions.assertEquals(1, minArray(new int[]{2,2,2,2,2,1,2}));
+        Assertions.assertEquals(1, minArray(new int[]{2,1,2,2,2,2,2}));
+        Assertions.assertEquals(1, minArray(new int[]{3,3,3,3,3,1,2,2,2}));
+        Assertions.assertEquals(1, minArray(new int[]{3,1,2,2,2,2,2,2,2}));
+        Assertions.assertEquals(1, minArray(new int[]{4,5,6,6,7,1,2,3,4}));
 
-        Assert.assertEquals(-1, minArray(new int[]{}));
-        Assert.assertEquals(-1, minArray(null));
+        Assertions.assertEquals(-1, minArray(new int[]{}));
+        Assertions.assertEquals(-1, minArray(null));
 
-        Assert.assertEquals(1, minArray(new int[]{1}));
-        Assert.assertEquals(1, minArray(new int[]{1,2}));
-        Assert.assertEquals(1, minArray(new int[]{1,2,3,4,5,6,7,8,9,10}));
+        Assertions.assertEquals(1, minArray(new int[]{1}));
+        Assertions.assertEquals(1, minArray(new int[]{1,2}));
+        Assertions.assertEquals(1, minArray(new int[]{1,2,3,4,5,6,7,8,9,10}));
     }
 }

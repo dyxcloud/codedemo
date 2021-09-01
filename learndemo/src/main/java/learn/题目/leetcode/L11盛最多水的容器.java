@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.ToIntFunction;
 
@@ -50,9 +50,9 @@ public class L11盛最多水的容器 {
     @Test
     public void tt() {
         ToIntFunction<int[]> func = this::maxArea;
-        TestCase.assertEquals(49, func.applyAsInt(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
-        TestCase.assertEquals(1, func.applyAsInt(new int[]{1, 1}));
-        TestCase.assertEquals(16, func.applyAsInt(new int[]{4, 3, 2, 1, 4}));
-        TestCase.assertEquals(2, func.applyAsInt(new int[]{1, 2, 1}));
+        Assertions.assertEquals(49, func.applyAsInt(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
+        Assertions.assertEquals(1, func.applyAsInt(new int[]{1, 1}));
+        Assertions.assertEquals(16, func.applyAsInt(new int[]{4, 3, 2, 1, 4}));
+        Assertions.assertEquals(2, func.applyAsInt(new int[]{1, 2, 1}));
     }
 }

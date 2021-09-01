@@ -14,9 +14,9 @@ import com.hierynomus.smbj.connection.Connection;
 import com.hierynomus.smbj.session.Session;
 import com.hierynomus.smbj.share.DiskShare;
 import com.hierynomus.smbj.share.File;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.EnumSet;
@@ -48,7 +48,7 @@ public class SmbjDemo {
     Connection connection;
     DiskShare share;
 
-    @Before
+    @BeforeAll
     public void before() throws IOException {
         SMBClient smbClient = new SMBClient(config);
         connection = smbClient.connect(host);
@@ -57,7 +57,7 @@ public class SmbjDemo {
         share = (DiskShare) session.connectShare(leadDir);
     }
 
-    @After
+    @AfterAll
     public void after() throws IOException {
         if (connection != null)
             connection.close();

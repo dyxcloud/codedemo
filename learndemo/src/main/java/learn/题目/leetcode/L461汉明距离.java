@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.BiFunction;
 
@@ -25,6 +25,6 @@ public class L461汉明距离 {
     @Test
     public void tt() {
         BiFunction<Integer, Integer, Integer> f = this::hammingDistance;
-        TestCase.assertEquals(2, (int) f.apply(1, 4));
+        Assertions.assertEquals(2, (int) f.apply(1, 4));
     }
 }

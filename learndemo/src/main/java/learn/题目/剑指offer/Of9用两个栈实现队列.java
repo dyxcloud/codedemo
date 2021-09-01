@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -50,17 +50,17 @@ public class Of9用两个栈实现队列 {
             CQueue queue = new CQueue();
             queue.appendTail(1);
             queue.appendTail(2);
-            Assert.assertEquals(1,queue.deleteHead());
-            Assert.assertEquals(2,queue.deleteHead());
+            Assertions.assertEquals(1,queue.deleteHead());
+            Assertions.assertEquals(2,queue.deleteHead());
         }
         {
             CQueue queue = new CQueue();
             queue.appendTail(1);
             queue.appendTail(3);
-            Assert.assertEquals(1,queue.deleteHead());
+            Assertions.assertEquals(1,queue.deleteHead());
             queue.appendTail(2);
-            Assert.assertEquals(3,queue.deleteHead());
-            Assert.assertEquals(2,queue.deleteHead());
+            Assertions.assertEquals(3,queue.deleteHead());
+            Assertions.assertEquals(2,queue.deleteHead());
         }
     }
 
@@ -108,17 +108,17 @@ public class Of9用两个栈实现队列 {
             MyStack stack = new MyStack();
             stack.push(1);
             stack.push(2);
-            Assert.assertEquals(2,stack.pop());
-            Assert.assertEquals(1,stack.pop());
+            Assertions.assertEquals(2,stack.pop());
+            Assertions.assertEquals(1,stack.pop());
         }
         {
             MyStack stack = new MyStack();
             stack.push(1);
             stack.push(3);
-            Assert.assertEquals(3,stack.pop());
+            Assertions.assertEquals(3,stack.pop());
             stack.push(2);
-            Assert.assertEquals(2,stack.pop());
-            Assert.assertEquals(1,stack.pop());
+            Assertions.assertEquals(2,stack.pop());
+            Assertions.assertEquals(1,stack.pop());
         }
     }
 }

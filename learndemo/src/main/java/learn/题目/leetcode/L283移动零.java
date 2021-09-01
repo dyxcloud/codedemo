@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Consumer;
 
@@ -45,7 +45,7 @@ public class L283移动零 {
         {
             int[] arr = {0, 1, 0, 3, 12};
             f.accept(arr);
-            Assert.assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arr);
+            Assertions.assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arr);
         }
     }
 }

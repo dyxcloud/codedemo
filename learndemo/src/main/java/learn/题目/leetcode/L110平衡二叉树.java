@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -49,16 +49,16 @@ public class L110平衡二叉树 {
             TreeNode root = new TreeNode(3
                     , new TreeNode(9)
                     , new TreeNode(29, new TreeNode(15), new TreeNode(7)));
-            TestCase.assertTrue(isBalanced1(root));
+            Assertions.assertTrue(isBalanced1(root));
         }
         {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, new TreeNode(3, new TreeNode(4), new TreeNode(4)), new TreeNode(3))
                     , new TreeNode(2));
-            TestCase.assertFalse(isBalanced1(root));
+            Assertions.assertFalse(isBalanced1(root));
         }
         {
-            TestCase.assertTrue(isBalanced1(null));
+            Assertions.assertTrue(isBalanced1(null));
         }
     }
 }

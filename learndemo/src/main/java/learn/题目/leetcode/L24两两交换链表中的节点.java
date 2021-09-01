@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,14 +48,14 @@ public class L24两两交换链表中的节点 {
         Func f = this::swapPairs1;
         {
             ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
-            TestCase.assertEquals(Arrays.asList(2, 1, 4, 3), ListNode.getList(f.swapPairs(head)));
+            Assertions.assertEquals(Arrays.asList(2, 1, 4, 3), ListNode.getList(f.swapPairs(head)));
         }
         {
-            TestCase.assertNull(f.swapPairs(null));
+            Assertions.assertNull(f.swapPairs(null));
         }
         {
             ListNode head = new ListNode(1);
-            TestCase.assertEquals(Collections.singletonList(1), ListNode.getList(f.swapPairs(head)));
+            Assertions.assertEquals(Collections.singletonList(1), ListNode.getList(f.swapPairs(head)));
         }
     }
 }

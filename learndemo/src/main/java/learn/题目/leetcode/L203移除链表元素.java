@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -31,14 +31,14 @@ public class L203移除链表元素 {
         BiFunction<ListNode, Integer, ListNode> f = this::removeElements;
         {
             ListNode root = ListNode.creatList(1, 2, 6, 3, 4, 5, 6);
-            TestCase.assertEquals(Arrays.asList(1, 2, 3, 4, 5), ListNode.getList(f.apply(root, 6)));
+            Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5), ListNode.getList(f.apply(root, 6)));
         }
         {
-            TestCase.assertEquals(null, f.apply(null, 1));
+            Assertions.assertEquals(null, f.apply(null, 1));
         }
         {
             ListNode root = ListNode.creatList(7, 7, 7, 7);
-            TestCase.assertEquals(null, f.apply(root, 7));
+            Assertions.assertEquals(null, f.apply(root, 7));
         }
     }
 

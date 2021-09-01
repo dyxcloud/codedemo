@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.IntFunction;
 
@@ -54,10 +54,10 @@ public class L38外观数列 {
     @Test
     public void ttt() {
         IntFunction<String> func = this::countAndSayLoop;
-        TestCase.assertEquals("1", func.apply(1));
-        TestCase.assertEquals("11", func.apply(2));
-        TestCase.assertEquals("21", func.apply(3));
-        TestCase.assertEquals("1211", func.apply(4));
-        TestCase.assertEquals("111221", func.apply(5));
+        Assertions.assertEquals("1", func.apply(1));
+        Assertions.assertEquals("11", func.apply(2));
+        Assertions.assertEquals("21", func.apply(3));
+        Assertions.assertEquals("1211", func.apply(4));
+        Assertions.assertEquals("111221", func.apply(5));
     }
 }

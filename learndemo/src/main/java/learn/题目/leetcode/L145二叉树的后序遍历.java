@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
@@ -46,7 +46,7 @@ public class L145二叉树的后序遍历 {
         Function<TreeNode, List<Integer>> f = this::postorderTraversal1;
         {
             TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
-            TestCase.assertEquals(Arrays.asList(3, 2, 1), f.apply(root));
+            Assertions.assertEquals(Arrays.asList(3, 2, 1), f.apply(root));
         }
     }
 }

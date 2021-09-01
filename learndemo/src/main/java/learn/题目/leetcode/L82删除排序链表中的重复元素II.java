@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -108,30 +108,30 @@ public class L82删除排序链表中的重复元素II {
         Func f = this::deleteDuplicates;
         {
             ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3, new ListNode(4, new ListNode(4, new ListNode(5)))))));
-            TestCase.assertEquals(Arrays.asList(1, 2, 5), ListNode.getList(f.deleteDuplicates(head)));
+            Assertions.assertEquals(Arrays.asList(1, 2, 5), ListNode.getList(f.deleteDuplicates(head)));
         }
         {
             ListNode head = new ListNode(1, new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3)))));
-            TestCase.assertEquals(Arrays.asList(2, 3), ListNode.getList(f.deleteDuplicates(head)));
+            Assertions.assertEquals(Arrays.asList(2, 3), ListNode.getList(f.deleteDuplicates(head)));
         }
         {
             ListNode head = new ListNode(1);
-            TestCase.assertEquals(Collections.singletonList(1), ListNode.getList(f.deleteDuplicates(head)));
+            Assertions.assertEquals(Collections.singletonList(1), ListNode.getList(f.deleteDuplicates(head)));
         }
         {
-            TestCase.assertNull(f.deleteDuplicates(null));
+            Assertions.assertNull(f.deleteDuplicates(null));
         }
         {
             ListNode head = new ListNode(1, new ListNode(1));
-            TestCase.assertNull(f.deleteDuplicates(head));
+            Assertions.assertNull(f.deleteDuplicates(head));
         }
         {
             ListNode head = new ListNode(1, new ListNode(2, new ListNode(2)));
-            TestCase.assertEquals(Collections.singletonList(1), ListNode.getList(f.deleteDuplicates(head)));
+            Assertions.assertEquals(Collections.singletonList(1), ListNode.getList(f.deleteDuplicates(head)));
         }
         {
             ListNode head = new ListNode(1, new ListNode(2));
-            TestCase.assertEquals(Arrays.asList(1, 2), ListNode.getList(f.deleteDuplicates(head)));
+            Assertions.assertEquals(Arrays.asList(1, 2), ListNode.getList(f.deleteDuplicates(head)));
         }
     }
 }

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +36,7 @@ public class L70爬楼梯 {
     @Test
     public void tt() {
         IntUnaryOperator func = this::climbStairs;
-        TestCase.assertEquals(2, func.applyAsInt(2));
-        TestCase.assertEquals(3, func.applyAsInt(3));
+        Assertions.assertEquals(2, func.applyAsInt(2));
+        Assertions.assertEquals(3, func.applyAsInt(3));
     }
 }

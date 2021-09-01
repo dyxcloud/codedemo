@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
@@ -40,10 +40,10 @@ public class Of10斐波那契数列 {
 
     @Test
     public void test(){
-        Assert.assertEquals(55, fib(10));
-        Assert.assertEquals(102334155, fib(40));
-        Assert.assertEquals(0, fib(0));
-        Assert.assertEquals(1, fib(1));
+        Assertions.assertEquals(55, fib(10));
+        Assertions.assertEquals(102334155, fib(40));
+        Assertions.assertEquals(0, fib(0));
+        Assertions.assertEquals(1, fib(1));
     }
 
 
@@ -82,9 +82,9 @@ public class Of10斐波那契数列 {
 
     @Test
     public void test2(){
-        Assert.assertEquals(8,JumpFloorII(4));
-        Assert.assertEquals(1,JumpFloorII(1));
-        Assert.assertEquals(2,JumpFloorII(2));
+        Assertions.assertEquals(8,JumpFloorII(4));
+        Assertions.assertEquals(1,JumpFloorII(1));
+        Assertions.assertEquals(2,JumpFloorII(2));
     }
 
 

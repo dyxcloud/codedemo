@@ -1,9 +1,9 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -37,11 +37,11 @@ public class L83删除排序链表中的重复元素 {
     public void tt() {
         {
             ListNode root = new ListNode(1, new ListNode(1, new ListNode(2)));
-            TestCase.assertEquals(Arrays.asList(1, 2), ListNode.getList(deleteDuplicates(root)));
+            Assertions.assertEquals(Arrays.asList(1, 2), ListNode.getList(deleteDuplicates(root)));
         }
         {
             ListNode root = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))));
-            TestCase.assertEquals(Arrays.asList(1, 2, 3), ListNode.getList(deleteDuplicates(root)));
+            Assertions.assertEquals(Arrays.asList(1, 2, 3), ListNode.getList(deleteDuplicates(root)));
         }
     }
 }

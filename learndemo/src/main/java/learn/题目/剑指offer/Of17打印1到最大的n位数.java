@@ -1,6 +1,6 @@
 package learn.题目.剑指offer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang

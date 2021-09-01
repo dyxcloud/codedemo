@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -29,7 +29,7 @@ public class L28实现strStr {
 
     @Test
     public void tt() {
-        TestCase.assertEquals(2, strStr("hello", "ll"));
-        TestCase.assertEquals(-1, strStr("aaaaaa", "bba"));
+        Assertions.assertEquals(2, strStr("hello", "ll"));
+        Assertions.assertEquals(-1, strStr("aaaaaa", "bba"));
     }
 }

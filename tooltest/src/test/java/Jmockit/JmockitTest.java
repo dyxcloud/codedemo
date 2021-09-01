@@ -1,9 +1,9 @@
-package test.java.Jmockit;
+package Jmockit;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import mockit.Expectations;
 import mockit.Mocked;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class JmockitTest {
 
@@ -18,6 +18,6 @@ public class JmockitTest {
                 result = "hello Jmockit";
             }
         };
-        TestCase.assertEquals("hello Jmockit",helloJmockit.sayHello());
+        Assertions.assertEquals("hello Jmockit",helloJmockit.sayHello());
     }
 }

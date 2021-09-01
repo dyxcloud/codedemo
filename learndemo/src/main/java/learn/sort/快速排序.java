@@ -1,7 +1,7 @@
 package learn.sort;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -62,13 +62,13 @@ public class 快速排序 extends SortFunction {
             int[] arr = getArr();
             quickSort(arr);
             System.out.println(Arrays.toString(arr));
-            TestCase.assertTrue(isSort(arr));
+            Assertions.assertTrue(isSort(arr));
         }
         {
             int[] arr = getArr();
             quickSort2(arr, 0, arr.length - 1);
             System.out.println(Arrays.toString(arr));
-            TestCase.assertTrue(isSort(arr));
+            Assertions.assertTrue(isSort(arr));
         }
     }
 

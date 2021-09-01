@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.IntUnaryOperator;
 
@@ -66,8 +66,8 @@ public class L1006笨阶乘 {
     @Test
     public void tt() {
         IntUnaryOperator f = this::clumsy;
-        TestCase.assertEquals(7, f.applyAsInt(4));
-        TestCase.assertEquals(12, f.applyAsInt(10));
-        TestCase.assertEquals(1, f.applyAsInt(1));
+        Assertions.assertEquals(7, f.applyAsInt(4));
+        Assertions.assertEquals(12, f.applyAsInt(10));
+        Assertions.assertEquals(1, f.applyAsInt(1));
     }
 }

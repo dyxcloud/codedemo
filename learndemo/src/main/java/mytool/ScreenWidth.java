@@ -1,7 +1,7 @@
 package mytool;
 
 import learn.题目.other.中缀表达式求值;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 全面屏尺寸换算为16:9比例同等宽度屏幕尺寸

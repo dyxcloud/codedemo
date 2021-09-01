@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -130,10 +130,10 @@ public class L155最小栈 {
             minStack.push(-2);
             minStack.push(0);
             minStack.push(-3);
-            TestCase.assertEquals(-3, minStack.getMin());
+            Assertions.assertEquals(-3, minStack.getMin());
             minStack.pop();
-            TestCase.assertEquals(0, minStack.top());
-            TestCase.assertEquals(-2, minStack.getMin());
+            Assertions.assertEquals(0, minStack.top());
+            Assertions.assertEquals(-2, minStack.getMin());
         }
         {
             MinStack2 minStack = new MinStack2();
@@ -142,11 +142,11 @@ public class L155最小栈 {
             minStack.push(-1024);
             minStack.push(512);
             minStack.pop();
-            TestCase.assertEquals(-1024, minStack.getMin());
+            Assertions.assertEquals(-1024, minStack.getMin());
             minStack.pop();
-            TestCase.assertEquals(-1024, minStack.getMin());
+            Assertions.assertEquals(-1024, minStack.getMin());
             minStack.pop();
-            TestCase.assertEquals(512, minStack.getMin());
+            Assertions.assertEquals(512, minStack.getMin());
         }
     }
 

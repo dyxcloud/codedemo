@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -64,31 +64,31 @@ public class Of22链表中倒数第k个节点 {
         n4.next=null;
         {
             ListNode listNode = getKthFromEnd(n1, 2);
-            TestCase.assertEquals(n3,listNode);
+            Assertions.assertEquals(n3,listNode);
         }
         {
             ListNode listNode = getKthFromEnd(n1, 1);
-            TestCase.assertEquals(n4,listNode);
+            Assertions.assertEquals(n4,listNode);
         }
         {
             ListNode listNode = getKthFromEnd(n1, 4);
-            TestCase.assertEquals(n1,listNode);
+            Assertions.assertEquals(n1,listNode);
         }
         {
             ListNode listNode = getKthFromEnd(n1, 3);
-            TestCase.assertEquals(n2,listNode);
+            Assertions.assertEquals(n2,listNode);
         }
         {
             ListNode listNode = getKthFromEnd(n1, 5);
-            TestCase.assertNull(listNode);
+            Assertions.assertNull(listNode);
         }
         {
             ListNode listNode = getKthFromEnd(n1, 0);
-            TestCase.assertNull(listNode);
+            Assertions.assertNull(listNode);
         }
         {
             ListNode listNode = getKthFromEnd(null, 1);
-            TestCase.assertNull(listNode);
+            Assertions.assertNull(listNode);
         }
     }
 
@@ -125,7 +125,7 @@ public class Of22链表中倒数第k个节点 {
             n5.next=n6;
             n6.next=n7;
             n7.next=n3;
-            TestCase.assertTrue(isLoop(n1));
+            Assertions.assertTrue(isLoop(n1));
         }
         {
             n1.next=n2;
@@ -135,7 +135,7 @@ public class Of22链表中倒数第k个节点 {
             n5.next=n6;
             n6.next=n7;
             n7.next=n1;
-            TestCase.assertTrue(isLoop(n1));
+            Assertions.assertTrue(isLoop(n1));
         }
         {
             n1.next=n2;
@@ -145,7 +145,7 @@ public class Of22链表中倒数第k个节点 {
             n5.next=n6;
             n6.next=n7;
             n7.next=null;
-            TestCase.assertFalse(isLoop(n1));
+            Assertions.assertFalse(isLoop(n1));
         }
     }
 }

@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -77,18 +77,18 @@ public class L61旋转链表 {
         Func f = this::rotateRight1;
         {
             ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-            TestCase.assertEquals(Arrays.asList(4, 5, 1, 2, 3), ListNode.getList(f.rotateRight(head, 2)));
+            Assertions.assertEquals(Arrays.asList(4, 5, 1, 2, 3), ListNode.getList(f.rotateRight(head, 2)));
         }
         {
             ListNode head = new ListNode(0, new ListNode(1, new ListNode(2)));
-            TestCase.assertEquals(Arrays.asList(2, 0, 1), ListNode.getList(f.rotateRight(head, 4)));
+            Assertions.assertEquals(Arrays.asList(2, 0, 1), ListNode.getList(f.rotateRight(head, 4)));
         }
         {
             ListNode head = new ListNode(1, new ListNode(2));
-            TestCase.assertEquals(Arrays.asList(1, 2), ListNode.getList(f.rotateRight(head, 2)));
+            Assertions.assertEquals(Arrays.asList(1, 2), ListNode.getList(f.rotateRight(head, 2)));
         }
         {
-            TestCase.assertEquals(null, f.rotateRight(null, 0));
+            Assertions.assertEquals(null, f.rotateRight(null, 0));
         }
     }
 }

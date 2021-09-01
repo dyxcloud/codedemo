@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -67,12 +67,12 @@ public class L15三数之和 {
     public void test3() {
         {
             int[] arr = {-1, 0, 1, 2, -1, -4};
-            TestCase.assertEquals(
+            Assertions.assertEquals(
                     Arrays.asList(Arrays.asList(-1, 0, 1), Arrays.asList(-1, -1, 2))
                     , threeSum(arr));
         }{
             int[] arr = {0,0,0};
-            TestCase.assertEquals(
+            Assertions.assertEquals(
                     Arrays.asList(Arrays.asList(0,0,0))
                     , threeSum(arr));
         }

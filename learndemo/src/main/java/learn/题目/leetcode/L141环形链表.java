@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Predicate;
 
@@ -34,21 +34,21 @@ public class L141环形链表 {
             ListNode n = new ListNode(-4);
             ListNode head = new ListNode(3, new ListNode(2, new ListNode(0, n)));
             n.next = head;
-            TestCase.assertTrue(f.test(head));
+            Assertions.assertTrue(f.test(head));
         }
         {
             ListNode n = new ListNode(2);
             ListNode head = new ListNode(1, n);
             n.next = head;
-            TestCase.assertTrue(f.test(head));
+            Assertions.assertTrue(f.test(head));
         }
         {
             ListNode head = new ListNode(1, new ListNode(2));
-            TestCase.assertFalse(f.test(head));
+            Assertions.assertFalse(f.test(head));
         }
         {
             ListNode head = new ListNode(1);
-            TestCase.assertFalse(f.test(head));
+            Assertions.assertFalse(f.test(head));
         }
     }
 }

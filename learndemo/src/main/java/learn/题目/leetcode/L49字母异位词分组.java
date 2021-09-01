@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
@@ -37,19 +37,19 @@ public class L49字母异位词分组 {
             String[] arr = {"eat", "tea", "tan", "ate", "nat", "bat"};
             List<List<String>> apply = func.apply(arr);
             Set<List<String>> collect = apply.stream().peek(Collections::sort).collect(Collectors.toSet());
-            TestCase.assertEquals(Set.of(Collections.singletonList("bat"), Arrays.asList("nat", "tan"), Arrays.asList("ate", "eat", "tea")), collect);
+            Assertions.assertEquals(Set.of(Collections.singletonList("bat"), Arrays.asList("nat", "tan"), Arrays.asList("ate", "eat", "tea")), collect);
         }
         {
             String[] arr = {""};
             List<List<String>> apply = func.apply(arr);
             Set<List<String>> collect = apply.stream().peek(Collections::sort).collect(Collectors.toSet());
-            TestCase.assertEquals(Set.of(Collections.singletonList("")), collect);
+            Assertions.assertEquals(Set.of(Collections.singletonList("")), collect);
         }
         {
             String[] arr = {"a"};
             List<List<String>> apply = func.apply(arr);
             Set<List<String>> collect = apply.stream().peek(Collections::sort).collect(Collectors.toSet());
-            TestCase.assertEquals(Set.of(Collections.singletonList("a")), collect);
+            Assertions.assertEquals(Set.of(Collections.singletonList("a")), collect);
         }
     }
 }

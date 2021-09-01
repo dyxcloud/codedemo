@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -90,19 +90,19 @@ public class L101对称二叉树 {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, new TreeNode(3), new TreeNode(4))
                     , new TreeNode(2, new TreeNode(4), new TreeNode(3)));
-            TestCase.assertTrue(f.isSymmetric(root));
+            Assertions.assertTrue(f.isSymmetric(root));
         }
         {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, null, new TreeNode(3))
                     , new TreeNode(2, null, new TreeNode(3)));
-            TestCase.assertFalse(f.isSymmetric(root));
+            Assertions.assertFalse(f.isSymmetric(root));
         }
         {
             TreeNode root = new TreeNode(9
                     , new TreeNode(-42, null, new TreeNode(76, null, new TreeNode(13)))
                     , new TreeNode(-42, new TreeNode(76, null, new TreeNode(13)), null));
-            TestCase.assertFalse(f.isSymmetric(root));
+            Assertions.assertFalse(f.isSymmetric(root));
         }
     }
 }

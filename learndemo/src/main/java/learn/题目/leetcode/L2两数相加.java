@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -58,22 +58,22 @@ public class L2两数相加 {
         {
             ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
             ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
-            TestCase.assertEquals(Arrays.asList(7, 0, 8), ListNode.getList(addTwoNumbers(l1, l2)));
+            Assertions.assertEquals(Arrays.asList(7, 0, 8), ListNode.getList(addTwoNumbers(l1, l2)));
         }
         {
             ListNode l1 = new ListNode(9, new ListNode(1, new ListNode(6)));
             ListNode l2 = new ListNode(0);
-            TestCase.assertEquals(Arrays.asList(9, 1, 6), ListNode.getList(addTwoNumbers(l1, l2)));
+            Assertions.assertEquals(Arrays.asList(9, 1, 6), ListNode.getList(addTwoNumbers(l1, l2)));
         }
         {
             ListNode l1 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9)))))));
             ListNode l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
-            TestCase.assertEquals(Arrays.asList(8, 9, 9, 9, 0, 0, 0, 1), ListNode.getList(addTwoNumbers(l1, l2)));
+            Assertions.assertEquals(Arrays.asList(8, 9, 9, 9, 0, 0, 0, 1), ListNode.getList(addTwoNumbers(l1, l2)));
         }
         {
             ListNode l1 = new ListNode(0);
             ListNode l2 = new ListNode(0);
-            TestCase.assertEquals(Collections.singletonList(0), ListNode.getList(addTwoNumbers(l1, l2)));
+            Assertions.assertEquals(Collections.singletonList(0), ListNode.getList(addTwoNumbers(l1, l2)));
         }
     }
 

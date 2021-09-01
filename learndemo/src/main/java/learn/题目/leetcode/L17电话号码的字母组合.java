@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,8 +51,8 @@ public class L17电话号码的字母组合 {
     @Test
     public void tt() {
         Function<String, List<String>> func = this::letterCombinations;
-        TestCase.assertEquals(Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"), func.apply("23"));
-        TestCase.assertEquals(Arrays.asList(), func.apply(""));
-        TestCase.assertEquals(Arrays.asList("a", "b", "c"), func.apply("2"));
+        Assertions.assertEquals(Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"), func.apply("23"));
+        Assertions.assertEquals(Arrays.asList(), func.apply(""));
+        Assertions.assertEquals(Arrays.asList("a", "b", "c"), func.apply("2"));
     }
 }

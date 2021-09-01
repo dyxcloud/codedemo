@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class Of24反转链表 {
             n2.next=n3;
             n3.next=null;
             ListNode result = reverseList(n1);
-            Assert.assertArrayEquals(new Integer[]{3, 2, 1}, ListNode.getList(result).toArray());
+            Assertions.assertArrayEquals(new Integer[]{3, 2, 1}, ListNode.getList(result).toArray());
         }
         {
             n1.next=n2;
@@ -76,7 +76,7 @@ public class Of24反转链表 {
             n3.next=n4;
             n4.next=null;
             ListNode result = reverseList(n1);
-            Assert.assertArrayEquals(new Integer[]{4, 3, 2, 1}, ListNode.getList(result).toArray());
+            Assertions.assertArrayEquals(new Integer[]{4, 3, 2, 1}, ListNode.getList(result).toArray());
         }
     }
 }

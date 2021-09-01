@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.ToIntFunction;
@@ -62,9 +62,9 @@ public class L3无重复字符的最长子串 {
     @Test
     public void tt() {
         ToIntFunction<String> func = this::lengthOfLongestSubstring0;
-        TestCase.assertEquals(3, func.applyAsInt("abcabcbb"));
-        TestCase.assertEquals(3, func.applyAsInt("pwwkew"));
-        TestCase.assertEquals(0, func.applyAsInt(""));
-        TestCase.assertEquals(5, func.applyAsInt("tmmzuxt"));
+        Assertions.assertEquals(3, func.applyAsInt("abcabcbb"));
+        Assertions.assertEquals(3, func.applyAsInt("pwwkew"));
+        Assertions.assertEquals(0, func.applyAsInt(""));
+        Assertions.assertEquals(5, func.applyAsInt("tmmzuxt"));
     }
 }

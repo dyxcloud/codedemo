@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
@@ -116,20 +116,20 @@ public class L46全排列 {
                     Arrays.asList(3, 1, 2),
                     Arrays.asList(3, 2, 1)
             );
-            TestCase.assertEquals(set, new HashSet<>(func.apply(new int[]{1, 2, 3})));
+            Assertions.assertEquals(set, new HashSet<>(func.apply(new int[]{1, 2, 3})));
         }
         {
             Set<List<Integer>> set = Set.of(
                     Arrays.asList(0, 1),
                     Arrays.asList(1, 0)
             );
-            TestCase.assertEquals(set, new HashSet<>(func.apply(new int[]{0, 1})));
+            Assertions.assertEquals(set, new HashSet<>(func.apply(new int[]{0, 1})));
         }
         {
             Set<List<Integer>> set = Set.of(
                     Collections.singletonList(1)
             );
-            TestCase.assertEquals(set, new HashSet<>(func.apply(new int[]{1})));
+            Assertions.assertEquals(set, new HashSet<>(func.apply(new int[]{1})));
         }
     }
 }

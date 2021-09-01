@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
@@ -42,12 +42,12 @@ public class 数字转汉字 {
 
     @Test
     public void testnumberConvert() {
-        Assert.assertEquals("七",numberConvert(7));
-        Assert.assertEquals("七亿",numberConvert(700_000_000));
-        Assert.assertEquals("七亿零三",numberConvert(700_000_003));
-        Assert.assertEquals("七亿零二十万零三",numberConvert(700_200_003));
-        Assert.assertEquals("七亿零二十万九千零八十三",numberConvert(700_209_083));
-        Assert.assertEquals("七亿一千二百二十八万七千九百九十三",numberConvert(712_287_993));
+        Assertions.assertEquals("七",numberConvert(7));
+        Assertions.assertEquals("七亿",numberConvert(700_000_000));
+        Assertions.assertEquals("七亿零三",numberConvert(700_000_003));
+        Assertions.assertEquals("七亿零二十万零三",numberConvert(700_200_003));
+        Assertions.assertEquals("七亿零二十万九千零八十三",numberConvert(700_209_083));
+        Assertions.assertEquals("七亿一千二百二十八万七千九百九十三",numberConvert(712_287_993));
     }
 
 

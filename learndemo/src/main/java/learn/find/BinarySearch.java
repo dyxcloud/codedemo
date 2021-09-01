@@ -1,8 +1,8 @@
 package learn.find;
 
-import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
@@ -48,16 +48,16 @@ public class BinarySearch {
     @Test
     public void tt() {
         BinarySearchFunc func = this::bsrwarp;
-        TestCase.assertEquals(2, func.search(new int[]{1, 3, 5, 6}, 5));
-        TestCase.assertEquals(-1, func.search(new int[]{1, 3, 5, 6}, 0));
-        TestCase.assertEquals(3, func.search(new int[]{1, 3, 5, 6}, 6));
-        TestCase.assertEquals(0, func.search(new int[]{1, 3, 5, 6}, 1));
+        Assertions.assertEquals(2, func.search(new int[]{1, 3, 5, 6}, 5));
+        Assertions.assertEquals(-1, func.search(new int[]{1, 3, 5, 6}, 0));
+        Assertions.assertEquals(3, func.search(new int[]{1, 3, 5, 6}, 6));
+        Assertions.assertEquals(0, func.search(new int[]{1, 3, 5, 6}, 1));
         {
             int[] arr = IntStream.rangeClosed(0, 9999999).toArray();// 生成一个0到n的顺序数组
             int target = 5645789;
-            Assert.assertEquals(target, func.search(arr, target));
+            Assertions.assertEquals(target, func.search(arr, target));
             target = -1;
-            Assert.assertEquals(-1, func.search(arr, target));
+            Assertions.assertEquals(-1, func.search(arr, target));
         }
     }
 }

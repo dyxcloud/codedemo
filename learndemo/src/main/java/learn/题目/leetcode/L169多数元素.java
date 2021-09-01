@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.function.ToIntFunction;
@@ -86,8 +86,8 @@ public class L169多数元素 {
     @Test
     public void tt() {
         ToIntFunction<int[]> f = this::majorityElement1;
-        TestCase.assertEquals(3, f.applyAsInt(new int[]{3, 2, 3}));
-        TestCase.assertEquals(2, f.applyAsInt(new int[]{2, 2, 1, 1, 1, 2, 2}));
+        Assertions.assertEquals(3, f.applyAsInt(new int[]{3, 2, 3}));
+        Assertions.assertEquals(2, f.applyAsInt(new int[]{2, 2, 1, 1, 1, 2, 2}));
     }
 
     @Test

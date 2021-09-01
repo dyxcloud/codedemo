@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.BiFunction;
 
@@ -35,18 +35,18 @@ public class L160相交链表 {
             ListNode same = new ListNode(8, new ListNode(4, new ListNode(5)));
             ListNode l1 = new ListNode(5, new ListNode(0, new ListNode(1, same)));
             ListNode l2 = new ListNode(4, new ListNode(1, same));
-            TestCase.assertEquals(same, f.apply(l1, l2));
+            Assertions.assertEquals(same, f.apply(l1, l2));
         }
         {
             ListNode same = new ListNode(2, new ListNode(4));
             ListNode l1 = new ListNode(0, new ListNode(9, new ListNode(1, same)));
             ListNode l2 = new ListNode(3, same);
-            TestCase.assertEquals(same, f.apply(l1, l2));
+            Assertions.assertEquals(same, f.apply(l1, l2));
         }
         {
             ListNode l1 = new ListNode(2, new ListNode(6, new ListNode(4)));
             ListNode l2 = new ListNode(1, new ListNode(5));
-            TestCase.assertEquals(null, f.apply(l1, l2));
+            Assertions.assertEquals(null, f.apply(l1, l2));
         }
     }
 

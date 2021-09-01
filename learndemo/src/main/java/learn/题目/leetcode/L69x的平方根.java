@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class L69x的平方根 {
 
@@ -57,11 +57,11 @@ public class L69x的平方根 {
 
     @Test
     public void tt() {
-        TestCase.assertEquals(2, mySqrt(4));
-        TestCase.assertEquals(2, mySqrt(8));
-        TestCase.assertEquals(10, mySqrt(100));
-        TestCase.assertEquals(12, mySqrt(150));
-        TestCase.assertEquals(0, mySqrt(0));
-        TestCase.assertEquals(46339, mySqrt(2147395599));
+        Assertions.assertEquals(2, mySqrt(4));
+        Assertions.assertEquals(2, mySqrt(8));
+        Assertions.assertEquals(10, mySqrt(100));
+        Assertions.assertEquals(12, mySqrt(150));
+        Assertions.assertEquals(0, mySqrt(0));
+        Assertions.assertEquals(46339, mySqrt(2147395599));
     }
 }

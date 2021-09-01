@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.IntFunction;
 
@@ -60,7 +60,7 @@ f(i) = f(i>>1) + (i&1)
     @Test
     public void tt() {
         IntFunction<int[]> f = this::countBits;
-        Assert.assertArrayEquals(new int[]{0, 1, 1}, f.apply(2));
-        Assert.assertArrayEquals(new int[]{0, 1, 1, 2, 1, 2}, f.apply(5));
+        Assertions.assertArrayEquals(new int[]{0, 1, 1}, f.apply(2));
+        Assertions.assertArrayEquals(new int[]{0, 1, 1, 2, 1, 2}, f.apply(5));
     }
 }

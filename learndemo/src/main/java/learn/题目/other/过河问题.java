@@ -1,7 +1,7 @@
 package learn.题目.other;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,11 +32,11 @@ public class 过河问题 {
      */
     @Test
     public void testfunc() {
-        // TestCase.assertEquals(17, func(1, 2, 5, 10));
-        // TestCase.assertEquals(15, func(1, 2, 5, 8));
-        // TestCase.assertEquals(5, func(1, 1, 1, 1));
-        // TestCase.assertEquals(7, func(1, 1, 1, 1, 1));
-        TestCase.assertEquals(16, func(1, 2, 2, 10));
+        // Assertions.assertEquals(17, func(1, 2, 5, 10));
+        // Assertions.assertEquals(15, func(1, 2, 5, 8));
+        // Assertions.assertEquals(5, func(1, 1, 1, 1));
+        // Assertions.assertEquals(7, func(1, 1, 1, 1, 1));
+        Assertions.assertEquals(16, func(1, 2, 2, 10));
     }
 
     public int func(int... arr) {

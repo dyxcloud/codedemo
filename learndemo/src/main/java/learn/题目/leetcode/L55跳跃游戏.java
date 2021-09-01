@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Predicate;
 
@@ -58,9 +58,9 @@ public class L55跳跃游戏 {
     @Test
     public void tt() {
         Predicate<int[]> func = this::canJump;
-        TestCase.assertTrue(func.test(new int[]{2, 3, 1, 1, 4}));
-        TestCase.assertFalse(func.test(new int[]{3, 2, 1, 0, 4}));
-        TestCase.assertTrue(func.test(new int[]{99, 3, 2, 1, 0, 4}));
+        Assertions.assertTrue(func.test(new int[]{2, 3, 1, 1, 4}));
+        Assertions.assertFalse(func.test(new int[]{3, 2, 1, 0, 4}));
+        Assertions.assertTrue(func.test(new int[]{99, 3, 2, 1, 0, 4}));
     }
 
 }

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -62,15 +62,15 @@ public class L1两数之和 {
     public void test() {
         {
             int[] arr = {2, 7, 11, 15};
-            Assert.assertArrayEquals(new int[]{0, 1}, twoSum(arr, 9));
+            Assertions.assertArrayEquals(new int[]{0, 1}, twoSum(arr, 9));
         }
         {
             int[] arr = {3, 3};
-            Assert.assertArrayEquals(new int[]{0, 1}, twoSum(arr, 6));
+            Assertions.assertArrayEquals(new int[]{0, 1}, twoSum(arr, 6));
         }
         {
             int[] arr = {-3, 4, 3, 90};
-            Assert.assertArrayEquals(new int[]{0, 2}, twoSum(arr, 0));
+            Assertions.assertArrayEquals(new int[]{0, 2}, twoSum(arr, 0));
         }
     }
 

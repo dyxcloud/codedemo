@@ -1,6 +1,6 @@
 package learn.题目.other;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang

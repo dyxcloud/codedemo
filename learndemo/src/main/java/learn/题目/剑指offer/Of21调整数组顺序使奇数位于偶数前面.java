@@ -1,8 +1,8 @@
 package learn.题目.剑指offer;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.sort.SortFunction;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -65,13 +65,13 @@ public class Of21调整数组顺序使奇数位于偶数前面 {
         //     int[] arr = {1,2,3,4,5,6,7};
         //     reOrderArray(arr);
         //     System.out.println(Arrays.toString(arr));
-        //     TestCase.assertTrue(Arrays.equals(arr,new int[] {1,3,5,7,2,4,6}));
+        //     Assertions.assertTrue(Arrays.equals(arr,new int[] {1,3,5,7,2,4,6}));
         // }
         {
             int[] arr = {2,16,3,5,13,1,16,1,12,18,11,8,11,11,5,1};
             reOrderArray_(arr);
             System.out.println(Arrays.toString(arr));
-            TestCase.assertTrue(Arrays.equals(arr,new int[] {1,5,  3,5,13,1,11,  1,11,11, 18,8  ,12  ,16  ,16,2}));
+            Assertions.assertTrue(Arrays.equals(arr,new int[] {1,5,  3,5,13,1,11,  1,11,11, 18,8  ,12  ,16  ,16,2}));
         }
     }
 }

@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -36,10 +36,10 @@ public class Of16数值的整数次方 {
     }
     @Test
     public void testPower(){
-        TestCase.assertEquals(9.0, myPow(3,2));
-        TestCase.assertEquals(1.0/9, myPow(3,-2));
-        TestCase.assertEquals(1.0, myPow(3,0));
-        TestCase.assertEquals(0.0, myPow(2.0,-2147483648));
+        Assertions.assertEquals(9.0, myPow(3,2));
+        Assertions.assertEquals(1.0/9, myPow(3,-2));
+        Assertions.assertEquals(1.0, myPow(3,0));
+        Assertions.assertEquals(0.0, myPow(2.0,-2147483648));
     }
 
 

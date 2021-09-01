@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class L67二进制求和 {
 
@@ -56,7 +56,7 @@ public class L67二进制求和 {
 
     @Test
     public void ttt() {
-        TestCase.assertEquals("100", addBinary("11", "1"));
-        TestCase.assertEquals("10101", addBinary("1010", "1011"));
+        Assertions.assertEquals("100", addBinary("11", "1"));
+        Assertions.assertEquals("10101", addBinary("1010", "1011"));
     }
 }

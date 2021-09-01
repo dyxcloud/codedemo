@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +51,7 @@ public class L448找到所有数组中消失的数字 {
     public void tt() {
         Function<int[], List<Integer>> f = this::findDisappearedNumbers1;
         {
-            TestCase.assertEquals(Arrays.asList(5, 6)
+            Assertions.assertEquals(Arrays.asList(5, 6)
                     , f.apply(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
         }
     }

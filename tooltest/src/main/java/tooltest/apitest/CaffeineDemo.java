@@ -2,7 +2,7 @@ package tooltest.apitest;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CaffeineDemo {
 

@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.BiFunction;
 
@@ -57,9 +57,9 @@ public class L34在排序数组中查找元素的第一个和最后一个位置 
     @Test
     public void tt() {
         BiFunction<int[], Integer, int[]> func = this::searchRange;
-        Assert.assertArrayEquals(new int[]{3, 4}, func.apply(new int[]{5, 7, 7, 8, 8, 10}, 8));
-        Assert.assertArrayEquals(new int[]{3, 5}, func.apply(new int[]{6, 6, 6, 7, 7, 7, 8, 8, 8}, 7));
-        Assert.assertArrayEquals(new int[]{-1, -1}, func.apply(new int[]{5, 7, 7, 8, 8, 10}, 6));
-        Assert.assertArrayEquals(new int[]{-1, -1}, func.apply(new int[]{}, 0));
+        Assertions.assertArrayEquals(new int[]{3, 4}, func.apply(new int[]{5, 7, 7, 8, 8, 10}, 8));
+        Assertions.assertArrayEquals(new int[]{3, 5}, func.apply(new int[]{6, 6, 6, 7, 7, 7, 8, 8, 8}, 7));
+        Assertions.assertArrayEquals(new int[]{-1, -1}, func.apply(new int[]{5, 7, 7, 8, 8, 10}, 6));
+        Assertions.assertArrayEquals(new int[]{-1, -1}, func.apply(new int[]{}, 0));
     }
 }

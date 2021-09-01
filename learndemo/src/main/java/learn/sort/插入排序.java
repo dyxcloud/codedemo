@@ -1,7 +1,7 @@
 package learn.sort;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -32,7 +32,7 @@ public class 插入排序 extends SortFunction {
     public void testinsertSort() {
         int[] arr = getArr();
         insertSort(arr);
-        TestCase.assertTrue(isSort(arr));
+        Assertions.assertTrue(isSort(arr));
     }
 
 }

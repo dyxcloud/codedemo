@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -20,8 +20,8 @@ public class L171Excel表列序号 {
 
     @Test
     public void tt() {
-        TestCase.assertEquals(1, titleToNumber("A"));
-        TestCase.assertEquals(28, titleToNumber("AB"));
-        TestCase.assertEquals(701, titleToNumber("ZY"));
+        Assertions.assertEquals(1, titleToNumber("A"));
+        Assertions.assertEquals(28, titleToNumber("AB"));
+        Assertions.assertEquals(701, titleToNumber("ZY"));
     }
 }

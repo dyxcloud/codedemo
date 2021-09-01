@@ -1,7 +1,7 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -45,27 +45,27 @@ public class L39组合总和 {
         {
             List<List<Integer>> apply = func.apply(new int[]{2, 3, 6, 7}, 7);
             apply.forEach(Collections::sort);
-            TestCase.assertEquals(Set.of(Collections.singletonList(7), Arrays.asList(2, 2, 3)), new HashSet<>(apply));
+            Assertions.assertEquals(Set.of(Collections.singletonList(7), Arrays.asList(2, 2, 3)), new HashSet<>(apply));
         }
         {
             List<List<Integer>> apply = func.apply(new int[]{2, 3, 5}, 8);
             apply.forEach(Collections::sort);
-            TestCase.assertEquals(Set.of(Arrays.asList(2, 2, 2, 2), Arrays.asList(2, 3, 3), Arrays.asList(3, 5)), new HashSet<>(apply));
+            Assertions.assertEquals(Set.of(Arrays.asList(2, 2, 2, 2), Arrays.asList(2, 3, 3), Arrays.asList(3, 5)), new HashSet<>(apply));
         }
         {
             List<List<Integer>> apply = func.apply(new int[]{2}, 1);
             apply.forEach(Collections::sort);
-            TestCase.assertEquals(Collections.EMPTY_SET, new HashSet<>(apply));
+            Assertions.assertEquals(Collections.EMPTY_SET, new HashSet<>(apply));
         }
         {
             List<List<Integer>> apply = func.apply(new int[]{1}, 1);
             apply.forEach(Collections::sort);
-            TestCase.assertEquals(Set.of(Collections.singletonList(1)), new HashSet<>(apply));
+            Assertions.assertEquals(Set.of(Collections.singletonList(1)), new HashSet<>(apply));
         }
         {
             List<List<Integer>> apply = func.apply(new int[]{1}, 2);
             apply.forEach(Collections::sort);
-            TestCase.assertEquals(Set.of(Arrays.asList(1, 1)), new HashSet<>(apply));
+            Assertions.assertEquals(Set.of(Arrays.asList(1, 1)), new HashSet<>(apply));
         }
     }
 }

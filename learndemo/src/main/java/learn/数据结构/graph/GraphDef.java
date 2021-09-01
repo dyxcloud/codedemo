@@ -1,10 +1,12 @@
 package learn.数据结构.graph;
 
-import junit.framework.TestCase;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
@@ -14,6 +16,20 @@ import java.util.Scanner;
  * @create 2019-11-26
  **/
 public class GraphDef {
+
+    private ByteArrayOutputStream outContent;
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStreams() {
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
 
     static Graph createByTypeIn(){
         Scanner cin = new Scanner(System.in);
@@ -41,9 +57,6 @@ public class GraphDef {
         return g;
     }
 
-    @Rule
-    public final SystemOutRule log = new SystemOutRule().enableLog();
-
     static void bfs(Graph g) {
         Deque<ListHead> queue = new ArrayDeque<>(g.v);
         queue.addLast(g.vertex[1]);
@@ -66,7 +79,7 @@ public class GraphDef {
     @Test
     public void testbfs(){
         bfs(create());
-        TestCase.assertEquals("1235467", log.getLog());
+        Assertions.assertEquals("1235467", outContent.toString());
     }
 
     static void dfs(Graph g, ListHead v) {
@@ -87,7 +100,7 @@ public class GraphDef {
     public void testdfs(){
         Graph g = create();
         dfs(g,g.vertex[1]);
-        TestCase.assertEquals("1253467", log.getLog());
+        Assertions.assertEquals("1253467", outContent.toString());
     }
 
     static void dfs2(Graph g){
@@ -114,7 +127,7 @@ public class GraphDef {
     @Test
     public void testdfs2(){
         dfs2(create());
-        TestCase.assertEquals("1534762", log.getLog());
+        Assertions.assertEquals("1534762", outContent.toString());
     }
 
 }

@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author DongYunxiang
@@ -38,12 +38,12 @@ public class Of5替换空格 {
 
     @Test
     public void testreplace(){
-        Assert.assertEquals("We%20are%20happy.", replaceSpace("We are happy."));
-        Assert.assertEquals("We%20%20are%20%20happy.", replaceSpace("We  are  happy."));
-        Assert.assertEquals("Wearehappy.", replaceSpace("Wearehappy."));
-        Assert.assertEquals(null, replaceSpace(null));
-        Assert.assertEquals("", replaceSpace(""));
-        Assert.assertEquals("%20", replaceSpace(" "));
-        Assert.assertEquals("%20%20%20", replaceSpace("   "));
+        Assertions.assertEquals("We%20are%20happy.", replaceSpace("We are happy."));
+        Assertions.assertEquals("We%20%20are%20%20happy.", replaceSpace("We  are  happy."));
+        Assertions.assertEquals("Wearehappy.", replaceSpace("Wearehappy."));
+        Assertions.assertEquals(null, replaceSpace(null));
+        Assertions.assertEquals("", replaceSpace(""));
+        Assertions.assertEquals("%20", replaceSpace(" "));
+        Assertions.assertEquals("%20%20%20", replaceSpace("   "));
     }
 }

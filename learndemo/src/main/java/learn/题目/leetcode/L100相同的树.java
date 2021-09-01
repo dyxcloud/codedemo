@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class L100相同的树 {
 
@@ -25,14 +25,14 @@ public class L100相同的树 {
             TreeNode q = new TreeNode(1);
             q.left = new TreeNode(2);
             q.right = new TreeNode(3);
-            TestCase.assertTrue(isSameTree(p, q));
+            Assertions.assertTrue(isSameTree(p, q));
         }
         {
             TreeNode p = new TreeNode(1);
             p.left = new TreeNode(2);
             TreeNode q = new TreeNode(1);
             q.right = new TreeNode(2);
-            TestCase.assertFalse(isSameTree(p, q));
+            Assertions.assertFalse(isSameTree(p, q));
         }
         {
             TreeNode p = new TreeNode(1);
@@ -41,7 +41,7 @@ public class L100相同的树 {
             TreeNode q = new TreeNode(1);
             q.left = new TreeNode(1);
             q.right = new TreeNode(2);
-            TestCase.assertFalse(isSameTree(p, q));
+            Assertions.assertFalse(isSameTree(p, q));
         }
     }
 }

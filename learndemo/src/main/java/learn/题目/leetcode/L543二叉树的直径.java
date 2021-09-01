@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.TreeNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,13 +91,13 @@ public class L543二叉树的直径 {
             TreeNode root = new TreeNode(2
                     , new TreeNode(3, new TreeNode(4), null)
                     , null);
-            TestCase.assertEquals(2, f.applyAsInt(root));
+            Assertions.assertEquals(2, f.applyAsInt(root));
         }
         {
             TreeNode root = new TreeNode(1
                     , new TreeNode(2, new TreeNode(4), new TreeNode(5))
                     , new TreeNode(3));
-            TestCase.assertEquals(3, f.applyAsInt(root));
+            Assertions.assertEquals(3, f.applyAsInt(root));
         }
     }
 }

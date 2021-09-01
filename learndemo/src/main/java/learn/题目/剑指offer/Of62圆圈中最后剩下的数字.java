@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -72,9 +72,9 @@ public class Of62圆圈中最后剩下的数字 {
     @Test
     public void testLast() {
         Arrayed arrayed = new Arrayed();
-        TestCase.assertEquals(3, arrayed.lastRemaining(5, 3));
-        TestCase.assertEquals(2, arrayed.lastRemaining(10, 17));
-        TestCase.assertEquals(64165, arrayed.lastRemaining(70866, 116922));
+        Assertions.assertEquals(3, arrayed.lastRemaining(5, 3));
+        Assertions.assertEquals(2, arrayed.lastRemaining(10, 17));
+        Assertions.assertEquals(64165, arrayed.lastRemaining(70866, 116922));
     }
 
     /**
@@ -98,7 +98,7 @@ public class Of62圆圈中最后剩下的数字 {
     }
 
     public static void main(String[] args) {
-        TestCase.assertEquals(Arrays.asList(3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 1, 5, 10, 14, 19, 23, 28, 32, 37, 41, 7, 13, 20, 26, 34, 40, 8, 17, 29, 38, 11, 25, 2, 22, 4, 35, 16, 31), getJosephusArray(41, 3));
-        TestCase.assertEquals(Arrays.asList(3, 1, 5, 2, 4), getJosephusArray(5, 3));
+        Assertions.assertEquals(Arrays.asList(3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 1, 5, 10, 14, 19, 23, 28, 32, 37, 41, 7, 13, 20, 26, 34, 40, 8, 17, 29, 38, 11, 25, 2, 22, 4, 35, 16, 31), getJosephusArray(41, 3));
+        Assertions.assertEquals(Arrays.asList(3, 1, 5, 2, 4), getJosephusArray(5, 3));
     }
 }

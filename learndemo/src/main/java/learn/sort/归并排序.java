@@ -1,7 +1,7 @@
 package learn.sort;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -52,12 +52,12 @@ public class 归并排序 extends SortFunction {
         int[] a = {1, 3, 7, 9, 2, 4, 6, 8};
         merge(a, 0, 4, 7);
         System.out.println(Arrays.toString(a));
-        TestCase.assertTrue(isSort(a));
+        Assertions.assertTrue(isSort(a));
 
         a = new int[]{3, 1};
         merge(a, 0, 1, 1);
         System.out.println(Arrays.toString(a));
-        TestCase.assertTrue(isSort(a));
+        Assertions.assertTrue(isSort(a));
     }
 
     @Test
@@ -65,6 +65,6 @@ public class 归并排序 extends SortFunction {
         int[] arr = getArr();
         mergeSort(arr);
         System.out.println(Arrays.toString(arr));
-        TestCase.assertTrue(isSort(arr));
+        Assertions.assertTrue(isSort(arr));
     }
 }

@@ -1,4 +1,4 @@
-package test.java.Jmockit;
+package Jmockit;
 
 public class HelloJMockit {
 

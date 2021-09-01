@@ -1,7 +1,7 @@
 package learn.题目.剑指offer;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -65,15 +65,15 @@ public class Of6从尾到头打印链表 {
         n3.next=n4;
         {
             int[] result = reversePrint(n1);
-            TestCase.assertTrue(Arrays.equals(result,new int[]{4, 3, 2, 1}));
+            Assertions.assertTrue(Arrays.equals(result,new int[]{4, 3, 2, 1}));
         }
         {
             int[] result = reversePrint(n4);
-            TestCase.assertTrue(Arrays.equals(result,new int[]{4}));
+            Assertions.assertTrue(Arrays.equals(result,new int[]{4}));
         }
         {
             int[] result = reversePrint(null);
-            TestCase.assertEquals(0, result.length);
+            Assertions.assertEquals(0, result.length);
         }
     }
 

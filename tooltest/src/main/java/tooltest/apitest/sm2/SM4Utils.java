@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 

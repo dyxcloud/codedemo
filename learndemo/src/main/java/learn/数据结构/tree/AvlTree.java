@@ -1,10 +1,12 @@
 package learn.数据结构.tree;
 
-import junit.framework.TestCase;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Iterator;
 
 /**
@@ -197,8 +199,19 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         return depth;
     }
 
-    @Rule
-    public final SystemOutRule log = new SystemOutRule().enableLog();
+    private ByteArrayOutputStream outContent;
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStreams() {
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
 
     @Test
     public void testInsert() {
@@ -211,19 +224,18 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     public void testContains() {
         AvlTree<Integer> tree = new AvlTree<>();
         insert321546(tree);
-        TestCase.assertTrue(tree.contains(6));
-        TestCase.assertTrue(tree.contains(4));
-        TestCase.assertTrue(tree.contains(2));
-        TestCase.assertFalse(tree.contains(0));
-        TestCase.assertFalse(tree.contains(10));
-        TestCase.assertFalse(tree.contains(null));
+        Assertions.assertTrue(tree.contains(6));
+        Assertions.assertTrue(tree.contains(4));
+        Assertions.assertTrue(tree.contains(2));
+        Assertions.assertFalse(tree.contains(0));
+        Assertions.assertFalse(tree.contains(10));
+        Assertions.assertFalse(tree.contains(null));
     }
 
     @Test
     public void testIterator() {
         AvlTree<Integer> tree0 = new AvlTree<>();
         insert321546(tree0);
-        log.clearLog();
         Iterator<Node<Integer>> iterator = tree0.iterator();
         while ((iterator.hasNext())) {
             System.out.print(iterator.next().data);
@@ -232,7 +244,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         //     System.out.print(n.data);
         // }
         // tree0.forEach(n -> System.out.print(n.data));
-        // TestCase.assertEquals("123456", log.getLog());
+        // Assertions.assertEquals("123456", outContent.toString());
     }
 
 }

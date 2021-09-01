@@ -1,8 +1,8 @@
 package learn.题目.leetcode;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import learn.题目.剑指offer.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -48,32 +48,32 @@ public class L143重排链表 {
         {
             ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
             reorderList(listNode);
-            TestCase.assertEquals(Arrays.asList(1, 4, 2, 3), ListNode.getList(listNode));
+            Assertions.assertEquals(Arrays.asList(1, 4, 2, 3), ListNode.getList(listNode));
         }
         {
             ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
             reorderList(listNode);
-            TestCase.assertEquals(Arrays.asList(1, 5, 2, 4, 3), ListNode.getList(listNode));
+            Assertions.assertEquals(Arrays.asList(1, 5, 2, 4, 3), ListNode.getList(listNode));
         }
         {
             ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3)));
             reorderList(listNode);
-            TestCase.assertEquals(Arrays.asList(1, 3, 2), ListNode.getList(listNode));
+            Assertions.assertEquals(Arrays.asList(1, 3, 2), ListNode.getList(listNode));
         }
         {
             ListNode listNode = new ListNode(1, new ListNode(2));
             reorderList(listNode);
-            TestCase.assertEquals(Arrays.asList(1, 2), ListNode.getList(listNode));
+            Assertions.assertEquals(Arrays.asList(1, 2), ListNode.getList(listNode));
         }
         {
             ListNode listNode = new ListNode(1);
             reorderList(listNode);
-            TestCase.assertEquals(Arrays.asList(1), ListNode.getList(listNode));
+            Assertions.assertEquals(Arrays.asList(1), ListNode.getList(listNode));
         }
         {
             ListNode listNode = null;
             reorderList(listNode);
-            TestCase.assertNull(listNode);
+            Assertions.assertNull(listNode);
         }
     }
 }
