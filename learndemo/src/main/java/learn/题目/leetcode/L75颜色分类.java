@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class L75颜色分类 {
 
     /**
-     * 插排
+     * 插排 O(n^2)
      */
-    public void sortColors(int[] nums) {
+    public void sortColors0(int[] nums) {
         if (nums.length < 2) {
             return;
         }
@@ -24,6 +24,26 @@ public class L75颜色分类 {
                 j--;
             }
             nums[j + 1] = tmp;
+        }
+    }
+
+    /**
+     * 计数法 O(n)
+     */
+    public void sortColors(int[] nums) {
+        if (nums.length < 2) {
+            return;
+        }
+        int[] countArr = {0, 0, 0};
+        for (int i : nums) {
+            countArr[i]++;
+        }
+        int index = 0;
+        for (int i = 0; i < 3; i++) {
+            int count = countArr[i];
+            for (int j = 0; j < count; j++) {
+                nums[index++] = i;
+            }
         }
     }
 
