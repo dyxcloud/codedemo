@@ -24,7 +24,7 @@ f(n)=f(n-1) + ("n"+"f(n-1)")
     /**
      * DP解法
      */
-    public List<List<Integer>> subsets(int[] nums) {
+    public List<List<Integer>> subsets0(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         result.add(new ArrayList<>());
         for (int num : nums) {
@@ -35,6 +35,30 @@ f(n)=f(n-1) + ("n"+"f(n-1)")
             }
         }
         return result;
+    }
+
+    /**
+     * 回溯法
+     */
+    List<List<Integer>> result;
+    Deque<Integer> stack;
+
+    public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
+        stack = new ArrayDeque<>();
+        helper(nums, 0);
+        return result;
+    }
+
+    private void helper(int[] nums, int current) {
+        if (current == nums.length) {
+            result.add(new ArrayList<>(stack));
+            return;
+        }
+        stack.addLast(nums[current]);
+        helper(nums, current + 1);
+        stack.removeLast();
+        helper(nums, current + 1);
     }
 
     @Test
