@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SuppressWarnings("NonAsciiCharacters")
 public class L79单词搜索 {
 
+    /**
+     * 回溯搜索法
+     */
     public boolean exist(char[][] board, String word) {
         char[] chars = word.toCharArray();
         for (int x = 0; x < board[0].length; x++) {
@@ -30,21 +33,10 @@ public class L79单词搜索 {
     private boolean search(char[][] board, int x, int y, char[] word, int i) {
         if (i == word.length) return true;
         //上下左右进行搜索
-        for (int t = 0; t < 4; t++) {
-            int x2, y2;
-            if (t == 0) {
-                x2 = x;
-                y2 = y - 1;
-            } else if (t == 1) {
-                x2 = x;
-                y2 = y + 1;
-            } else if (t == 2) {
-                x2 = x - 1;
-                y2 = y;
-            } else {
-                x2 = x + 1;
-                y2 = y;
-            }
+        int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for (int[] direction : directions) {
+            int x2 = x + direction[0];
+            int y2 = y + direction[1];
             if (isSafe(board, x2, y2) && board[y2][x2] == word[i]) {
                 board[y2][x2] = (char) (board[y2][x2] + 100);
                 boolean search = search(board, x2, y2, word, i + 1);
@@ -77,6 +69,10 @@ public class L79单词搜索 {
         {
             char[][] data = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
             assertFalse(func.test(data, "ABCB"));
+        }
+        {
+            char[][] data = {{'A'}};
+            assertTrue(func.test(data, "A"));
         }
     }
 
