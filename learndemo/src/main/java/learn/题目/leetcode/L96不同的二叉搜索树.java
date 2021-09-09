@@ -9,7 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SuppressWarnings("NonAsciiCharacters")
 public class L96不同的二叉搜索树 {
 
-    public int numTrees(int n) {
+    /**
+     * 二维
+     */
+    public int numTrees0(int n) {
         cache = new int[n][n];
         return helper(1, n);
     }
@@ -30,6 +33,25 @@ public class L96不同的二叉搜索树 {
         }
         cache[start - 1][end - 1] = sum;
         return sum;
+    }
+
+    /**
+     * 一维, 结果只与元素个数有关,与起始终止无关
+     * f(n) = f(0)*f(n-1)+f(1)*f(n-2)+.....+f(n-1)*f(0)
+     * f2 = f0*f1+f1*f0
+     */
+    public int numTrees(int n) {
+        int[] cache = new int[n + 1];
+        cache[0] = 1;
+        cache[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                int l = cache[j - 1];
+                int r = cache[i - j];
+                cache[i] += (l * r);
+            }
+        }
+        return cache[n];
     }
 
     @Test
