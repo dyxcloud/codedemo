@@ -1,6 +1,5 @@
 package learn.题目.leetcode;
 
-import learn.题目.剑指offer.Of7重建二叉树;
 import learn.题目.剑指offer.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +9,7 @@ import java.util.List;
  * @author DongYunxiang
  * @create 2021-03-08
  **/
+@SuppressWarnings("NonAsciiCharacters")
 public class L108将有序数组转换为二叉搜索树 {
 
     public TreeNode sortedArrayToBST(int[] nums) {
@@ -31,14 +31,15 @@ public class L108将有序数组转换为二叉搜索树 {
 
     @Test
     public void tt() {
+        L144二叉树的前序遍历 l144 = new L144二叉树的前序遍历();
         {
             TreeNode treeNode = sortedArrayToBST(new int[]{-10, -3, 0, 5, 9});
-            List<Integer> integers = Of7重建二叉树.dfsPreOrder(treeNode);
+            List<Integer> integers = l144.preorderTraversal(treeNode);
             System.out.println(integers);
         }
         {
             TreeNode treeNode = sortedArrayToBST(new int[]{1, 3});
-            List<Integer> integers = Of7重建二叉树.dfsPreOrder(treeNode);
+            List<Integer> integers = l144.preorderTraversal(treeNode);
             System.out.println(integers);
         }
     }
