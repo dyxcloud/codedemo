@@ -18,7 +18,11 @@ public class L114二叉树展开为链表 {
   3
  */
 
-    public void flatten(TreeNode root) {
+    /**
+     * 递归遍历的同时,修改tree
+     * 空间复杂度: 递归调用栈空间O(n)
+     */
+    public void flatten0(TreeNode root) {
         if (root == null) return;
         helper(root);
     }
@@ -41,6 +45,26 @@ public class L114二叉树展开为链表 {
             last = helper(r);
         }
         return last;
+    }
+
+
+    /**
+     * 不使用额外空间
+     */
+    public void flatten(TreeNode root) {
+        while (root != null) {
+            if (root.left != null) {
+                TreeNode target = root.left;
+                //寻找一个可以作为右节点"前序前驱"的位置
+                while (target.right != null) {
+                    target = target.right;
+                }
+                target.right = root.right;
+                root.right = root.left;
+                root.left = null;
+            }
+            root = root.right;
+        }
     }
 
     @Test
