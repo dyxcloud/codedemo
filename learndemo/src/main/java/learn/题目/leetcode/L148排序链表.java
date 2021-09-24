@@ -78,10 +78,45 @@ public class L148排序链表 {
      * 自底向上归并, 空间复杂度O(1)
      */
     public ListNode sortList(ListNode head) {
-        
-        return null;
+        ListNode node = head;
+        int length = 0;
+        while (node != null) {
+            length++;
+            node = node.next;
+        }
+        ListNode root = new ListNode(0, head);
+        for (int subLength = 1; subLength < length; subLength <<= 1) {
+            ListNode pre = root;
+            ListNode l1 = root.next;
+            while (l1 != null) {
+                ListNode current = l1;
+                //找l2的头
+                for (int i = 1; i < subLength && current.next != null; i++) {
+                    current = current.next;
+                }
+                ListNode l2 = current.next;
+                current.next = null;
+                //找下一段的头
+                current = l2;
+                for (int i = 1; i < subLength && current != null && current.next != null; i++) {
+                    current = current.next;
+                }
+                ListNode next = null;
+                if (current != null) {
+                    next = current.next;
+                    current.next = null;
+                }
+                pre.next = merge(l1, l2);//连接合并list到pre
+                //移动pre
+                while (pre.next != null) {
+                    pre = pre.next;
+                }
+                l1 = next;
+            }
+        }
+        return root.next;
     }
-    
+
     @Test
     public void tt() {
         UnaryOperator<ListNode> func = this::sortList;
