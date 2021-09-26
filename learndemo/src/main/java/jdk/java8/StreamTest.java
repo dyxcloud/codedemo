@@ -1,6 +1,6 @@
 package jdk.java8;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,20 +14,18 @@ public class StreamTest {
 
     @Test
     public void f1(){
-        strings.stream().forEach(s -> {
-            System.out.println(StringUtils.isBlank(s));
-        });
+        strings.forEach(s -> System.out.println(StrUtil.isBlank(s)));
     }
 
     @Test
     public void map(){
-        List<String> collect = strings.stream().filter(StringUtils::isNotBlank).map(String::toUpperCase).collect(Collectors.toList());
+        List<String> collect = strings.stream().filter(StrUtil::isNotBlank).map(String::toUpperCase).collect(Collectors.toList());
         System.out.println(collect);
     }
 
     @Test
     public void coll(){
-        Map<String, String> collect = strings.stream().distinct().collect(Collectors.toMap(s -> s, s -> s.toUpperCase()));
+        Map<String, String> collect = strings.stream().distinct().collect(Collectors.toMap(s -> s, String::toUpperCase));
         collect.forEach((k,v)-> System.out.println(k+"="+v));
     }
 }
