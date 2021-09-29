@@ -1,7 +1,7 @@
 package learn.sort;
 
 import org.junit.jupiter.api.Assertions;
-import learn.数据结构.Heap;
+import learn.数据结构.heap.Heap;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,12 +13,13 @@ import java.util.stream.IntStream;
  * @author DongYunxiang
  * @create 2019-05-25
  **/
+@SuppressWarnings("NonAsciiCharacters")
 public class 堆排序 extends SortFunction{
 
     public void sort(int[] arr) {
-        Heap.buildHeap(arr);
+        Heap.buildHeap(arr);//构建大顶堆
         for (int i = arr.length - 1; i > 0; i--) {
-            swap(arr, 0, i);
+            swap(arr, 0, i);//最大值放到最后一位
             Heap.maxHeapify(arr, i, 0);
         }
     }
