@@ -4,15 +4,45 @@ import learn.题目.剑指offer.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 @SuppressWarnings("NonAsciiCharacters")
 public class L236二叉树的最近公共祖先 {
     interface Func {
         TreeNode apply(TreeNode root, TreeNode p, TreeNode q);
     }
 
+    /**
+     * 双端队列记录纵向路径, 寻找队列共同元素
+     * 不能直接记录前序遍历路径, 因为不能区分前序节点是否是父节点
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        
-        return null;
+        Deque<TreeNode> pQueue = new ArrayDeque<>();
+        Deque<TreeNode> qQueue = new ArrayDeque<>();
+        trace(root, p, pQueue);
+        trace(root, q, qQueue);
+        TreeNode result = null;
+        while (qQueue.peekFirst() != null
+                && pQueue.peekFirst() != null
+                && qQueue.peekFirst() == pQueue.peekFirst()) {
+            result = qQueue.pollFirst();
+            pQueue.pollFirst();
+        }
+        return result;
+    }
+
+    public boolean trace(TreeNode root, TreeNode target, Deque<TreeNode> trace) {
+        if (root == null) return false;
+        if (root == target) {
+            trace.push(root);
+            return true;
+        }
+        boolean tl = trace(root.left, target, trace);
+        boolean tr = trace(root.right, target, trace);
+        boolean find = tl || tr;
+        if (find) trace.push(root);
+        return find;
     }
 
     @Test

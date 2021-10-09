@@ -25,4 +25,11 @@ public class TreeNode {
     public int hashCode() {
         return Objects.hash(val, left, right);
     }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                '}';
+    }
 }
