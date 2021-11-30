@@ -22,7 +22,7 @@ public class L416分割等和子集 {
         sum /= 2;
         // System.out.println(sum);
         cache = new HashSet<>();
-        Arrays.sort(nums);//排序保证数组有序
+        // Arrays.sort(nums);//不需要排序 因为cache记录的就是 当前num+total时 后半段所有可能组合是否能达到target
         return walk(nums, 0, 0, sum);
     }
 
