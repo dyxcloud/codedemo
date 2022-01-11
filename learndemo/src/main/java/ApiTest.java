@@ -11,7 +11,7 @@ public class ApiTest {
         BigDecimal bigDecimal = new BigDecimal(String.valueOf(a));
         System.out.println(bigDecimal);
         System.out.println(bigDecimal.doubleValue());
-        
+         
     }
 
     private <T, R> R limit(Function<T, R> func, T arg) {
