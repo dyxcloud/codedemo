@@ -1,15 +1,27 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.util.function.Function;
 
 public class ApiTest {
 
     @Test
     public void ttt() {
-        long i = (1000 * 60 * 60 * 24 * 365 * 10L);
-        System.out.println(i);
-        System.out.println(new Date().getTime() +  i);
-        System.out.println(new Date().getTime());
+        float a = 0.33f;
+        BigDecimal bigDecimal = new BigDecimal(String.valueOf(a));
+        System.out.println(bigDecimal);
+        System.out.println(bigDecimal.doubleValue());
+        
+    }
+
+    private <T, R> R limit(Function<T, R> func, T arg) {
+        return func.apply(arg);
     }
 
 }
+
+
+
+
+
+
